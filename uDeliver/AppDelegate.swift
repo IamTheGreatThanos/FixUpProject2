@@ -16,8 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // set up your background color view
+        let colorView = UIView()
+        colorView.backgroundColor = UIColor(red: 0.9451, green: 0.3686, blue: 0.3882, alpha: 0.6)
+
+        // use UITableViewCell.appearance() to configure
+        // the default appearance of all UITableViewCells in your app
+        UITableViewCell.appearance().selectedBackgroundView = colorView
+
         return true
+        
+//        window = UIWindow()
+//        window?.makeKeyAndVisible()
+//        window?.rootViewController = ContainerController()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
