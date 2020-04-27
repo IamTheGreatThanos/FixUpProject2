@@ -4,6 +4,8 @@ class SpecialtyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var SpecialtyName: UILabel!
     @IBOutlet weak var SpecialtyIcon: UIImageView!
+    @IBOutlet weak var SpecialtyInto: UILabel!
+    @IBOutlet weak var SpecialtyView: DesignOfViewWithCR!
     
     override func awakeFromNib() {
         super.awakeFromNib()

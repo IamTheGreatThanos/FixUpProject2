@@ -3,14 +3,26 @@ import Foundation
 
 class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let Names = ["John Smith","John Smith","John Smith","John Smith",]
-    let Transports = ["Transport: Track","Transport: Car","Transport: Bike","Transport: Bike",]
-    let Checks = ["Checked Courier","Checked Courier","Checked Courier","Checked Courier",]
-    let Ranks = ["4.9(1K)","4.4(3K)","4.0(10K)","5.0(100K)",]
-    let Amounts = ["500tg","2500tg","450tg","200tg",]
-    let Distances = ["200m","450m","2km","300m",]
-    let Times = ["5 min","15 min","45 min","25 min",]
-    let Clients = ["You're Client","You're Client","You're Client","You're Client",]
+    
+    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var mainTableView: UITableView!
+    
+    var Names = [String]()
+    var Prices = [String]()
+    var Specialty = [String]()
+    var Radius = [String]()
+    var Comments = [String]()
+    var Locations = [String]()
+    var Lats = [String]()
+    var Lngs = [String]()
+    var IDs = [String]()
+    var CustomersID = [String]()
+    var SpecialistsID = [String]()
+    var Avatars = [String]()
+    var orderImages = [[String]]()
+    var phoneNumbers = [String]()
+    
+    var role = "0"
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -22,25 +34,190 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActiveOrdersCell", for: indexPath) as! ActiveOrdersTableViewCell
         
         cell.nameLabel.text = Names[indexPath.row]
-        cell.transportLabel.text = Transports[indexPath.row]
-        cell.checkedCourierLabel.text = Checks[indexPath.row]
-        cell.rankLabel.text = Ranks[indexPath.row]
-        cell.amountLabel.text = Amounts[indexPath.row]
-        cell.distanceLabel.text = Distances[indexPath.row]
-        cell.timeLabel.text = Times[indexPath.row]
-        cell.clientLabel.text = Clients[indexPath.row]
+        cell.priceLabel.text = Prices[indexPath.row] + " тг"
+        cell.specialtyLabel.text = Specialty[indexPath.row]
+        cell.radiusLabel.text = Radius[indexPath.row]
+        cell.commentLabel.text = Comments[indexPath.row]
+        cell.locationLabel.text = Locations[indexPath.row]
+        
+        if indexPath.row == self.Names.count-1{
+            self.ActivityIndicator.isHidden = true
+            self.ActivityIndicator.stopAnimating()
+        }
         
         return(cell)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.ActivityIndicator.isHidden = false
+        self.ActivityIndicator.startAnimating()
+        
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "isCourier") == true{
+            role = "1"
+        }
+        if Reachability.isConnectedToNetwork() == true {
+            if defaults.string(forKey: "isRegister") == "true"{
+                let token = defaults.string(forKey: "Token")
+                let url = URL(string: "https://back.ontimeapp.club/maps/active/" + role)!
+                var request = URLRequest(url: url)
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
+                request.httpMethod = "GET"
+                //Get response
+                let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
+                    do{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                            DispatchQueue.main.async {
+                                for i in json{
+                                    let sender = i["sender"] as! NSDictionary
+                                    let worker = i["worker"] as! NSDictionary
+                                    
+                                    let orderImgs = i["order_img"] as! [NSDictionary]
+                                    var arr = [String]()
+                                    if orderImgs.count == 0{
+                                        arr.append("nil")
+                                        arr.append("nil")
+                                        arr.append("nil")
+                                    }
+                                    if orderImgs.count == 1{
+                                        for i in orderImgs{
+                                            arr.append(i["image"] as! String)
+                                        }
+                                        arr.append("nil")
+                                        arr.append("nil")
+                                    }
+                                    else if orderImgs.count == 2{
+                                        for i in orderImgs{
+                                            arr.append(i["image"] as! String)
+                                        }
+                                        arr.append("nil")
+                                    }
+                                    else{
+                                        for i in orderImgs{
+                                            arr.append(i["image"] as! String)
+                                        }
+                                    }
+                                    
+                                    self.orderImages.append(arr)
+                                    if defaults.bool(forKey: "isCourier") == true{
+                                        self.Names.append(sender["nickname"] as! String)
+                                    }
+                                    else{
+                                        self.Names.append(worker["nickname"] as! String)
+                                    }
+                                    self.CustomersID.append(String(sender["id"] as! Int))
+                                    self.SpecialistsID.append(String(worker["id"] as! Int))
+                                    self.Radius.append("200 m")
+                                    self.Prices.append(i["price"] as! String)
+                                    self.Comments.append(i["comment"] as! String)
+                                    self.Locations.append(i["a_name"] as! String)
+                                    self.Lats.append(i["a_lat"] as! String)
+                                    self.Lngs.append(i["a_long"] as! String)
+                                    self.IDs.append(String(i["id"] as! Int))
+                                    
+                                    if self.role == "0"{
+                                        self.phoneNumbers.append(worker["phone"] as! String)
+                                        if worker["avatar"] != nil{
+                                            self.Avatars.append(worker["avatar"] as! String)
+                                        }
+                                        else{
+                                            self.Avatars.append("Nil")
+                                        }
+                                        self.Specialty.append("Специалист")
+                                    }
+                                    else{
+                                        self.phoneNumbers.append(sender["phone"] as! String)
+                                        if sender["avatar"] != nil{
+                                            self.Avatars.append(sender["avatar"] as! String)
+                                        }
+                                        else{
+                                            self.Avatars.append("Nil")
+                                        }
+                                        self.Specialty.append("Заказчик")
+                                    }
+                                    
+                                }
+                                self.mainTableView.reloadData()
+                                self.ActivityIndicator.isHidden = true
+                                self.ActivityIndicator.stopAnimating()
+                            }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                        }
+                    }
+                    catch{
+                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+                })
+                task.resume()
+            }
+            else{
+                let alert = UIAlertController(title: "Извините", message: "Вы не зарегистрированы!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+        }
+        else{
+            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
         self.present(viewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(String(indexPath.row), forKey: "CurrentID")
+        defaults.set(self.Names[indexPath.row], forKey: "CurrentName")
+        defaults.set(self.Prices[indexPath.row], forKey: "CurrentPrice")
+        defaults.set(self.Specialty[indexPath.row], forKey: "CurrentSpecialty")
+        defaults.set(self.Radius[indexPath.row], forKey: "CurrentRadius")
+        defaults.set(self.Comments[indexPath.row], forKey: "CurrentComment")
+        defaults.set(self.Locations[indexPath.row], forKey: "CurrentLocation")
+        defaults.set(self.Lats[indexPath.row], forKey: "CurrentLat")
+        defaults.set(self.Lngs[indexPath.row], forKey: "CurrentLng")
+        defaults.set(self.IDs[indexPath.row], forKey: "CurrentOrderID")
+        defaults.set(self.Avatars[indexPath.row], forKey: "CurrentAvatar")
+        defaults.set(self.phoneNumbers[indexPath.row], forKey: "CurrentPhoneNumber")
+        
+        defaults.set(self.orderImages[indexPath.row][0], forKey: "orderImg1")
+        defaults.set(self.orderImages[indexPath.row][1], forKey: "orderImg2")
+        defaults.set(self.orderImages[indexPath.row][2], forKey: "orderImg3")
+        
+        defaults.set(false, forKey: "isCustomerView")
+        defaults.set(true, forKey: "isActiveOrders")
+        
+        let value = defaults.bool(forKey: "isCourier")
+        if value == true{
+            defaults.set(self.CustomersID[indexPath.row], forKey: "userInfoID")
+        }
+        else{
+            defaults.set(self.SpecialistsID[indexPath.row], forKey: "userInfoID")
+        }
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"MapViewController")
+        self.navigationController?.pushViewController(viewController, animated: true)
+                
     }
     
     

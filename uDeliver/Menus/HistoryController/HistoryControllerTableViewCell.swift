@@ -2,13 +2,13 @@ import UIKit
 
 class HistoryControllerTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var DateLabel: UILabel!
-    @IBOutlet weak var FromLabel: UILabel!
-    @IBOutlet weak var ToLabel: UILabel!
-    @IBOutlet weak var CommentLabel: UILabel!
-    @IBOutlet weak var StatusLabel: UILabel!
-    @IBOutlet weak var DistancePriceLabel: UILabel!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var specialtyLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     
     
     override func awakeFromNib() {

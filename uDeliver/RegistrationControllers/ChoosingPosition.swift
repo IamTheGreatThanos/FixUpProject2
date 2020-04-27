@@ -11,6 +11,8 @@ class ChoosingPosition: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"SpecialtyController")
         self.present(viewController, animated: true)
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "changeByProfile")
     }
     
     @IBAction func CustomerButton(_ sender: UIButton) {
@@ -20,5 +22,6 @@ class ChoosingPosition: UIViewController {
         
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "isCourier")
+        defaults.set(false, forKey: "isRegisterAsSpecialist")
     }
 }

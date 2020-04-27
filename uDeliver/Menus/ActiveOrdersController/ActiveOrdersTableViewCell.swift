@@ -4,13 +4,13 @@ import UIKit
 class ActiveOrdersTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var transportLabel: UILabel!
-    @IBOutlet weak var checkedCourierLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var specialtyLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var clientLabel: UILabel!
+    @IBOutlet weak var radiusLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+
     
 
     override func awakeFromNib() {

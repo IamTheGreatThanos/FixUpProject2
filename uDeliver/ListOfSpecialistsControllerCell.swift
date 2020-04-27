@@ -1,15 +1,19 @@
-//
-//  ListOfSpecialistsControllerCell.swift
-//  uDeliver
-//
-//  Created by Mac Book on 1/17/20.
-//  Copyright © 2020 XCode. All rights reserved.
-//
 
 import UIKit
 
 class ListOfSpecialistsControllerCell: UITableViewCell {
+    
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dislikeLabel: UILabel!
+    @IBOutlet weak var likeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var radiusLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

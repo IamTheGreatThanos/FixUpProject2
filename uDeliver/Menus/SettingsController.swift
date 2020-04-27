@@ -14,8 +14,39 @@ class SettingsController: UIViewController {
     }
     @IBAction func ExitButtonTapped(_ sender: UIButton) {
         let defaults = UserDefaults.standard
-                   let domain = Bundle.main.bundleIdentifier!
-                   defaults.removePersistentDomain(forName: domain)
-                   defaults.synchronize()
+        let domain = Bundle.main.bundleIdentifier!
+        defaults.removePersistentDomain(forName: domain)
+        defaults.synchronize()
+    }
+    
+    @IBAction func firstSNButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: "http://ontimeapp.club") else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    @IBAction func secondSNButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: "http://ontimeapp.club") else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    @IBAction func thirdSNButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: "http://ontimeapp.club") else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 }

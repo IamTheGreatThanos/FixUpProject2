@@ -5,11 +5,16 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDelegate, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SSJcell", for: indexPath) as! SpecialistSideJobTableViewCell
+        
+        cell.nameLabel.text = "John Smith"
+        
+        // Configure the cell’s contents.
+        return cell
     }
     
     

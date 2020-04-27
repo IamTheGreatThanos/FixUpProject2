@@ -1,12 +1,13 @@
-
 import UIKit
 
 class CustomerMySpecTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var SpecialtyIcon: UIImageView!
     @IBOutlet weak var SpecialtyName: UILabel!
+    @IBOutlet weak var SpecialtyInto: UILabel!
+    @IBOutlet weak var SpecialtyIcon: UIImageView!
+    @IBOutlet weak var SpecialtyView: DesignOfViewWithCR!
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

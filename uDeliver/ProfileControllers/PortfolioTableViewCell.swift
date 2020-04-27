@@ -1,15 +1,19 @@
-//
-//  PortfolioTableViewCell.swift
-//  uDeliver
-//
-//  Created by THANOS on 4/15/20.
-//  Copyright © 2020 XCode. All rights reserved.
-//
-
 import UIKit
+import Foundation
 
 class PortfolioTableViewCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var deleteButtonOutlet: UIButton!
+    @IBOutlet weak var portfolioImage: UIImageView!
+    
+    var buttonAction: ((Any) -> Void)?
+    
+    
+    @IBAction func deleteButton(_ sender: UIButton) {
+        self.buttonAction?(sender)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

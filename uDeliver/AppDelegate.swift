@@ -1,10 +1,8 @@
-//
 //  AppDelegate.swift
 //  uDeliver
 //
 //  Created by Mac Book on 9/19/19.
 //  Copyright © 2019 XCode. All rights reserved.
-//
 
 import UIKit
 import CoreData
@@ -17,19 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // set up your background color view
-        let colorView = UIView()
-        colorView.backgroundColor = UIColor(red: 0.9451, green: 0.3686, blue: 0.3882, alpha: 0.6)
-
-        // use UITableViewCell.appearance() to configure
-        // the default appearance of all UITableViewCells in your app
-        UITableViewCell.appearance().selectedBackgroundView = colorView
-
-        return true
+        Thread.sleep(forTimeInterval: 5.0)
         
-//        window = UIWindow()
-//        window?.makeKeyAndVisible()
-//        window?.rootViewController = ContainerController()
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
