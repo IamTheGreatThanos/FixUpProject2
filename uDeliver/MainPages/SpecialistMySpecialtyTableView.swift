@@ -106,7 +106,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             let isRegister = defaults.string(forKey: "isRegister")
             let myLat = defaults.string(forKey: "MyLat")
             let myLong = defaults.string(forKey: "MyLong")
-            if isRegister == "true"{
+            if isRegister == "true" && myLat != nil && myLong != nil{
                 let token = defaults.string(forKey: "Token")
                 let url = URL(string: "https://back.ontimeapp.club/users/change/city/")!
                 var request = URLRequest(url: url)
@@ -118,7 +118,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if try JSONSerialization.jsonObject(with: data!, options: []) != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
                             let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
                             let status = json["status"] as! String
                             DispatchQueue.main.async {
@@ -126,6 +126,11 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     print("OK! <Change City>")
                                 }
                             }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     catch{
@@ -183,7 +188,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.Names.append(sender["nickname"] as! String)
                                     self.CustomersID.append(String(sender["id"] as! Int))
                                     self.Specialty.append("Customer")
-                                    self.Radius.append("200 m")
                                     self.Prices.append(i["price"] as! String)
                                     self.Comments.append(i["comment"] as! String)
                                     self.Locations.append(i["a_name"] as! String)
@@ -310,7 +314,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.Names.append(sender["nickname"] as! String)
                                     self.CustomersID.append(String(sender["id"] as! Int))
                                     self.Specialty.append("Customer")
-                                    self.Radius.append("200 m")
                                     self.Prices.append(i["price"] as! String)
                                     self.Comments.append(i["comment"] as! String)
                                     self.Locations.append(i["a_name"] as! String)
@@ -393,7 +396,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
         defaults.set(self.Names[indexPath.row], forKey: "CurrentName")
         defaults.set(self.Prices[indexPath.row], forKey: "CurrentPrice")
         defaults.set(self.Specialty[indexPath.row], forKey: "CurrentSpecialty")
-        defaults.set(self.Radius[indexPath.row], forKey: "CurrentRadius")
+        defaults.set(self.Distan[indexPath.row], forKey: "CurrentRadius")
         defaults.set(self.Comments[indexPath.row], forKey: "CurrentComment")
         defaults.set(self.Locations[indexPath.row], forKey: "CurrentLocation")
         defaults.set(self.Lats[indexPath.row], forKey: "CurrentLat")

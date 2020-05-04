@@ -7,7 +7,6 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     var Names = [String]()
     var Prices = [String]()
     var Specialty = [String]()
-    var Radius = [String]()
     var Likes = [String]()
     var Dislikes = [String]()
     var Comments = [String]()
@@ -17,6 +16,8 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     var WorkersId = [String]()
     var Avatars = [String]()
     var phoneNumbers = [String]()
+    var Distan = [String]()
+    var Durat = [String]()
     
     var timer = Timer()
     
@@ -33,10 +34,12 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         
         cell.nameLabel.text = Names[indexPath.row]
         cell.priceLabel.text = Prices[indexPath.row] + " тг"
-        cell.radiusLabel.text = Radius[indexPath.row]
+        cell.radiusLabel.text = Distan[indexPath.row]
         cell.likeLabel.text = Likes[indexPath.row]
+        cell.dislikeLabel.text = Dislikes[indexPath.row]
         cell.commentLabel.text = Comments[indexPath.row]
         cell.locationLabel.text = Locations[indexPath.row]
+        cell.timeLabel.text = Durat[indexPath.row]
         
         // Configure the cell’s contents.
         return cell
@@ -69,7 +72,6 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         Names = []
         Prices = []
         Specialty = []
-        Radius = []
         Likes = []
         Dislikes = []
         Comments = []
@@ -79,6 +81,8 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         WorkersId = []
         Avatars = []
         phoneNumbers = []
+        Distan = []
+        Durat = []
         mainTableView.reloadData()
         
         if Reachability.isConnectedToNetwork() == true {
@@ -100,15 +104,17 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                     let sender = i["worker"] as! NSDictionary
                                     self.Names.append(sender["nickname"] as! String)
                                     self.Specialty.append("Customer")
-                                    self.Radius.append("200 m")
                                     self.Prices.append(String(i["price"] as! String))
-                                    self.Likes.append("10")
+                                    self.Likes.append(String(i["likes"] as! Int))
+                                    self.Dislikes.append(String(i["dislikes"] as! Int))
                                     self.Comments.append(i["comment"] as! String)
                                     self.Locations.append(i["time"] as! String)
                                     self.Lats.append(i["lat"] as! String)
                                     self.Lngs.append(i["lng"] as! String)
                                     self.WorkersId.append(String(sender["id"] as! Int))
                                     self.phoneNumbers.append(sender["phone"] as! String)
+                                    self.Distan.append(i["distance_text"] as! String)
+                                    self.Durat.append(i["duration_text"] as! String)
                                     if sender["avatar"] != nil{
                                         self.Avatars.append(sender["avatar"] as! String)
                                     }
@@ -206,7 +212,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         defaults.set(self.Names[indexPath.row], forKey: "CurrentName")
         defaults.set(self.Prices[indexPath.row], forKey: "CurrentPrice")
         defaults.set(self.Specialty[indexPath.row], forKey: "CurrentSpecialty")
-        defaults.set(self.Radius[indexPath.row], forKey: "CurrentRadius")
+        defaults.set(self.Distan[indexPath.row], forKey: "CurrentRadius")
         defaults.set(self.Likes[indexPath.row], forKey: "CurrentRating")
         defaults.set(self.Comments[indexPath.row], forKey: "CurrentComment")
         defaults.set(self.Locations[indexPath.row], forKey: "CurrentLocation")

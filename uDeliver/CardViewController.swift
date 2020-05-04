@@ -75,6 +75,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             }
             else{
                 sendButtonOutlet.setTitle("Принять", for: .normal)
+                customerView.alpha = 0.0
             }
             sendInformationView.alpha = 0.0
             image1.alpha = 0.0
@@ -83,8 +84,6 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             showImg1.alpha = 0.0
             showImg2.alpha = 0.0
             showImg3.alpha = 0.0
-//            customerView.alpha = 0.0
-            
         }
         else{
             if isActiveOrders == true{
@@ -101,7 +100,6 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 showImg1.alpha = 0.0
                 showImg2.alpha = 0.0
                 showImg3.alpha = 0.0
-//                customerView.alpha = 0.0
                 
             }
             else{

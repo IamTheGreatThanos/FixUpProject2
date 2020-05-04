@@ -10,12 +10,13 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
     var Names = [String]()
     var Prices = [String]()
     var Specialty = [String]()
-    var Radius = [String]()
     var Comments = [String]()
     var Locations = [String]()
     var Lats = [String]()
     var Lngs = [String]()
     var IDs = [String]()
+    var Distan = [String]()
+    var Durat = [String]()
     var CustomersID = [String]()
     var SpecialistsID = [String]()
     var Avatars = [String]()
@@ -36,9 +37,11 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
         cell.nameLabel.text = Names[indexPath.row]
         cell.priceLabel.text = Prices[indexPath.row] + " тг"
         cell.specialtyLabel.text = Specialty[indexPath.row]
-        cell.radiusLabel.text = Radius[indexPath.row]
+        cell.radiusLabel.text = Distan[indexPath.row]
         cell.commentLabel.text = Comments[indexPath.row]
         cell.locationLabel.text = Locations[indexPath.row]
+        cell.timeLabel.text = Durat[indexPath.row]
+        
         
         if indexPath.row == self.Names.count-1{
             self.ActivityIndicator.isHidden = true
@@ -110,13 +113,14 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                                     }
                                     self.CustomersID.append(String(sender["id"] as! Int))
                                     self.SpecialistsID.append(String(worker["id"] as! Int))
-                                    self.Radius.append("200 m")
                                     self.Prices.append(i["price"] as! String)
                                     self.Comments.append(i["comment"] as! String)
                                     self.Locations.append(i["a_name"] as! String)
                                     self.Lats.append(i["a_lat"] as! String)
                                     self.Lngs.append(i["a_long"] as! String)
                                     self.IDs.append(String(i["id"] as! Int))
+                                    self.Distan.append(i["distance_text"] as! String)
+                                    self.Durat.append(i["duration_text"] as! String)
                                     
                                     if self.role == "0"{
                                         self.phoneNumbers.append(worker["phone"] as! String)
@@ -189,7 +193,7 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
         defaults.set(self.Names[indexPath.row], forKey: "CurrentName")
         defaults.set(self.Prices[indexPath.row], forKey: "CurrentPrice")
         defaults.set(self.Specialty[indexPath.row], forKey: "CurrentSpecialty")
-        defaults.set(self.Radius[indexPath.row], forKey: "CurrentRadius")
+        defaults.set(self.Distan[indexPath.row], forKey: "CurrentRadius")
         defaults.set(self.Comments[indexPath.row], forKey: "CurrentComment")
         defaults.set(self.Locations[indexPath.row], forKey: "CurrentLocation")
         defaults.set(self.Lats[indexPath.row], forKey: "CurrentLat")

@@ -189,14 +189,17 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             
             switch AVCaptureDevice.authorizationStatus(for: .video) {
                 case .authorized: // The user has previously granted access to the camera.
-                    self.imagePicker.sourceType = .camera
-                    self.present(self.imagePicker, animated: true, completion: nil)
-                
+                    DispatchQueue.main.async {
+                        self.imagePicker.sourceType = .camera
+                        self.present(self.imagePicker, animated: true, completion: nil)
+                    }
                 case .notDetermined: // The user has not yet been asked for camera access.
                     AVCaptureDevice.requestAccess(for: .video) { granted in
                         if granted {
-                            self.imagePicker.sourceType = .camera
-                            self.present(self.imagePicker, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.imagePicker.sourceType = .camera
+                                self.present(self.imagePicker, animated: true, completion: nil)
+                            }
                         }
                     }
                 
@@ -251,14 +254,18 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         let cameraAction = UIAlertAction(title: "Камера", style: .default, handler: { (alert: UIAlertAction!) in
             switch AVCaptureDevice.authorizationStatus(for: .video) {
                 case .authorized: // The user has previously granted access to the camera.
-                    self.imagePicker.sourceType = .camera
-                    self.present(self.imagePicker, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.imagePicker.sourceType = .camera
+                        self.present(self.imagePicker, animated: true, completion: nil)
+                    }
                 
                 case .notDetermined: // The user has not yet been asked for camera access.
                     AVCaptureDevice.requestAccess(for: .video) { granted in
                         if granted {
-                            self.imagePicker.sourceType = .camera
-                            self.present(self.imagePicker, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.imagePicker.sourceType = .camera
+                                self.present(self.imagePicker, animated: true, completion: nil)
+                            }
                         }
                     }
                 
@@ -315,14 +322,18 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         let cameraAction = UIAlertAction(title: "Камера", style: .default, handler: { (alert: UIAlertAction!) in
             switch AVCaptureDevice.authorizationStatus(for: .video) {
                 case .authorized: // The user has previously granted access to the camera.
-                    self.imagePicker.sourceType = .camera
-                    self.present(self.imagePicker, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.imagePicker.sourceType = .camera
+                        self.present(self.imagePicker, animated: true, completion: nil)
+                    }
                 
                 case .notDetermined: // The user has not yet been asked for camera access.
                     AVCaptureDevice.requestAccess(for: .video) { granted in
                         if granted {
-                            self.imagePicker.sourceType = .camera
-                            self.present(self.imagePicker, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.imagePicker.sourceType = .camera
+                                self.present(self.imagePicker, animated: true, completion: nil)
+                            }
                         }
                     }
                 
