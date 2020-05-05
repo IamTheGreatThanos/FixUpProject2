@@ -168,6 +168,11 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
                                     self.mainTableView.reloadData()
                                     self.activityIndicator.isHidden = true
                                     self.activityIndicator.stopAnimating()
+                                    self.mainTableView.isHidden = false
+                                    
+                                    if self.Names.count == 0{
+                                        self.refreshButtonOutlet.isHidden = false
+                                    }
                                 }
                             }
                             else{
@@ -297,6 +302,10 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
                                     self.activityIndicator.isHidden = true
                                     self.activityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
+                                    
+                                    if self.Names.count == 0{
+                                        self.refreshButtonOutlet.isHidden = false
+                                    }
                                 }
                             }
                             else{

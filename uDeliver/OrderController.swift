@@ -439,7 +439,7 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     
                     let postString = "comment=" + commentTextView.text! + "&price=" + priceTextField.text! + "&a_lat=" + lat + "&a_long=" + lng + "&a_name=" + address + "&image1=" + strBase64_1 + "&image2=" + strBase64_2 + "&image3=" + strBase64_3 + "&spec=" + String(specID+1)
                     
-                    
+                    print(specID+1)
                     
                     request.httpBody = postString.data(using: .utf8)
                     //Get response
@@ -452,6 +452,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                                     let id = json["id"] as! String
                                     DispatchQueue.main.async {
                                         if status == "ok"{
+                                            defaults.set(lat, forKey: "ListOfSpecLat")
+                                            defaults.set(lng, forKey: "ListOfSpecLng")
                                             defaults.removeObject(forKey:"OrderLat")
                                             defaults.removeObject(forKey:"OrderLng")
                                             defaults.removeObject(forKey:"OrderAddress")

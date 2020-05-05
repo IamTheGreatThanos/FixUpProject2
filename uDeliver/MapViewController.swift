@@ -39,9 +39,16 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
         animateTransitionIfNeeded(state: nextState, duration: 0.9)
         
         let defaults = UserDefaults.standard
+        let isCustomerView = defaults.bool(forKey: "isCustomerView")
         let orderLat = defaults.string(forKey: "CurrentLat")!
         let orderLng = defaults.string(forKey: "CurrentLng")!
-        let id = defaults.string(forKey: "UID")!
+        var id = "0"
+        if isCustomerView == true{
+            id = defaults.string(forKey: "userInfoID")!
+        }
+        else{
+            id = defaults.string(forKey: "UID")!
+        }
         
         if Reachability.isConnectedToNetwork() == true {
             let url = URL (string: "https://map.fix-up.org/about?lat=" + orderLat + "&lng=" + orderLng + "&id=" + id)

@@ -215,6 +215,10 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
+                                    
+                                    if self.Names.count == 0{
+                                        self.refreshButtonOutlet.isHidden = false
+                                    }
                                 }
                             }
                             else{
@@ -349,6 +353,9 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
+                                    if self.Names.count == 0{
+                                        self.refreshButtonOutlet.isHidden = false
+                                    }
                                 }
                             }
                             else{
