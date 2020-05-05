@@ -108,7 +108,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             let myLong = defaults.string(forKey: "MyLong")
             if isRegister == "true" && myLat != nil && myLong != nil{
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/users/change/city/")!
+                let url = URL(string: "https://back.fix-up.org/users/change/city/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -118,13 +118,20 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    print("OK! <Change City>")
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        print("OK! <Change City>")
+                                    }
                                 }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{
@@ -144,7 +151,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             if (value == true){
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/maps/order/")!
+                let url = URL(string: "https://back.fix-up.org/maps/order/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -152,62 +159,69 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil {
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                            DispatchQueue.main.async {
-                                for i in json{
-                                    let sender = i["sender"] as! NSDictionary
-                                    let orderImgs = i["order_img"] as! [NSDictionary]
-                                    var arr = [String]()
-                                    if orderImgs.count == 0{
-                                        arr.append("nil")
-                                        arr.append("nil")
-                                        arr.append("nil")
-                                    }
-                                    if orderImgs.count == 1{
-                                        for i in orderImgs{
-                                            arr.append(i["image"] as! String)
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil {
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                                DispatchQueue.main.async {
+                                    for i in json{
+                                        let sender = i["sender"] as! NSDictionary
+                                        let orderImgs = i["order_img"] as! [NSDictionary]
+                                        var arr = [String]()
+                                        if orderImgs.count == 0{
+                                            arr.append("nil")
+                                            arr.append("nil")
+                                            arr.append("nil")
                                         }
-                                        arr.append("nil")
-                                        arr.append("nil")
-                                    }
-                                    else if orderImgs.count == 2{
-                                        for i in orderImgs{
-                                            arr.append(i["image"] as! String)
+                                        if orderImgs.count == 1{
+                                            for i in orderImgs{
+                                                arr.append(i["image"] as! String)
+                                            }
+                                            arr.append("nil")
+                                            arr.append("nil")
                                         }
-                                        arr.append("nil")
-                                    }
-                                    else{
-                                        for i in orderImgs{
-                                            arr.append(i["image"] as! String)
+                                        else if orderImgs.count == 2{
+                                            for i in orderImgs{
+                                                arr.append(i["image"] as! String)
+                                            }
+                                            arr.append("nil")
+                                        }
+                                        else{
+                                            for i in orderImgs{
+                                                arr.append(i["image"] as! String)
+                                            }
+                                        }
+                                        
+                                        self.orderImages.append(arr)
+                                        
+                                        self.Names.append(sender["nickname"] as! String)
+                                        self.CustomersID.append(String(sender["id"] as! Int))
+                                        self.Specialty.append("Customer")
+                                        self.Prices.append(i["price"] as! String)
+                                        self.Comments.append(i["comment"] as! String)
+                                        self.Locations.append(i["a_name"] as! String)
+                                        self.Lats.append(i["a_lat"] as! String)
+                                        self.Lngs.append(i["a_long"] as! String)
+                                        self.IDs.append(String(i["id"] as! Int))
+                                        self.Distan.append(i["distance_text"] as! String)
+                                        self.Durat.append(i["duration_text"] as! String)
+                                        self.phoneNumbers.append(sender["phone"] as! String)
+                                        
+                                        if sender["avatar"] != nil{
+                                            self.Avatars.append(sender["avatar"] as! String)
+                                        }
+                                        else{
+                                            self.Avatars.append("Nil")
                                         }
                                     }
-                                    
-                                    self.orderImages.append(arr)
-                                    
-                                    self.Names.append(sender["nickname"] as! String)
-                                    self.CustomersID.append(String(sender["id"] as! Int))
-                                    self.Specialty.append("Customer")
-                                    self.Prices.append(i["price"] as! String)
-                                    self.Comments.append(i["comment"] as! String)
-                                    self.Locations.append(i["a_name"] as! String)
-                                    self.Lats.append(i["a_lat"] as! String)
-                                    self.Lngs.append(i["a_long"] as! String)
-                                    self.IDs.append(String(i["id"] as! Int))
-                                    self.Distan.append(i["distance_text"] as! String)
-                                    self.Durat.append(i["duration_text"] as! String)
-                                    self.phoneNumbers.append(sender["phone"] as! String)
-                                    
-                                    if sender["avatar"] != nil{
-                                        self.Avatars.append(sender["avatar"] as! String)
-                                    }
-                                    else{
-                                        self.Avatars.append("Nil")
-                                    }
+                                    self.mainTableView.reloadData()
+                                    self.ActivityIndicator.isHidden = true
+                                    self.ActivityIndicator.stopAnimating()
                                 }
-                                self.mainTableView.reloadData()
-                                self.ActivityIndicator.isHidden = true
-                                self.ActivityIndicator.stopAnimating()
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{
@@ -270,7 +284,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             if (value == true){
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/maps/order/")!
+                let url = URL(string: "https://back.fix-up.org/maps/order/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -278,62 +292,69 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil {
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                            DispatchQueue.main.async {
-                                for i in json{
-                                    let sender = i["sender"] as! NSDictionary
-                                    let orderImgs = i["order_img"] as! [NSDictionary]
-                                    var arr = [String]()
-                                    if orderImgs.count == 0{
-                                        arr.append("nil")
-                                        arr.append("nil")
-                                        arr.append("nil")
-                                    }
-                                    if orderImgs.count == 1{
-                                        for i in orderImgs{
-                                            arr.append(i["image"] as! String)
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil {
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                                DispatchQueue.main.async {
+                                    for i in json{
+                                        let sender = i["sender"] as! NSDictionary
+                                        let orderImgs = i["order_img"] as! [NSDictionary]
+                                        var arr = [String]()
+                                        if orderImgs.count == 0{
+                                            arr.append("nil")
+                                            arr.append("nil")
+                                            arr.append("nil")
                                         }
-                                        arr.append("nil")
-                                        arr.append("nil")
-                                    }
-                                    else if orderImgs.count == 2{
-                                        for i in orderImgs{
-                                            arr.append(i["image"] as! String)
+                                        if orderImgs.count == 1{
+                                            for i in orderImgs{
+                                                arr.append(i["image"] as! String)
+                                            }
+                                            arr.append("nil")
+                                            arr.append("nil")
                                         }
-                                        arr.append("nil")
-                                    }
-                                    else{
-                                        for i in orderImgs{
-                                            arr.append(i["image"] as! String)
+                                        else if orderImgs.count == 2{
+                                            for i in orderImgs{
+                                                arr.append(i["image"] as! String)
+                                            }
+                                            arr.append("nil")
+                                        }
+                                        else{
+                                            for i in orderImgs{
+                                                arr.append(i["image"] as! String)
+                                            }
+                                        }
+                                        
+                                        self.orderImages.append(arr)
+                                        
+                                        self.Names.append(sender["nickname"] as! String)
+                                        self.CustomersID.append(String(sender["id"] as! Int))
+                                        self.Specialty.append("Customer")
+                                        self.Prices.append(i["price"] as! String)
+                                        self.Comments.append(i["comment"] as! String)
+                                        self.Locations.append(i["a_name"] as! String)
+                                        self.Lats.append(i["a_lat"] as! String)
+                                        self.Lngs.append(i["a_long"] as! String)
+                                        self.IDs.append(String(i["id"] as! Int))
+                                        self.Distan.append(i["distance_text"] as! String)
+                                        self.Durat.append(i["duration_text"] as! String)
+                                        self.phoneNumbers.append(sender["phone"] as! String)
+                                        if sender["avatar"] != nil{
+                                            self.Avatars.append(sender["avatar"] as! String)
+                                        }
+                                        else{
+                                            self.Avatars.append("Nil")
                                         }
                                     }
-                                    
-                                    self.orderImages.append(arr)
-                                    
-                                    self.Names.append(sender["nickname"] as! String)
-                                    self.CustomersID.append(String(sender["id"] as! Int))
-                                    self.Specialty.append("Customer")
-                                    self.Prices.append(i["price"] as! String)
-                                    self.Comments.append(i["comment"] as! String)
-                                    self.Locations.append(i["a_name"] as! String)
-                                    self.Lats.append(i["a_lat"] as! String)
-                                    self.Lngs.append(i["a_long"] as! String)
-                                    self.IDs.append(String(i["id"] as! Int))
-                                    self.Distan.append(i["distance_text"] as! String)
-                                    self.Durat.append(i["duration_text"] as! String)
-                                    self.phoneNumbers.append(sender["phone"] as! String)
-                                    if sender["avatar"] != nil{
-                                        self.Avatars.append(sender["avatar"] as! String)
-                                    }
-                                    else{
-                                        self.Avatars.append("Nil")
-                                    }
+                                    self.mainTableView.reloadData()
+                                    self.ActivityIndicator.isHidden = true
+                                    self.ActivityIndicator.stopAnimating()
+                                    self.mainTableView.isHidden = false
                                 }
-                                self.mainTableView.reloadData()
-                                self.ActivityIndicator.isHidden = true
-                                self.ActivityIndicator.stopAnimating()
-                                self.mainTableView.isHidden = false
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{
@@ -361,7 +382,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     @objc func sendLoc(){
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "Token")
-        let url = URL(string: "https://back.ontimeapp.club/maps/send_point")!
+        let url = URL(string: "https://back.fix-up.org/maps/send_point")!
         var request = URLRequest(url: url)
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -371,18 +392,27 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
         //Get response
         let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
             do{
-                if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                    let status = json["status"] as! String
-                    DispatchQueue.main.async {
-                        if status == "created"{
-                            print("OK <Send Location>")
+                if response != nil{
+                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                        let status = json["status"] as! String
+                        DispatchQueue.main.async {
+                            if status == "created"{
+                                print("OK <Send Location>")
+                            }
                         }
                     }
                 }
+                else{
+                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
             }
             catch{
-                print("Error < Send Location >")
+                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                self.present(alert, animated: true)
             }
         })
         task.resume()

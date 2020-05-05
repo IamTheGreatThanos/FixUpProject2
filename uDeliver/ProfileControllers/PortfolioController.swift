@@ -33,7 +33,7 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
         if asUserInfo == true{
             let userInfoId = defaults.string(forKey: "userInfoID")!
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/users/" + userInfoId)!
+            let url = URL(string: "https://back.fix-up.org/users/" + userInfoId)!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -41,17 +41,24 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                        let profileImgs = json["profile"] as! [NSDictionary]
-                        DispatchQueue.main.async {
-                            for i in profileImgs{
-                                let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
-                                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-                                self.PortfolioImages.append(decodedimage)
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                            let profileImgs = json["profile"] as! [NSDictionary]
+                            DispatchQueue.main.async {
+                                for i in profileImgs{
+                                    let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                                    let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                                    self.PortfolioImages.append(decodedimage)
+                                }
+                                print("OK <Portfolio controller>")
+                                self.mainTableView.reloadData()
                             }
-                            print("OK <Portfolio controller>")
-                            self.mainTableView.reloadData()
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{
@@ -70,7 +77,7 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         else{
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/users/profile/")!
+            let url = URL(string: "https://back.fix-up.org/users/profile/")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -78,22 +85,29 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                        DispatchQueue.main.async {
-                            for i in json{
-                                let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
-                                let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
-                                self.PortfolioImages.append(decodedimage)
-                                
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                            DispatchQueue.main.async {
+                                for i in json{
+                                    let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                                    let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
+                                    self.PortfolioImages.append(decodedimage)
+                                    
+                                }
+                                print("OK <Portfolio controller>")
+                                self.mainTableView.reloadData()
+                                if self.PortfolioImages.count == 0{
+                                    self.activityIndicator.stopAnimating()
+                                    self.activityIndicator.alpha = 0.0
+                                    self.alphaView.alpha = 0.0
+                                }
                             }
-                            print("OK <Portfolio controller>")
-                            self.mainTableView.reloadData()
-                            if self.PortfolioImages.count == 0{
-                                self.activityIndicator.stopAnimating()
-                                self.activityIndicator.alpha = 0.0
-                                self.alphaView.alpha = 0.0
-                            }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{

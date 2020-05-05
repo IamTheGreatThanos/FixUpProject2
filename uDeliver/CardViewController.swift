@@ -128,15 +128,15 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         locationLabel.text = defaults.string(forKey: "CurrentLocation")!
         if defaults.string(forKey: "CurrentAvatar") != "Nil" && defaults.string(forKey: "CurrentAvatar") != nil{
             let url = defaults.string(forKey: "CurrentAvatar")!
-            let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
+            let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
             self.avaIcon.load(url: loadUrl)
         }
         
         if defaults.string(forKey: "orderImg1") != "nil" && defaults.string(forKey: "orderImg1") != nil{
             let url = defaults.string(forKey: "orderImg1")!
-            let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
+            let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
             self.image1.load(url: loadUrl)
-            self.saveImg1 = URL(string: "https://back.ontimeapp.club/" + url)
+            self.saveImg1 = URL(string: "https://back.fix-up.org/" + url)
         }
         else{
             self.image1.alpha = 0.0
@@ -145,9 +145,9 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         
         if defaults.string(forKey: "orderImg2") != "nil" && defaults.string(forKey: "orderImg2") != nil{
             let url = defaults.string(forKey: "orderImg2")!
-            let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
+            let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
             self.image2.load(url: loadUrl)
-            self.saveImg2 = URL(string: "https://back.ontimeapp.club/" + url)
+            self.saveImg2 = URL(string: "https://back.fix-up.org/" + url)
         }
         else{
             self.image2.alpha = 0.0
@@ -156,9 +156,9 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         
         if defaults.string(forKey: "orderImg3") != "nil" && defaults.string(forKey: "orderImg3") != nil{
             let url = defaults.string(forKey: "orderImg3")!
-            let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
+            let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
             self.image3.load(url: loadUrl)
-            self.saveImg3 = URL(string: "https://back.ontimeapp.club/" + url)
+            self.saveImg3 = URL(string: "https://back.fix-up.org/" + url)
         }
         else{
             self.image3.alpha = 0.0
@@ -227,7 +227,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             let defaults = UserDefaults.standard
             let order_id = defaults.string(forKey: "CurrentOrderID")!
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/maps/check")!
+            let url = URL(string: "https://back.fix-up.org/maps/check")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -237,17 +237,24 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                        print(json)
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "accept"{
-                                let alert = UIAlertController(title: "Успешно", message: "Ваш заказ принят! Пожалуйста, пройдите в Активные заказы!", preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
-                                self.timer.invalidate()
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                            print(json)
+                            let status = json["status"] as! String
+                            DispatchQueue.main.async {
+                                if status == "accept"{
+                                    let alert = UIAlertController(title: "Успешно", message: "Ваш заказ принят! Пожалуйста, пройдите в Активные заказы!", preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                    self.timer.invalidate()
+                                }
                             }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{
@@ -289,7 +296,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         let token = defaults.string(forKey: "Token")
                         let order_id = defaults.string(forKey: "CurrentOrderID")!
                         
-                        let url = URL(string: "https://back.ontimeapp.club/maps/cancel/")!
+                        let url = URL(string: "https://back.fix-up.org/maps/cancel/")!
                         var request = URLRequest(url: url)
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -299,15 +306,22 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         //Get response
                         let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                             do{
-                                if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                                    let status = json["status"] as! String
-                                    DispatchQueue.main.async {
-                                        if status == "ok"{
-                                            self.navigationController?.popViewController(animated: true)
-                                            defaults.set(false, forKey: "isCurrentOrder")
-                                            defaults.removeObject(forKey: "MyOrder")
+                                if response != nil{
+                                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                        let status = json["status"] as! String
+                                        DispatchQueue.main.async {
+                                            if status == "ok"{
+                                                self.navigationController?.popViewController(animated: true)
+                                                defaults.set(false, forKey: "isCurrentOrder")
+                                                defaults.removeObject(forKey: "MyOrder")
+                                            }
                                         }
+                                    }
+                                    else{
+                                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                        self.present(alert, animated: true)
                                     }
                                 }
                                 else{
@@ -334,7 +348,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                     let order_id = defaults.string(forKey: "MyOrder")!
                     let worker_id = defaults.string(forKey: "CurrentWorkerId")!
                     let token = defaults.string(forKey: "Token")
-                    let url = URL(string: "https://back.ontimeapp.club/maps/accept/")!
+                    let url = URL(string: "https://back.fix-up.org/maps/accept/")!
                     var request = URLRequest(url: url)
                     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                     request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -344,14 +358,21 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                     //Get response
                     let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                         do{
-                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                                let status = json["status"] as! String
-                                DispatchQueue.main.async {
-                                    if status == "ok"{
-                                        self.customerView.alpha = 1.0
-                                        self.sendButtonOutlet.alpha = 0.0
+                            if response != nil{
+                                if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                    let status = json["status"] as! String
+                                    DispatchQueue.main.async {
+                                        if status == "ok"{
+                                            self.customerView.alpha = 1.0
+                                            self.sendButtonOutlet.alpha = 0.0
+                                        }
                                     }
+                                }
+                                else{
+                                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                    self.present(alert, animated: true)
                                 }
                             }
                             else{
@@ -379,7 +400,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         let token = defaults.string(forKey: "Token")
                         let order_id = defaults.string(forKey: "CurrentOrderID")!
                         
-                        let url = URL(string: "https://back.ontimeapp.club/maps/cancel/")!
+                        let url = URL(string: "https://back.fix-up.org/maps/cancel/")!
                         var request = URLRequest(url: url)
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -389,15 +410,22 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         //Get response
                         let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                             do{
-                                if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                                    let status = json["status"] as! String
-                                    DispatchQueue.main.async {
-                                        if status == "ok"{
-                                            self.navigationController?.popViewController(animated: true)
-                                            defaults.set(false, forKey: "isCurrentOrder")
-                                            defaults.removeObject(forKey: "MyOrder")
+                                if response != nil{
+                                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                        let status = json["status"] as! String
+                                        DispatchQueue.main.async {
+                                            if status == "ok"{
+                                                self.navigationController?.popViewController(animated: true)
+                                                defaults.set(false, forKey: "isCurrentOrder")
+                                                defaults.removeObject(forKey: "MyOrder")
+                                            }
                                         }
+                                    }
+                                    else{
+                                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                        self.present(alert, animated: true)
                                     }
                                 }
                                 else{
@@ -434,7 +462,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         let defaults = UserDefaults.standard
                         let order_id = defaults.string(forKey: "CurrentOrderID")!
                         let token = defaults.string(forKey: "Token")
-                        let url = URL(string: "https://back.ontimeapp.club/maps/send/")!
+                        let url = URL(string: "https://back.fix-up.org/maps/send/")!
                         var request = URLRequest(url: url)
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -445,19 +473,26 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         //Get response
                         let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                             do{
-                                if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
-                                    let status = json["status"] as! String
-                                    DispatchQueue.main.async {
-                                        if status == "ok"{
-                                            self.sendButtonOutlet.isEnabled = false
-                                            self.sendButtonOutlet.backgroundColor = UIColor.lightGray
-                                            let alert = UIAlertController(title: "Success", message: "Your information is sended, please wait!", preferredStyle: UIAlertController.Style.alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                            self.present(alert, animated: true, completion: nil)
-                                            
-                                            self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkOrder), userInfo: nil, repeats: true)
+                                if response != nil{
+                                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
+                                        let status = json["status"] as! String
+                                        DispatchQueue.main.async {
+                                            if status == "ok"{
+                                                self.sendButtonOutlet.isEnabled = false
+                                                self.sendButtonOutlet.backgroundColor = UIColor.lightGray
+                                                let alert = UIAlertController(title: "Успешно", message: "Ваша информация отправлена!", preferredStyle: UIAlertController.Style.alert)
+                                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                                self.present(alert, animated: true, completion: nil)
+                                                
+                                                self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkOrder), userInfo: nil, repeats: true)
+                                            }
                                         }
+                                    }
+                                    else{
+                                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                        self.present(alert, animated: true)
                                     }
                                 }
                                 else{
@@ -487,7 +522,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         let defaults = UserDefaults.standard
                         let order_id = defaults.string(forKey: "CurrentOrderID")!
                         let token = defaults.string(forKey: "Token")
-                        let url = URL(string: "https://back.ontimeapp.club/maps/send/")!
+                        let url = URL(string: "https://back.fix-up.org/maps/send/")!
                         var request = URLRequest(url: url)
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -503,19 +538,26 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         //Get response
                         let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                             do{
-                                if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
-                                    let status = json["status"] as! String
-                                    DispatchQueue.main.async {
-                                        if status == "ok"{
-                                            self.sendButtonOutlet.isEnabled = false
-                                            self.sendButtonOutlet.backgroundColor = UIColor.lightGray
-                                            let alert = UIAlertController(title: "Success", message: "Your information is sended, please wait!", preferredStyle: UIAlertController.Style.alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                            self.present(alert, animated: true, completion: nil)
-                                            
-                                            self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkOrder), userInfo: nil, repeats: true)
+                                if response != nil{
+                                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:AnyObject]
+                                        let status = json["status"] as! String
+                                        DispatchQueue.main.async {
+                                            if status == "ok"{
+                                                self.sendButtonOutlet.isEnabled = false
+                                                self.sendButtonOutlet.backgroundColor = UIColor.lightGray
+                                                let alert = UIAlertController(title: "Успешно", message: "Ваша информация отправлена!", preferredStyle: UIAlertController.Style.alert)
+                                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                                self.present(alert, animated: true, completion: nil)
+                                                
+                                                self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.checkOrder), userInfo: nil, repeats: true)
+                                            }
                                         }
+                                    }
+                                    else{
+                                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                        self.present(alert, animated: true)
                                     }
                                 }
                                 else{
@@ -674,7 +716,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             }
             let worker_id = defaults.string(forKey: "CurrentWorkerId")!
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/maps/finish/")!
+            let url = URL(string: "https://back.fix-up.org/maps/finish/")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -684,17 +726,24 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "ok"{
-                                defaults.set(false,forKey: "isCurrentOrder")
-                                defaults.removeObject(forKey: "MyOrder")
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier :"FinishController")
-                                self.present(viewController, animated: true)
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                            let status = json["status"] as! String
+                            DispatchQueue.main.async {
+                                if status == "ok"{
+                                    defaults.set(false,forKey: "isCurrentOrder")
+                                    defaults.removeObject(forKey: "MyOrder")
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let viewController = storyboard.instantiateViewController(withIdentifier :"FinishController")
+                                    self.present(viewController, animated: true)
+                                }
                             }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{
@@ -730,7 +779,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 let token = defaults.string(forKey: "Token")
                 let order_id = defaults.string(forKey: "CurrentOrderID")!
                 
-                let url = URL(string: "https://back.ontimeapp.club/maps/cancel/")!
+                let url = URL(string: "https://back.fix-up.org/maps/cancel/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -740,15 +789,22 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    self.navigationController?.popViewController(animated: true)
-                                    defaults.set(false, forKey: "isCurrentOrder")
-                                    defaults.removeObject(forKey: "MyOrder")
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        self.navigationController?.popViewController(animated: true)
+                                        defaults.set(false, forKey: "isCurrentOrder")
+                                        defaults.removeObject(forKey: "MyOrder")
+                                    }
                                 }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

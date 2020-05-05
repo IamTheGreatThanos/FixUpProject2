@@ -89,7 +89,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
             let defaults = UserDefaults.standard
             if defaults.string(forKey: "MyOrder") != nil{
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/maps/get/" + defaults.string(forKey: "MyOrder")!+"/")!
+                let url = URL(string: "https://back.fix-up.org/maps/get/" + defaults.string(forKey: "MyOrder")!+"/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -97,32 +97,42 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                            DispatchQueue.main.async {
-                                for i in json{
-                                    let sender = i["worker"] as! NSDictionary
-                                    self.Names.append(sender["nickname"] as! String)
-                                    self.Specialty.append("Customer")
-                                    self.Prices.append(String(i["price"] as! String))
-                                    self.Likes.append(String(i["likes"] as! Int))
-                                    self.Dislikes.append(String(i["dislikes"] as! Int))
-                                    self.Comments.append(i["comment"] as! String)
-                                    self.Locations.append(i["time"] as! String)
-                                    self.Lats.append(i["lat"] as! String)
-                                    self.Lngs.append(i["lng"] as! String)
-                                    self.WorkersId.append(String(sender["id"] as! Int))
-                                    self.phoneNumbers.append(sender["phone"] as! String)
-                                    self.Distan.append(i["distance_text"] as! String)
-                                    self.Durat.append(i["duration_text"] as! String)
-                                    if sender["avatar"] != nil{
-                                        self.Avatars.append(sender["avatar"] as! String)
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                                print(json)
+                                DispatchQueue.main.async {
+                                    for i in json{
+                                        let sender = i["worker"] as! NSDictionary
+                                        self.Names.append(sender["nickname"] as! String)
+                                        self.Specialty.append("Customer")
+                                        self.Prices.append(String(i["price"] as! String))
+                                        print(type(of: i["likes"]))
+                                        let likes = i["likes"] as! String
+                                        self.Likes.append(String(likes))
+                                        self.Dislikes.append(String(i["dislikes"] as! Int))
+                                        self.Comments.append(i["comment"] as! String)
+                                        self.Locations.append(i["time"] as! String)
+                                        self.Lats.append(i["lat"] as! String)
+                                        self.Lngs.append(i["lng"] as! String)
+                                        self.WorkersId.append(String(sender["id"] as! Int))
+                                        self.phoneNumbers.append(sender["phone"] as! String)
+                                        self.Distan.append(i["distance_text"] as! String)
+                                        self.Durat.append(i["duration_text"] as! String)
+                                        if sender["avatar"] != nil{
+                                            self.Avatars.append(sender["avatar"] as! String)
+                                        }
+                                        else{
+                                            self.Avatars.append("Nil")
+                                        }
                                     }
-                                    else{
-                                        self.Avatars.append("Nil")
-                                    }
+                                    self.mainTableView.reloadData()
                                 }
-                                self.mainTableView.reloadData()
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{
@@ -157,7 +167,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
             if Reachability.isConnectedToNetwork() == true {
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/maps/cancel/")
+                let url = URL(string: "https://back.fix-up.org/maps/cancel/")
                 var request = URLRequest(url: url!)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -167,15 +177,22 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    self.navigationController?.popViewController(animated: true)
-                                    defaults.set(false,forKey: "isCurrentOrder")
-                                    defaults.removeObject(forKey: "MyOrder")
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        self.navigationController?.popViewController(animated: true)
+                                        defaults.set(false,forKey: "isCurrentOrder")
+                                        defaults.removeObject(forKey: "MyOrder")
+                                    }
                                 }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

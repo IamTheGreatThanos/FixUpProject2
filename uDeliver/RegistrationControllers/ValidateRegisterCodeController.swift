@@ -103,7 +103,7 @@ class ValidateRegisterCodeController: ViewController, UITextFieldDelegate {
     @IBAction func ValidateButtonTapped(_ sender: UIButton) {
         if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard
-            let url = URL(string: "https://back.ontimeapp.club/users/register/")!
+            let url = URL(string: "https://back.fix-up.org/users/register/")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
@@ -113,25 +113,32 @@ class ValidateRegisterCodeController: ViewController, UITextFieldDelegate {
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "ok" {
-                                let uid = json["uid"]
-                                let token = json["key"] as! String
-                                defaults.set(uid, forKey: "UID")
-                                defaults.set(token, forKey: "Token")
-                                defaults.set("true", forKey: "isRegister")
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier :"ChoosingPosition")
-                                self.present(viewController, animated: true)
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                            let status = json["status"] as! String
+                            DispatchQueue.main.async {
+                                if status == "ok" {
+                                    let uid = json["uid"]
+                                    let token = json["key"] as! String
+                                    defaults.set(uid, forKey: "UID")
+                                    defaults.set(token, forKey: "Token")
+                                    defaults.set("true", forKey: "isRegister")
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let viewController = storyboard.instantiateViewController(withIdentifier :"ChoosingPosition")
+                                    self.present(viewController, animated: true)
+                                }
+                                else{
+                                    let alert = UIAlertController(title: "Извините", message: "Вы ввели неправильный код!", preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
                             }
-                            else{
-                                let alert = UIAlertController(title: "Извините", message: "Вы ввели неправильный код!", preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
-                            }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{

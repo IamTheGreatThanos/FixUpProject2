@@ -17,7 +17,7 @@ class FinishController: UIViewController {
         nameLabel.text = defaults.string(forKey: "CurrentName")
         specialtyLabel.text = defaults.string(forKey: "CurrentSpecialty")
         let url = defaults.string(forKey: "CurrentAvatar")!
-        let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
+        let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
         self.avaImage.load(url: loadUrl)
         
         
@@ -41,7 +41,7 @@ class FinishController: UIViewController {
             let defaults = UserDefaults.standard
             let worker_id = defaults.string(forKey: "CurrentWorkerId")!
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/maps/rating/")!
+            let url = URL(string: "https://back.fix-up.org/maps/rating/")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -51,15 +51,22 @@ class FinishController: UIViewController {
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "ok"{
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
-                                self.present(viewController, animated: true)
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                            let status = json["status"] as! String
+                            DispatchQueue.main.async {
+                                if status == "ok"{
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
+                                    self.present(viewController, animated: true)
+                                }
                             }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{
@@ -93,7 +100,7 @@ class FinishController: UIViewController {
             let defaults = UserDefaults.standard
             let worker_id = defaults.string(forKey: "CurrentWorkerId")!
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/maps/rating/")!
+            let url = URL(string: "https://back.fix-up.org/maps/rating/")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -103,15 +110,22 @@ class FinishController: UIViewController {
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "ok"{
-                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
-                                self.present(viewController, animated: true)
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                            let status = json["status"] as! String
+                            DispatchQueue.main.async {
+                                if status == "ok"{
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
+                                    self.present(viewController, animated: true)
+                                }
                             }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{

@@ -134,7 +134,7 @@ class SideBarTableViewController: UITableViewController {
     }
     
     @IBAction func firstSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://ontimeapp.club") else {
+        guard let url = URL(string: "https://fix-up.org") else {
             return
         }
         if #available(iOS 10.0, *) {
@@ -144,7 +144,7 @@ class SideBarTableViewController: UITableViewController {
         }
     }
     @IBAction func secondSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://ontimeapp.club") else {
+        guard let url = URL(string: "https://fix-up.org") else {
             return
         }
         if #available(iOS 10.0, *) {
@@ -154,7 +154,7 @@ class SideBarTableViewController: UITableViewController {
         }
     }
     @IBAction func thirdSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://ontimeapp.club") else {
+        guard let url = URL(string: "https://fix-up.org") else {
             return
         }
         if #available(iOS 10.0, *) {

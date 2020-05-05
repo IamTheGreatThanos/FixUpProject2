@@ -74,7 +74,7 @@ class SpecialtyController: UIViewController, UITableViewDataSource,UITableViewDe
         if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/role/add")!
+            let url = URL(string: "https://back.fix-up.org/role/add")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -84,25 +84,32 @@ class SpecialtyController: UIViewController, UITableViewDataSource,UITableViewDe
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "ok"{
-                                if defaults.bool(forKey: "changeByProfile") != nil {
-                                    if defaults.bool(forKey: "changeByProfile") == true{
-                                        self.navigationController?.popViewController(animated: true)
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                            let status = json["status"] as! String
+                            DispatchQueue.main.async {
+                                if status == "ok"{
+                                    if defaults.bool(forKey: "changeByProfile") != nil {
+                                        if defaults.bool(forKey: "changeByProfile") == true{
+                                            self.navigationController?.popViewController(animated: true)
+                                        }
+                                        else{
+                                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                            let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
+                                            self.present(viewController, animated: true)
+                                            
+                                            defaults.set(true, forKey: "isCourier")
+                                        }
                                     }
-                                    else{
-                                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                        let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
-                                        self.present(viewController, animated: true)
-                                        
-                                        defaults.set(true, forKey: "isCourier")
-                                    }
+                                    defaults.set(true, forKey: "isRegisterAsSpecialist")
                                 }
-                                defaults.set(true, forKey: "isRegisterAsSpecialist")
                             }
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{

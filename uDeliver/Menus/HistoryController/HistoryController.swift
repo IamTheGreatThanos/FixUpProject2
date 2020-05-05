@@ -56,7 +56,7 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
         if Reachability.isConnectedToNetwork() == true {
             if defaults.string(forKey: "isRegister") == "true"{
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/maps/history/" + role)!
+                let url = URL(string: "https://back.fix-up.org/maps/history/" + role)!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -64,34 +64,41 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                            DispatchQueue.main.async {
-                                for i in json{
-                                    let sender = i["sender"] as! NSDictionary
-                                    self.Names.append(sender["nickname"] as! String)
-                                    if defaults.bool(forKey: "isCourier") == true{
-                                        self.Specialty.append("Заказчик")
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                                DispatchQueue.main.async {
+                                    for i in json{
+                                        let sender = i["sender"] as! NSDictionary
+                                        self.Names.append(sender["nickname"] as! String)
+                                        if defaults.bool(forKey: "isCourier") == true{
+                                            self.Specialty.append("Заказчик")
+                                        }
+                                        else{
+                                            self.Specialty.append("Специалист")
+                                        }
+                                        self.Prices.append(i["price"] as! String)
+                                        self.Comments.append(i["comment"] as! String)
+                                        self.Locations.append(i["a_name"] as! String)
+                                        self.Lats.append(i["a_lat"] as! String)
+                                        self.Lngs.append(i["a_long"] as! String)
+                                        self.IDs.append(String(i["id"] as! Int))
+                                        if i["is_canceled"] as! Bool == true{
+                                            self.Status.append("Done")
+                                        }
+                                        else{
+                                            self.Status.append("Canceled")
+                                        }
                                     }
-                                    else{
-                                        self.Specialty.append("Специалист")
-                                    }
-                                    self.Prices.append(i["price"] as! String)
-                                    self.Comments.append(i["comment"] as! String)
-                                    self.Locations.append(i["a_name"] as! String)
-                                    self.Lats.append(i["a_lat"] as! String)
-                                    self.Lngs.append(i["a_long"] as! String)
-                                    self.IDs.append(String(i["id"] as! Int))
-                                    if i["is_canceled"] as! Bool == true{
-                                        self.Status.append("Done")
-                                    }
-                                    else{
-                                        self.Status.append("Canceled")
-                                    }
+                                    self.mainTableView.reloadData()
+                                    self.ActivityIndicator.isHidden = true
+                                    self.ActivityIndicator.stopAnimating()
                                 }
-                                self.mainTableView.reloadData()
-                                self.ActivityIndicator.isHidden = true
-                                self.ActivityIndicator.stopAnimating()
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

@@ -26,8 +26,8 @@ class MoreInformationController: UIViewController, UIImagePickerControllerDelega
         let defaults = UserDefaults.standard
         
         if defaults.string(forKey: "BackPas") != nil && defaults.string(forKey: "FrontPas") != nil{
-            imageView.load(url: URL(string: "https://back.ontimeapp.club/" + defaults.string(forKey: "FrontPas")!)!)
-            imageView2.load(url: URL(string: "https://back.ontimeapp.club/" + defaults.string(forKey: "BackPas")!)!)
+            imageView.load(url: URL(string: "https://back.fix-up.org/" + defaults.string(forKey: "FrontPas")!)!)
+            imageView2.load(url: URL(string: "https://back.fix-up.org/" + defaults.string(forKey: "BackPas")!)!)
             
             let alert = UIAlertController(title: "Внимание", message: "Идет загрузка ваших данных...", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -103,7 +103,7 @@ class MoreInformationController: UIViewController, UIImagePickerControllerDelega
                 activityIndicator.alpha = 1.0
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/users/passport/")!
+                let url = URL(string: "https://back.fix-up.org/users/passport/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -123,25 +123,32 @@ class MoreInformationController: UIViewController, UIImagePickerControllerDelega
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    self.disableView.alpha = 0.0
-                                    self.activityIndicator.stopAnimating()
-                                    self.activityIndicator.alpha = 0.0
-                                    
-                                    let alert = UIAlertController(title: "Успешно!", message: "Данные отправлены, модератор проверяет!", preferredStyle: UIAlertController.Style.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                    self.present(alert, animated: true, completion: nil)
-                                    self.navigationController?.popViewController(animated: true)
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        self.disableView.alpha = 0.0
+                                        self.activityIndicator.stopAnimating()
+                                        self.activityIndicator.alpha = 0.0
+                                        
+                                        let alert = UIAlertController(title: "Успешно!", message: "Данные отправлены, модератор проверяет!", preferredStyle: UIAlertController.Style.alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                        self.present(alert, animated: true, completion: nil)
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                    else{
+                                        self.disableView.alpha = 0.0
+                                        self.activityIndicator.stopAnimating()
+                                        self.activityIndicator.alpha = 0.0
+                                    }
                                 }
-                                else{
-                                    self.disableView.alpha = 0.0
-                                    self.activityIndicator.stopAnimating()
-                                    self.activityIndicator.alpha = 0.0
-                                }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

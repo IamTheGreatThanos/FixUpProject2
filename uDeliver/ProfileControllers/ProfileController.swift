@@ -71,7 +71,7 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
             addPhotoButtonOutlet.alpha = 0.0
             let userInfoId = defaults.string(forKey: "userInfoID")!
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/users/" + userInfoId)!
+            let url = URL(string: "https://back.fix-up.org/users/" + userInfoId)!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -79,33 +79,45 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                        DispatchQueue.main.async {
-                            self.nameLabel.text = json["nickname"] as! String
-                            if let spec_value = json["spec"] as? String{
-                                self.specialtyNameOutlet.setTitle(spec_value, for: .normal)
-                                defaults.set(json["spec"] as! String, forKey: "MySpec")
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                            DispatchQueue.main.async {
+                                self.nameLabel.text = json["nickname"] as! String
+                                if let spec_value = json["spec"] as? String{
+                                    self.specialtyNameOutlet.setTitle(spec_value, for: .normal)
+                                    defaults.set(json["spec"] as! String, forKey: "MySpec")
+                                }
+                                else{
+                                    self.specialtyNameOutlet.setTitle("Заказчик", for: .normal)
+                                    defaults.set("Заказчик", forKey: "MySpec")
+                                }
+                                if json["avatar"] != nil{
+                                    let url = json["avatar"] as! String
+                                    let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
+                                    self.avaImage.load(url: loadUrl)
+                                    self.avaUrl = loadUrl
+                                }
+                                if (json["about"] as? String != nil){
+                                    defaults.set(json["about"], forKey: "OtherAbout")
+                                }
+                                else{
+                                    defaults.set("Информация отсутствует...", forKey: "OtherAbout")
+                                }
+                                defaults.set(json["like"], forKey: "OtherLike")
+                                defaults.set(json["dislike"], forKey: "OtherDislike")
+                                
+                                self.likeLabel.text = String(json["like"] as! Int)
+                                self.dislikeLabel.text = String(json["dislike"] as! Int)
+                                self.allOrdersLabel.text = String((json["customer"] as! Int) + (json["worder"] as! Int))
+                                
+                                print("OK <Profile controller>")
                             }
-                            else{
-                                self.specialtyNameOutlet.setTitle("Заказчик", for: .normal)
-                                defaults.set("Заказчик", forKey: "MySpec")
-                            }
-                            if json["avatar"] != nil{
-                                let url = json["avatar"] as! String
-                                let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
-                                self.avaImage.load(url: loadUrl)
-                                self.avaUrl = loadUrl
-                            }
-                            defaults.set(json["about"], forKey: "OtherAbout")
-                            defaults.set(json["like"], forKey: "OtherLike")
-                            defaults.set(json["dislike"], forKey: "OtherDislike")
-                            
-                            self.likeLabel.text = String(json["like"] as! Int)
-                            self.dislikeLabel.text = String(json["dislike"] as! Int)
-                            self.allOrdersLabel.text = String((json["customer"] as! Int) + (json["worder"] as! Int))
-                            
-                            print("OK <Profile controller>")
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{
@@ -124,7 +136,7 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
         }
         else{
             let token = defaults.string(forKey: "Token")
-            let url = URL(string: "https://back.ontimeapp.club/users/me/")!
+            let url = URL(string: "https://back.fix-up.org/users/me/")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -132,39 +144,46 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                        DispatchQueue.main.async {
-                            self.nameLabel.text = (json["nickname"] as! String)
-                            if let spec_value = json["spec"] as? String{
-                                self.specialtyNameOutlet.setTitle(spec_value, for: .normal)
-                                defaults.set(json["spec"] as! String, forKey: "MySpec")
+                    if response != nil{
+                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
+                            DispatchQueue.main.async {
+                                self.nameLabel.text = (json["nickname"] as! String)
+                                if let spec_value = json["spec"] as? String{
+                                    self.specialtyNameOutlet.setTitle(spec_value, for: .normal)
+                                    defaults.set(json["spec"] as! String, forKey: "MySpec")
+                                }
+                                else{
+                                    self.specialtyNameOutlet.setTitle("Заказчик", for: .normal)
+                                    defaults.set("Заказчик", forKey: "MySpec")
+                                }
+                                
+                                let url = json["avatar"] as! String
+                                let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
+                                self.avaImage.load(url: loadUrl)
+                                self.avaUrl = loadUrl
+                                defaults.set(loadUrl, forKey: "MyAvatar")
+                                defaults.set(json["nickname"] as! String, forKey: "MyName")
+                                if ((json["about"] as? String) != nil){
+                                    defaults.set(json["about"] as! String, forKey: "About")
+                                }
+                                defaults.set(json["like"], forKey: "MyLike")
+                                defaults.set(json["dislike"], forKey: "MyDislike")
+                                if json["front_passport"] as? String != nil && json["back_passport"] as? String != nil{
+                                    defaults.set(json["back_passport"] as! String, forKey: "BackPas")
+                                    defaults.set(json["front_passport"] as! String, forKey: "FrontPas")
+                                }
+                                
+                                self.likeLabel.text = String(json["like"] as! Int)
+                                self.dislikeLabel.text = String(json["dislike"] as! Int)
+                                self.allOrdersLabel.text = String((json["customer"] as! Int) + (json["worder"] as! Int))
+                                
                             }
-                            else{
-                                self.specialtyNameOutlet.setTitle("Заказчик", for: .normal)
-                                defaults.set("Заказчик", forKey: "MySpec")
-                            }
-                            
-                            let url = json["avatar"] as! String
-                            let loadUrl = URL(string: "https://back.ontimeapp.club/" + url)!
-                            self.avaImage.load(url: loadUrl)
-                            self.avaUrl = loadUrl
-                            defaults.set(loadUrl, forKey: "MyAvatar")
-                            defaults.set(json["nickname"] as! String, forKey: "MyName")
-                            if ((json["about"] as? String) != nil){
-                                defaults.set(json["about"] as! String, forKey: "About")
-                            }
-                            defaults.set(json["like"], forKey: "MyLike")
-                            defaults.set(json["dislike"], forKey: "MyDislike")
-                            if json["front_passport"] as? String != nil && json["back_passport"] as? String != nil{
-                                defaults.set(json["back_passport"] as! String, forKey: "BackPas")
-                                defaults.set(json["front_passport"] as! String, forKey: "FrontPas")
-                            }
-                            
-                            self.likeLabel.text = String(json["like"] as! Int)
-                            self.dislikeLabel.text = String(json["dislike"] as! Int)
-                            self.allOrdersLabel.text = String((json["customer"] as! Int) + (json["worder"] as! Int))
-                            
+                        }
+                        else{
+                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                            self.present(alert, animated: true)
                         }
                     }
                     else{
@@ -283,7 +302,7 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
             if Reachability.isConnectedToNetwork() == true {
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/users/avatar/")!
+                let url = URL(string: "https://back.fix-up.org/users/avatar/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -302,13 +321,20 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    print("OK! <Change Avatar>")
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        print("OK! <Change Avatar>")
+                                    }
                                 }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

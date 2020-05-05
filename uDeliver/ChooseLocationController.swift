@@ -11,7 +11,7 @@ class ChooseLocationController: UIViewController {
         self.mapView.scrollView.isScrollEnabled = false
         
         if Reachability.isConnectedToNetwork() == true {
-            let url = URL (string: "https://map.ontimeapp.club")
+            let url = URL (string: "https://map.fix-up.org")
             let requestObj = URLRequest(url: url!)
             self.mapView.loadRequest(requestObj)
         }

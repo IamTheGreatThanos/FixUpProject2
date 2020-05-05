@@ -134,7 +134,7 @@ class PhoneController: UIViewController, UITextFieldDelegate {
     @IBAction func RegistButtonTapped(_ sender: UIButton) {
         if Reachability.isConnectedToNetwork() == true {
             if PhoneTextField.text?.count == 20 && NickNameTextField.text?.count != 0 && NickNameTextField.text!.count > 1 {
-                let url = URL(string: "https://back.ontimeapp.club/users/phone/")!
+                let url = URL(string: "https://back.fix-up.org/users/phone/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "POST"
@@ -144,18 +144,25 @@ class PhoneController: UIViewController, UITextFieldDelegate {
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    let defaults = UserDefaults.standard
-                                    defaults.set(phoneNumber, forKey: "Phone")
-                                    defaults.set(self.NickNameTextField.text!, forKey: "MyName")
-                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let viewController = storyboard.instantiateViewController(withIdentifier :"ValidateRegisterCodeController")
-                                    self.present(viewController, animated: true)
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        let defaults = UserDefaults.standard
+                                        defaults.set(phoneNumber, forKey: "Phone")
+                                        defaults.set(self.NickNameTextField.text!, forKey: "MyName")
+                                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                        let viewController = storyboard.instantiateViewController(withIdentifier :"ValidateRegisterCodeController")
+                                        self.present(viewController, animated: true)
+                                    }
                                 }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

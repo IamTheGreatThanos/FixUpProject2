@@ -18,7 +18,7 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
             aboutTextView.text = defaults.string(forKey: "About")!
         }
         else{
-            aboutTextView.text = "Информация о пользователе отсутствует..."
+            aboutTextView.text = "Информация отсутствует..."
         }
         aboutTextView.layer.borderWidth = 1.0
         aboutTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -65,7 +65,7 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
             if nameTextField.text?.count != 0 && aboutTextView.text?.count != 0{
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.ontimeapp.club/users/me/")!
+                let url = URL(string: "https://back.fix-up.org/users/me/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -75,16 +75,23 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
                 //Get response
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
-                        if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                            let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
-                            let status = json["status"] as! String
-                            DispatchQueue.main.async {
-                                if status == "ok"{
-                                    let alert = UIAlertController(title: "Успешно!", message: "Данные отправлены, модератор проверяет!", preferredStyle: UIAlertController.Style.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                                    self.present(alert, animated: true, completion: nil)
-                                    self.navigationController?.popViewController(animated: true)
+                        if response != nil{
+                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
+                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
+                                let status = json["status"] as! String
+                                DispatchQueue.main.async {
+                                    if status == "ok"{
+                                        let alert = UIAlertController(title: "Успешно!", message: "Данные отправлены, модератор проверяет!", preferredStyle: UIAlertController.Style.alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                        self.present(alert, animated: true, completion: nil)
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
                                 }
+                            }
+                            else{
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
                             }
                         }
                         else{

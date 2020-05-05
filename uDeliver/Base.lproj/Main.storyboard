@@ -3148,7 +3148,7 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="suk-Tf-EfR">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="49" width="414" height="643"/>
                                 <connections>
                                     <segue destination="TQ3-8Z-olJ" kind="embed" id="dFU-f1-Tgs"/>
                                 </connections>
@@ -3166,7 +3166,7 @@
                             <constraint firstAttribute="bottom" secondItem="suk-Tf-EfR" secondAttribute="bottom" id="3n5-nF-c5V"/>
                             <constraint firstAttribute="trailing" secondItem="suk-Tf-EfR" secondAttribute="trailing" id="I94-jl-Qfx"/>
                             <constraint firstItem="Fwk-Ap-vjW" firstAttribute="trailing" secondItem="i9X-kG-9DC" secondAttribute="trailing" id="L1A-x7-dyC"/>
-                            <constraint firstItem="suk-Tf-EfR" firstAttribute="top" secondItem="i9X-kG-9DC" secondAttribute="top" id="Nnp-7u-miM"/>
+                            <constraint firstItem="suk-Tf-EfR" firstAttribute="top" secondItem="hs8-vI-3ux" secondAttribute="bottom" constant="4" id="NdG-Aw-FSR"/>
                             <constraint firstItem="Fwk-Ap-vjW" firstAttribute="leading" secondItem="i9X-kG-9DC" secondAttribute="leading" id="Xyv-Td-ZJQ"/>
                             <constraint firstAttribute="trailing" secondItem="hs8-vI-3ux" secondAttribute="trailing" id="fOQ-wR-1xB"/>
                             <constraint firstItem="hs8-vI-3ux" firstAttribute="leading" secondItem="lr8-nz-vsL" secondAttribute="leading" id="m6q-Mh-8VO"/>
@@ -3191,11 +3191,11 @@
             <objects>
                 <viewController storyboardIdentifier="SpecialistMySpecialtyTableView" modalPresentationStyle="fullScreen" id="TQ3-8Z-olJ" customClass="SpecialistMySpecialtyTableView" customModule="FIXUP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iLX-fm-gRq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kAV-5d-ojW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SMScell" rowHeight="160" id="1bp-T8-MjB" customClass="SpecialistMySpecialtyTableViewCell" customModule="FIXUP" customModuleProvider="target">
@@ -3310,7 +3310,7 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="P7f-aI-5D4">
-                                <rect key="frame" x="147" y="286" width="120" height="120"/>
+                                <rect key="frame" x="147" y="261.66666666666669" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Teq-bv-kdP"/>
                                     <constraint firstAttribute="height" constant="120" id="xah-vB-bPb"/>
@@ -3318,7 +3318,7 @@
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hki-Us-hwk">
-                                <rect key="frame" x="334" y="612" width="60" height="60"/>
+                                <rect key="frame" x="334" y="563" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="UWp-3Z-Kls"/>
                                     <constraint firstAttribute="width" constant="60" id="z6o-sG-vgj"/>
@@ -3619,15 +3619,57 @@
                                     <outlet property="delegate" destination="eIy-UZ-cOh" id="GLN-kp-PXc"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Cvz-cf-nbC">
+                                <rect key="frame" x="147" y="261.66666666666669" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8CS-bt-2yO"/>
+                                    <constraint firstAttribute="height" constant="120" id="eau-fK-SMM"/>
+                                </constraints>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c03-V1-eYd">
+                                <rect key="frame" x="334" y="563" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="FuD-oG-Fo2"/>
+                                    <constraint firstAttribute="width" constant="60" id="wRr-ce-A9F"/>
+                                </constraints>
+                                <state key="normal" image="refresh"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ViewBorderColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="refreshButtonTapped:" destination="TQ3-8Z-olJ" eventType="touchUpInside" id="bDu-3e-mye"/>
+                                    <action selector="refreshButtonTapped:" destination="eIy-UZ-cOh" eventType="touchUpInside" id="xpQ-Te-diN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Cvz-cf-nbC" firstAttribute="centerY" secondItem="YfO-tr-5hy" secondAttribute="centerY" id="LFr-2J-Ok7"/>
+                            <constraint firstItem="Zby-aU-KMt" firstAttribute="bottom" secondItem="c03-V1-eYd" secondAttribute="bottom" constant="20" id="POL-7c-6Kl"/>
                             <constraint firstItem="ler-SJ-QzW" firstAttribute="trailing" secondItem="Zby-aU-KMt" secondAttribute="trailing" id="XYb-ht-xWc"/>
                             <constraint firstItem="ler-SJ-QzW" firstAttribute="leading" secondItem="Zby-aU-KMt" secondAttribute="leading" id="YuD-ib-xhZ"/>
+                            <constraint firstItem="Cvz-cf-nbC" firstAttribute="centerX" secondItem="YfO-tr-5hy" secondAttribute="centerX" id="ZJz-hj-5d0"/>
+                            <constraint firstItem="Zby-aU-KMt" firstAttribute="trailing" secondItem="c03-V1-eYd" secondAttribute="trailing" constant="20" id="vCg-zM-CE0"/>
                             <constraint firstItem="ler-SJ-QzW" firstAttribute="bottom" secondItem="Zby-aU-KMt" secondAttribute="bottom" id="yVD-Ay-agm"/>
                             <constraint firstItem="ler-SJ-QzW" firstAttribute="top" secondItem="Zby-aU-KMt" secondAttribute="top" id="z4x-Gb-583"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zby-aU-KMt"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Cvz-cf-nbC" id="UT1-kc-yDx"/>
+                        <outlet property="mainTableView" destination="ler-SJ-QzW" id="y3H-xt-otf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqq-8D-nA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
