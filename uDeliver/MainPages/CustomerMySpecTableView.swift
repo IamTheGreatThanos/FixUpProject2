@@ -55,14 +55,6 @@ class CustomerMySpecTableView: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     
-    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let defaults = UserDefaults.standard
-        let indexPath = tableView.indexPathForSelectedRow
-        self.selectedR = Int(indexPath!.row)
-        defaults.set(self.selectedR, forKey: "SpecialtyId")
-        self.mainTableView.reloadData()
-    }
-    
     
     
     override func viewDidLoad() {
@@ -85,6 +77,9 @@ class CustomerMySpecTableView: UIViewController,UITableViewDelegate,UITableViewD
         let defaults = UserDefaults.standard
         defaults.set(Specialty[indexPath.row], forKey: "CurrentOrderSpecTitle")
         defaults.set(Specialty_into[indexPath.row], forKey: "CurrentOrderSpecDesc")
+        
+        self.selectedR = indexPath.row
+        defaults.set(self.selectedR, forKey: "SpecialtyId")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"OrderController")

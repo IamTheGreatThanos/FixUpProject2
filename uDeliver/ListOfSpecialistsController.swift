@@ -107,7 +107,6 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                         self.Names.append(sender["nickname"] as! String)
                                         self.Specialty.append("Customer")
                                         self.Prices.append(String(i["price"] as! String))
-                                        print(type(of: i["likes"]))
                                         let likes = i["likes"] as! String
                                         self.Likes.append(String(likes))
                                         self.Dislikes.append(String(i["dislikes"] as! Int))

@@ -6,6 +6,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var refreshButtonOutlet: UIButton!
     
     var Names = [String]()
     var Prices = [String]()
@@ -65,6 +66,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             self.ActivityIndicator.isHidden = true
             self.ActivityIndicator.stopAnimating()
             self.mainTableView.isHidden = false
+            self.refreshButtonOutlet.isHidden = false
         }
         
         // Configure the cell’s contents.
@@ -129,19 +131,15 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                 }
                             }
                             else{
-                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                                self.present(alert, animated: true)
+                                print("Error <Change City>")
                             }
                         }
                         else{
-                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                            self.present(alert, animated: true)
+                            print("Error <Change City>")
                         }
                     }
                     catch{
-                        print("Error")
+                        print("Error <Change City>")
                     }
                 })
                 task.resume()
@@ -404,15 +402,11 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                     }
                 }
                 else{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
+                    print("Error <Change City>")
                 }
             }
             catch{
-                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                self.present(alert, animated: true)
+                print("Error <Change City>")
             }
         })
         task.resume()
@@ -453,6 +447,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
         self.mainTableView.isHidden = true
+        self.refreshButtonOutlet.isHidden = true
         self.ActivityIndicator.isHidden = false
         self.ActivityIndicator.startAnimating()
         getOrders()

@@ -3358,6 +3358,7 @@
                     <connections>
                         <outlet property="ActivityIndicator" destination="P7f-aI-5D4" id="oLW-wd-xt4"/>
                         <outlet property="mainTableView" destination="kAV-5d-ojW" id="ZOC-xC-71y"/>
+                        <outlet property="refreshButtonOutlet" destination="hki-Us-hwk" id="IO6-Yq-ytN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hW1-2U-qnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3670,6 +3671,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="Cvz-cf-nbC" id="UT1-kc-yDx"/>
                         <outlet property="mainTableView" destination="ler-SJ-QzW" id="y3H-xt-otf"/>
+                        <outlet property="refreshButtonOutlet" destination="c03-V1-eYd" id="ngB-82-wYO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqq-8D-nA3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

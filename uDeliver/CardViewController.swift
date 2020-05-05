@@ -123,7 +123,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         
         
         nameLabel.text = defaults.string(forKey: "CurrentName")!
-        priceLabel.text = defaults.string(forKey: "CurrentPrice")!
+        priceLabel.text = defaults.string(forKey: "CurrentPrice")! + " тг"
         commentLabel.text = defaults.string(forKey: "CurrentComment")!
         locationLabel.text = defaults.string(forKey: "CurrentLocation")!
         if defaults.string(forKey: "CurrentAvatar") != "Nil" && defaults.string(forKey: "CurrentAvatar") != nil{
@@ -528,9 +528,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                         request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
                         request.httpMethod = "POST"
                         let time = "1 час"
-                        let endOfSentence = defaults.string(forKey: "CurrentPrice")!.firstIndex(of: " ")!
-                        let Cprice = defaults.string(forKey: "CurrentPrice")!
-                        let price = defaults.string(forKey: "CurrentPrice")![...endOfSentence]
+                        let price = defaults.string(forKey: "CurrentPrice")!
                         
                         let postString = "id=" + order_id + "&price=" + price + "&comment=Комментарий нет..." + "&time=" + time + "&lat=" + String(self.currentLat) + "&lng=" + String(self.currentLong)
                     

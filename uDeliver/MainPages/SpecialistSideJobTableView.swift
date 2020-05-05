@@ -7,6 +7,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var refreshButtonOutlet: UIButton!
     
     var Names = [String]()
     var Prices = [String]()
@@ -26,8 +27,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     var Last_IDs = [String]()
     
     
-    var timer = Timer()
-    var orderTimer = Timer()
     var locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     
@@ -52,8 +51,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         
         if Last_IDs.contains(IDs[indexPath.row]) == false && Last_IDs.count != 0{
             cell.designableView.backgroundColor = UIColor(red: 1, green: 0.9373, blue: 0.698, alpha: 1.0)
-            
-            print(IDs[indexPath.row])
         }
         
         else{
@@ -64,6 +61,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
             self.mainTableView.isHidden = false
+            self.refreshButtonOutlet.isHidden = false
         }
         
         // Configure the cell’s contents.
@@ -105,46 +103,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
             let isRegister = defaults.string(forKey: "isRegister")
             let myLat = defaults.string(forKey: "MyLat")
             let myLong = defaults.string(forKey: "MyLong")
-            if isRegister == "true" && myLat != nil && myLong != nil{
-                let token = defaults.string(forKey: "Token")
-                let url = URL(string: "https://back.fix-up.org/users/change/city/")!
-                var request = URLRequest(url: url)
-                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
-                request.httpMethod = "POST"
-                let postString = "lat=" + myLat! + "&lng=" + myLong!
-                request.httpBody = postString.data(using: .utf8)
-                //Get response
-                let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
-                    do{
-                        if response != nil{
-                            if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                                let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                                let status = json["status"] as! String
-                                DispatchQueue.main.async {
-                                    if status == "ok"{
-                                        print("OK! <Change City>")
-                                    }
-                                }
-                            }
-                            else{
-                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                                self.present(alert, animated: true)
-                            }
-                        }
-                        else{
-                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                            self.present(alert, animated: true)
-                        }
-                    }
-                    catch{
-                        print("Error")
-                    }
-                })
-                task.resume()
-            }
             
             
             if (value == true){
@@ -245,9 +203,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         }
         
         
-        if (value == true){
-            self.timer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(self.sendLoc), userInfo: nil, repeats: true)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -256,7 +211,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        orderTimer.invalidate()
     }
     
     @objc func getOrders(){
@@ -378,44 +332,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    @objc func sendLoc(){
-        let defaults = UserDefaults.standard
-        let token = defaults.string(forKey: "Token")
-        let url = URL(string: "https://back.fix-up.org/maps/send_point")!
-        var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
-        request.httpMethod = "POST"
-        let postString = "lat=" + String(self.lat) + "&lng=" + String(self.long)
-        request.httpBody = postString.data(using: .utf8)
-        //Get response
-        let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
-            do{
-                if response != nil{
-                    if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
-                        let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                        let status = json["status"] as! String
-                        DispatchQueue.main.async {
-                            if status == "created"{
-                                print("OK <Send Location>")
-                            }
-                        }
-                    }
-                }
-                else{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
-                }
-            }
-            catch{
-                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                self.present(alert, animated: true)
-            }
-        })
-        task.resume()
-    }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -455,6 +371,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
         self.mainTableView.isHidden = true
+        self.refreshButtonOutlet.isHidden = true
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
         getOrders()
