@@ -82,6 +82,26 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Last_IDs = IDs
+        Names = []
+        Prices = []
+        Specialty = []
+        Radius = []
+        Comments = []
+        Locations = []
+        Lats = []
+        Lngs = []
+        IDs = []
+        Distan = []
+        Durat = []
+        CustomersID = []
+        orderImages = [[String]]()
+        phoneNumbers = []
         
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
@@ -201,12 +221,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

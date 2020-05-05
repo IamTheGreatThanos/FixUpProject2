@@ -85,7 +85,26 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        Last_IDs = IDs
+        Names = []
+        Prices = []
+        Specialty = []
+        Radius = []
+        Comments = []
+        Locations = []
+        Lats = []
+        Lngs = []
+        IDs = []
+        Distan = []
+        Durat = []
+        CustomersID = []
+        orderImages = [[String]]()
+        phoneNumbers = []
         
         self.ActivityIndicator.isHidden = false
         self.ActivityIndicator.startAnimating()
@@ -252,10 +271,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
         if (value == true){
             self.timer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(self.sendLoc), userInfo: nil, repeats: true)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

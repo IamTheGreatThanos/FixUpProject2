@@ -368,6 +368,8 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                                             self.customerView.alpha = 1.0
                                             self.sendButtonOutlet.alpha = 0.0
                                             self.isAccepted = 1
+                                            defaults.set(false, forKey: "isCurrentOrder")
+                                            defaults.removeObject(forKey: "MyOrder")
                                         }
                                     }
                                 }
