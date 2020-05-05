@@ -10,7 +10,7 @@ class MainPageSpecialty: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentControlOutlet.alpha = 0.0
+//        segmentControlOutlet.alpha = 0.0
         MySpecialtyView.alpha = 1.0
         SideJobView.alpha = 0.0
         let defaults = UserDefaults.standard

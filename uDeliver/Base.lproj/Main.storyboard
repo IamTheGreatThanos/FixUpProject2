@@ -3605,6 +3605,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentLabel" destination="bl2-1t-ful" id="NIQ-1N-pp2"/>
+                                            <outlet property="designableView" destination="9Ab-sA-w7U" id="5ap-yw-sqd"/>
                                             <outlet property="locationLabel" destination="46h-RF-lSi" id="uc8-TE-hlb"/>
                                             <outlet property="nameLabel" destination="kh2-wB-kPS" id="H5B-Ha-HYY"/>
                                             <outlet property="priceLabel" destination="BZd-Pl-edN" id="1gF-9w-88q"/>

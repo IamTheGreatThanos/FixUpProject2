@@ -41,7 +41,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SMScell", for: indexPath) as! SpecialistMySpecialtyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SSJcell", for: indexPath) as! SpecialistSideJobTableViewCell
         
         cell.nameLabel.text = Names[indexPath.row]
         cell.priceLabel.text = Prices[indexPath.row] + " тг"

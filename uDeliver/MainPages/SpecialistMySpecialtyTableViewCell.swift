@@ -1,8 +1,6 @@
-
 import UIKit
 
 class SpecialistMySpecialtyTableViewCell: UITableViewCell {
-    
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
