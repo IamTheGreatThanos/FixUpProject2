@@ -367,6 +367,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                                         if status == "ok"{
                                             self.customerView.alpha = 1.0
                                             self.sendButtonOutlet.alpha = 0.0
+                                            self.isAccepted = 1
                                         }
                                     }
                                 }
@@ -585,7 +586,14 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     
     
     @IBAction func BackButtonTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if self.isAccepted == 0{
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
+            self.present(viewController, animated: true)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
