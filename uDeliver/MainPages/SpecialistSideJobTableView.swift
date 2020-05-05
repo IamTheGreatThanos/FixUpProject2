@@ -5,7 +5,6 @@ import CoreLocation
 class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate{
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var refreshButtonOutlet: UIButton!
     
@@ -24,8 +23,8 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     var Avatars = [String]()
     var orderImages = [[String]]()
     var phoneNumbers = [String]()
-    var Last_IDs = [String]()
     
+    var Last_IDs = [String]()
     
     var locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
@@ -42,27 +41,29 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SSJcell", for: indexPath) as! SpecialistSideJobTableViewCell
         
-        cell.nameLabel.text = Names[indexPath.row]
-        cell.priceLabel.text = Prices[indexPath.row] + " тг"
-        cell.radiusLabel.text = Distan[indexPath.row]
-        cell.commentLabel.text = Comments[indexPath.row]
-        cell.locationLabel.text = Locations[indexPath.row]
-        cell.timeLabel.text = Durat[indexPath.row]
-        
-        if Last_IDs.contains(IDs[indexPath.row]) == false && Last_IDs.count != 0{
-            cell.designableView.backgroundColor = UIColor(red: 1, green: 0.9373, blue: 0.698, alpha: 1.0)
-        }
-        
-        else{
-            cell.designableView.backgroundColor = UIColor.white
+        if indexPath.row < Names.count{
+            cell.nameLabel.text = Names[indexPath.row]
+            cell.priceLabel.text = Prices[indexPath.row] + " тг"
+            cell.radiusLabel.text = Distan[indexPath.row]
+            cell.commentLabel.text = Comments[indexPath.row]
+            cell.locationLabel.text = Locations[indexPath.row]
+            cell.timeLabel.text = Durat[indexPath.row]
+            
+            if Last_IDs.contains(IDs[indexPath.row]) == false && Last_IDs.count != 0{
+                cell.designableView.backgroundColor = UIColor(red: 1, green: 0.9373, blue: 0.698, alpha: 1.0)
+            }
+            else{
+                cell.designableView.backgroundColor = UIColor.white
+            }
         }
         
         if indexPath.row == self.Names.count-1{
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
             self.mainTableView.isHidden = false
-            self.refreshButtonOutlet.isHidden = false
         }
+        
+        self.refreshButtonOutlet.isHidden = false
         
         // Configure the cell’s contents.
         return cell
@@ -99,12 +100,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         
 
         if Reachability.isConnectedToNetwork() == true {
-
-            let isRegister = defaults.string(forKey: "isRegister")
-            let myLat = defaults.string(forKey: "MyLat")
-            let myLong = defaults.string(forKey: "MyLong")
-            
-            
             if (value == true){
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
@@ -215,20 +210,20 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     @objc func getOrders(){
         Last_IDs = IDs
-        Names = [String]()
-        Prices = [String]()
-        Specialty = [String]()
-        Radius = [String]()
-        Comments = [String]()
-        Locations = [String]()
-        Lats = [String]()
-        Lngs = [String]()
-        IDs = [String]()
-        Distan = [String]()
-        Durat = [String]()
-        CustomersID = [String]()
+        Names = []
+        Prices = []
+        Specialty = []
+        Radius = []
+        Comments = []
+        Locations = []
+        Lats = []
+        Lngs = []
+        IDs = []
+        Distan = []
+        Durat = []
+        CustomersID = []
         orderImages = [[String]]()
-        phoneNumbers = [String]()
+        phoneNumbers = []
         
 
         if Reachability.isConnectedToNetwork() == true {
@@ -364,10 +359,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         animated: true)
                 
     }
-    
-    
   
-    
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
         self.mainTableView.isHidden = true
@@ -376,6 +368,4 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         self.activityIndicator.startAnimating()
         getOrders()
     }
-    
-    
 }

@@ -27,7 +27,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     var Last_IDs = [String]()
     
     
-    
     var timer = Timer()
     var orderTimer = Timer()
     var locationManager = CLLocationManager()
@@ -45,29 +44,30 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SMScell", for: indexPath) as! SpecialistMySpecialtyTableViewCell
         
-        cell.nameLabel.text = Names[indexPath.row]
-        cell.priceLabel.text = Prices[indexPath.row] + " тг"
-        cell.radiusLabel.text = Distan[indexPath.row]
-        cell.commentLabel.text = Comments[indexPath.row]
-        cell.locationLabel.text = Locations[indexPath.row]
-        cell.timeLabel.text = Durat[indexPath.row]
-        
-        if Last_IDs.contains(IDs[indexPath.row]) == false && Last_IDs.count != 0{
-            cell.designableView.backgroundColor = UIColor(red: 1, green: 0.9373, blue: 0.698, alpha: 1.0)
+        if indexPath.row < Names.count{
+            cell.nameLabel.text = Names[indexPath.row]
+            cell.priceLabel.text = Prices[indexPath.row] + " тг"
+            cell.radiusLabel.text = Distan[indexPath.row]
+            cell.commentLabel.text = Comments[indexPath.row]
+            cell.locationLabel.text = Locations[indexPath.row]
+            cell.timeLabel.text = Durat[indexPath.row]
             
-            print(IDs[indexPath.row])
+            if Last_IDs.contains(IDs[indexPath.row]) == false && Last_IDs.count != 0{
+                cell.designableView.backgroundColor = UIColor(red: 1, green: 0.9373, blue: 0.698, alpha: 1.0)
+            }
+            else{
+                cell.designableView.backgroundColor = UIColor.white
+            }
         }
         
-        else{
-            cell.designableView.backgroundColor = UIColor.white
-        }
         
         if indexPath.row == self.Names.count-1{
             self.ActivityIndicator.isHidden = true
             self.ActivityIndicator.stopAnimating()
             self.mainTableView.isHidden = false
-            self.refreshButtonOutlet.isHidden = false
         }
+        
+        self.refreshButtonOutlet.isHidden = false
         
         // Configure the cell’s contents.
         return cell
@@ -214,6 +214,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.mainTableView.reloadData()
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
+                                    self.mainTableView.isHidden = false
                                 }
                             }
                             else{
@@ -260,20 +261,20 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     @objc func getOrders(){
         Last_IDs = IDs
-        Names = [String]()
-        Prices = [String]()
-        Specialty = [String]()
-        Radius = [String]()
-        Comments = [String]()
-        Locations = [String]()
-        Lats = [String]()
-        Lngs = [String]()
-        IDs = [String]()
-        Distan = [String]()
-        Durat = [String]()
-        CustomersID = [String]()
+        Names = []
+        Prices = []
+        Specialty = []
+        Radius = []
+        Comments = []
+        Locations = []
+        Lats = []
+        Lngs = []
+        IDs = []
+        Distan = []
+        Durat = []
+        CustomersID = []
         orderImages = [[String]]()
-        phoneNumbers = [String]()
+        phoneNumbers = []
         
 
         if Reachability.isConnectedToNetwork() == true {
@@ -336,6 +337,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                         self.Distan.append(i["distance_text"] as! String)
                                         self.Durat.append(i["duration_text"] as! String)
                                         self.phoneNumbers.append(sender["phone"] as! String)
+                                        
                                         if sender["avatar"] != nil{
                                             self.Avatars.append(sender["avatar"] as! String)
                                         }
@@ -435,7 +437,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
         defaults.set(self.orderImages[indexPath.row][2], forKey: "orderImg3")
         
         defaults.set(false, forKey: "isCustomerView")
-        
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"MapViewController")

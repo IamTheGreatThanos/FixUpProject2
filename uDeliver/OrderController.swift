@@ -439,7 +439,6 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     
                     let postString = "comment=" + commentTextView.text! + "&price=" + priceTextField.text! + "&a_lat=" + lat + "&a_long=" + lng + "&a_name=" + address + "&image1=" + strBase64_1 + "&image2=" + strBase64_2 + "&image3=" + strBase64_3 + "&spec=" + String(specID+1)
                     
-                    print(specID)
                     
                     
                     request.httpBody = postString.data(using: .utf8)

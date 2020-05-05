@@ -39,6 +39,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     var saveImg3:URL!
     
     
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet var handleArea: UIView!
@@ -50,7 +51,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     var timer = Timer()
     
     var switcher = 0
-    
+    var isAccepted = 0
     var currentLat = 0.0
     var currentLong = 0.0
     
@@ -244,7 +245,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                             let status = json["status"] as! String
                             DispatchQueue.main.async {
                                 if status == "accept"{
-                                    let alert = UIAlertController(title: "Успешно", message: "Ваш заказ принят! Пожалуйста, пройдите в Активные заказы!", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Успешно", message: "Ваш заказ принят! Пожалуйста, пройдите в Меню - Мои заказы!", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                     self.timer.invalidate()

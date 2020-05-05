@@ -41,7 +41,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
         let defaults = UserDefaults.standard
         let orderLat = defaults.string(forKey: "CurrentLat")!
         let orderLng = defaults.string(forKey: "CurrentLng")!
-        let id = defaults.string(forKey: "userInfoID")!
+        let id = defaults.string(forKey: "UID")!
         
         if Reachability.isConnectedToNetwork() == true {
             let url = URL (string: "https://map.fix-up.org/about?lat=" + orderLat + "&lng=" + orderLng + "&id=" + id)

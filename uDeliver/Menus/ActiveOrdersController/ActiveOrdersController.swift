@@ -74,6 +74,7 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                         if response != nil{
                             if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
                                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
+                                print(json)
                                 DispatchQueue.main.async {
                                     for i in json{
                                         let sender = i["sender"] as! NSDictionary
@@ -120,8 +121,8 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                                         self.Lats.append(i["a_lat"] as! String)
                                         self.Lngs.append(i["a_long"] as! String)
                                         self.IDs.append(String(i["id"] as! Int))
-                                        self.Distan.append(i["distance_text"] as! String)
-                                        self.Durat.append(i["duration_text"] as! String)
+                                        self.Distan.append(i["distance"] as! String)
+                                        self.Durat.append(i["duration"] as! String)
                                         
                                         if self.role == "0"{
                                             self.phoneNumbers.append(worker["phone"] as! String)

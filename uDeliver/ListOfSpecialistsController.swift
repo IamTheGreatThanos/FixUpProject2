@@ -31,6 +31,8 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LOScell", for: indexPath) as! ListOfSpecialistsControllerCell
+        cell.timeLabel.alpha = 0.0
+        cell.radiusLabel.alpha = 0.0
         
         cell.nameLabel.text = Names[indexPath.row]
         cell.priceLabel.text = Prices[indexPath.row] + " тг"
@@ -107,17 +109,18 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                         self.Names.append(sender["nickname"] as! String)
                                         self.Specialty.append("Customer")
                                         self.Prices.append(String(i["price"] as! String))
-                                        let likes = i["likes"] as! String
-                                        self.Likes.append(String(likes))
-                                        self.Dislikes.append(String(i["dislikes"] as! Int))
+                                        self.Likes.append(String(sender["likes"] as! Int))
+                                        self.Dislikes.append(String(sender["dislikes"] as! Int))
                                         self.Comments.append(i["comment"] as! String)
                                         self.Locations.append(i["time"] as! String)
                                         self.Lats.append(i["lat"] as! String)
                                         self.Lngs.append(i["lng"] as! String)
                                         self.WorkersId.append(String(sender["id"] as! Int))
                                         self.phoneNumbers.append(sender["phone"] as! String)
-                                        self.Distan.append(i["distance_text"] as! String)
-                                        self.Durat.append(i["duration_text"] as! String)
+//                                        self.Distan.append(i["distance_text"] as! String)
+                                        self.Distan.append("1")
+//                                        self.Durat.append(i["duration_text"] as! String)
+                                        self.Durat.append("1")
                                         if sender["avatar"] != nil{
                                             self.Avatars.append(sender["avatar"] as! String)
                                         }
