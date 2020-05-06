@@ -271,7 +271,7 @@
                     <view key="view" contentMode="scaleToFill" id="N3c-eE-c5r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ci7-q0-tv7"/>
                     </view>
                     <navigationItem key="navigationItem" id="zkM-B9-8OH"/>
@@ -1744,7 +1744,7 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="ViewCornerRadius">
-                                                            <real key="value" value="40"/>
+                                                            <real key="value" value="50"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="ViewBorderWidth">
                                                             <real key="value" value="0.0"/>
@@ -1841,7 +1841,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="C20-Do-G0V"/>
                                                         <constraint firstAttribute="width" constant="200" id="oXw-v3-aY9"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1882,7 +1882,7 @@
                                                         <constraint firstAttribute="width" constant="180" id="6eP-O4-yGx"/>
                                                         <constraint firstAttribute="height" constant="30" id="Ie1-xU-bXJ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1920,7 +1920,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="RfM-uE-fQp"/>
                                                         <constraint firstAttribute="width" constant="180" id="rXt-bb-pGZ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1951,7 +1951,7 @@
                                                         <constraint firstAttribute="width" constant="180" id="eHO-gb-sXz"/>
                                                         <constraint firstAttribute="height" constant="30" id="rbn-g3-ZdZ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2113,6 +2113,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cjB-SF-GRh" firstAttribute="trailing" secondItem="S4s-2i-Rgs" secondAttribute="trailing" id="1pM-ew-2Sr"/>
                             <constraint firstItem="SQQ-kE-b5X" firstAttribute="trailing" secondItem="S4s-2i-Rgs" secondAttribute="trailing" id="41d-j3-2SJ"/>
@@ -3132,7 +3133,7 @@
                                     <segment title="По профилю"/>
                                     <segment title="Другие заказы"/>
                                 </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.94509803921568625" green="0.36862745098039218" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="segmentControl:" destination="6GT-jw-QOI" eventType="valueChanged" id="yyI-kZ-QCW"/>
@@ -3151,7 +3152,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Fwk-Ap-vjW" firstAttribute="top" secondItem="hs8-vI-3ux" secondAttribute="bottom" constant="4" id="2vA-Sp-KVq"/>
                             <constraint firstAttribute="bottom" secondItem="suk-Tf-EfR" secondAttribute="bottom" id="3n5-nF-c5V"/>
@@ -3375,7 +3376,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fL2-R3-TL8" secondAttribute="trailing" id="3ik-bK-ERM"/>
                             <constraint firstItem="fL2-R3-TL8" firstAttribute="leading" secondItem="ClV-I3-OLs" secondAttribute="leading" id="JgV-kc-GaZ"/>

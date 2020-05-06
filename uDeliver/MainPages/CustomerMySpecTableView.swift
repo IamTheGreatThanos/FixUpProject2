@@ -49,7 +49,7 @@ class CustomerMySpecTableView: UIViewController,UITableViewDelegate,UITableViewD
         // Configure the cell’s contents.
         cell.SpecialtyName.text = Specialty[indexPath.row]
         cell.SpecialtyInto.text = Specialty_into[indexPath.row]
-        cell.backgroundColor = .clear
+        
         
         return cell
     }
@@ -59,7 +59,7 @@ class CustomerMySpecTableView: UIViewController,UITableViewDelegate,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTableView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.93, alpha: 1.0)
+//        mainTableView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.93, alpha: 1.0)
     }
     
     override func viewDidAppear(_ animated: Bool) {

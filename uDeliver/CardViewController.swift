@@ -730,6 +730,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
             request.httpMethod = "POST"
             let postString = "id=" + order_id
+            print(postString)
             request.httpBody = postString.data(using: .utf8)
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
@@ -768,6 +769,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 }
                 catch{
                     DispatchQueue.main.async {
+                        print("Error <Catch>")
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)
