@@ -38,7 +38,6 @@ class MoreInformationController: UIViewController, UIImagePickerControllerDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,7 +81,6 @@ class MoreInformationController: UIViewController, UIImagePickerControllerDelega
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        UIApplication.shared.statusBarStyle = .default
         i_picker = 1
     }
     
@@ -91,7 +89,6 @@ class MoreInformationController: UIViewController, UIImagePickerControllerDelega
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        UIApplication.shared.statusBarStyle = .default
         i_picker = 2
     }
     

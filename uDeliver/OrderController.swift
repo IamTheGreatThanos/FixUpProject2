@@ -86,7 +86,6 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -212,19 +211,21 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+            @unknown default:
+                let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             
         })
         let photoLibraryAction = UIAlertAction(title: "Галерея", style: .default, handler: { (alert: UIAlertAction!) in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
-            UIApplication.shared.statusBarStyle = .default
         })
 
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(photoLibraryAction)
         actionSheet.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (alert: UIAlertAction!) in
-            UIApplication.shared.statusBarStyle = .lightContent
         }))
         
         present(actionSheet, animated: true, completion: nil)
@@ -278,18 +279,20 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+            @unknown default:
+                let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         })
         let photoLibraryAction = UIAlertAction(title: "Галерея", style: .default, handler: { (alert: UIAlertAction!) in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
-            UIApplication.shared.statusBarStyle = .default
         })
 
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(photoLibraryAction)
         actionSheet.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (alert: UIAlertAction!) in
-            UIApplication.shared.statusBarStyle = .lightContent
         }))
         
         present(actionSheet, animated: true, completion: nil)
@@ -346,18 +349,20 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+            @unknown default:
+                let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         })
         let photoLibraryAction = UIAlertAction(title: "Галерея", style: .default, handler: { (alert: UIAlertAction!) in
             self.imagePicker.sourceType = .photoLibrary
             self.present(self.imagePicker, animated: true, completion: nil)
-            UIApplication.shared.statusBarStyle = .default
         })
 
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(photoLibraryAction)
         actionSheet.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (alert: UIAlertAction!) in
-            UIApplication.shared.statusBarStyle = .lightContent
         }))
         
         present(actionSheet, animated: true, completion: nil)

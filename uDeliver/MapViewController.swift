@@ -52,7 +52,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
         
         if Reachability.isConnectedToNetwork() == true {
             let url = URL (string: "https://map.fix-up.org/about?lat=" + orderLat + "&lng=" + orderLng + "&id=" + id)
-            print(url)
             let requestObj = URLRequest(url: url!)
             self.mapView.loadRequest(requestObj)
         }

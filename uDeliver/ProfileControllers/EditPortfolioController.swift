@@ -31,7 +31,6 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
     }
     
     @IBAction func backButton(_ sender: UIButton) {
@@ -200,7 +199,6 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
             if PortfolioImages.count < 10{
                 imagePicker.allowsEditing = true
                 imagePicker.sourceType = .photoLibrary
-                UIApplication.shared.statusBarStyle = .default
 
                 let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
                 let cameraAction = UIAlertAction(title: "Камера", style: .default, handler: { (alert: UIAlertAction!) in
@@ -227,19 +225,21 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
                             let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
+                    @unknown default:
+                        let alert = UIAlertController(title: "Внимание", message: "Чтобы настроить доступ к камере зайдите в настройки!", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                     }
 
                 })
                 let photoLibraryAction = UIAlertAction(title: "Галерея", style: .default, handler: { (alert: UIAlertAction!) in
                     self.imagePicker.sourceType = .photoLibrary
                     self.present(self.imagePicker, animated: true, completion: nil)
-                    UIApplication.shared.statusBarStyle = .default
                 })
 
                 actionSheet.addAction(cameraAction)
                 actionSheet.addAction(photoLibraryAction)
                 actionSheet.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { (alert: UIAlertAction!) in
-                    UIApplication.shared.statusBarStyle = .lightContent
                 }))
 
                 present(actionSheet, animated: true, completion: nil)

@@ -730,17 +730,14 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
             request.httpMethod = "POST"
             let postString = "id=" + order_id
-            print(postString)
             request.httpBody = postString.data(using: .utf8)
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    print(response)
                     if response != nil{
                         if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
                             let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
                             let status = json["status"] as! String
-                            print(json)
                             DispatchQueue.main.async {
                                 if status == "ok"{
                                     defaults.set(false,forKey: "isCurrentOrder")
