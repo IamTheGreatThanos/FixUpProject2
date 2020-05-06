@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         let value = defaults.bool(forKey: "isCourier")
         
         if value == false{
-            self.navBarTitle = "Заказ услуг"
+            self.navBarTitle = "FIXUP"
             self.SpecialtyMainContainer?.alpha = 0.0
             self.CustomerMainContainer?.alpha = 1.0
         }
@@ -40,8 +40,9 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         let nav = self.navigationController?.navigationBar
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         nav?.topItem?.title = self.navBarTitle
+        nav?.backgroundColor = UIColor.white
         
         
     }

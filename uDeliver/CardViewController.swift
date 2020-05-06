@@ -734,12 +734,10 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
-                    print(response)
                     if response != nil{
                         if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
                             let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
                             let status = json["status"] as! String
-                            print(json)
                             DispatchQueue.main.async {
                                 if status == "ok"{
                                     defaults.set(false,forKey: "isCurrentOrder")
@@ -768,6 +766,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 }
                 catch{
                     DispatchQueue.main.async {
+                        print("Error <Catch>")
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)

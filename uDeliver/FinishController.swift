@@ -64,21 +64,27 @@ class FinishController: UIViewController {
                             }
                         }
                         else{
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
                     }
-                    else{
+                }
+                catch{
+                    DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-                }
-                catch{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
                 }
             })
             task.resume()
@@ -123,21 +129,27 @@ class FinishController: UIViewController {
                             }
                         }
                         else{
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
                     }
-                    else{
+                }
+                catch{
+                    DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-                }
-                catch{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
                 }
             })
             task.resume()

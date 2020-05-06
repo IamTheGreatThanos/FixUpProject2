@@ -115,21 +115,27 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
                             }
                         }
                         else{
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
                     }
-                    else{
+                }
+                catch{
+                    DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-                }
-                catch{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
                 }
             })
             task.resume()
@@ -181,21 +187,27 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
                             }
                         }
                         else{
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
                     }
-                    else{
+                }
+                catch{
+                    DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-                }
-                catch{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
                 }
             })
             task.resume()
@@ -243,7 +255,6 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
         if Reachability.isConnectedToNetwork() == true {
             getProfileInfo()
         }
@@ -252,8 +263,6 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        let defaults = UserDefaults.standard
         
 //        if let filePath = Bundle.main.path(forResource: "imageName", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
 //            imageView.contentMode = .scaleAspectFit
@@ -332,21 +341,27 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
                                 }
                             }
                             else{
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                    self.present(alert, animated: true)
+                                }
+                            }
+                        }
+                        else{
+                            DispatchQueue.main.async {
                                 let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                                 self.present(alert, animated: true)
                             }
                         }
-                        else{
+                    }
+                    catch{
+                        DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
-                    }
-                    catch{
-                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                        self.present(alert, animated: true)
                     }
                 })
                 task.resume()
@@ -380,7 +395,6 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        UIApplication.shared.statusBarStyle = .default
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
