@@ -235,6 +235,7 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
                 let photoLibraryAction = UIAlertAction(title: "Галерея", style: .default, handler: { (alert: UIAlertAction!) in
                     self.imagePicker.sourceType = .photoLibrary
                     self.present(self.imagePicker, animated: true, completion: nil)
+                    UIApplication.shared.statusBarStyle = .default
                 })
 
                 actionSheet.addAction(cameraAction)
