@@ -4,12 +4,7 @@ import UIKit
 
 class ValidateRegisterCodeController: ViewController, UITextFieldDelegate {
     @IBOutlet weak var ValidateCodeTextField: UITextField!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var logoIcon: UIImageView!
-
     
-    var switcher = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,40 +13,11 @@ class ValidateRegisterCodeController: ViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if self.switcher == 1{
-        
-            UIView.animate(withDuration: 0.6, animations: {
-                self.logoIcon.alpha = 1.0
-            })
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
-            })
-            
-            
-            self.switcher = 0
-        }
-        
-        
         self.view.endEditing(true)
         return false
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if self.switcher == 0 {
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.logoIcon.alpha = 0.0
-            })
-            
-            UIView.animate(withDuration: 0.6, animations: {
-                self.topConstraint.constant -= 150
-                self.bottomConstraint.constant += 150
-            })
-            
-            self.switcher = 1
-        }
     }
     
     func addDoneButtonOnKeyboard()
@@ -71,22 +37,6 @@ class ValidateRegisterCodeController: ViewController, UITextFieldDelegate {
     
     @objc func doneButtonAction()
     {
-        if self.switcher == 1{
-        
-            UIView.animate(withDuration: 0.6, animations: {
-                self.logoIcon.alpha = 1.0
-            })
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
-            })
-            
-            
-            self.switcher = 0
-        }
-        
-        
         self.view.endEditing(true)
     }
     

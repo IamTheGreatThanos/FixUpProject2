@@ -5,7 +5,6 @@ import Foundation
 class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet var mainView: UIView!
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var aboutTextView: UITextView!
 
@@ -45,6 +44,7 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -57,6 +57,9 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
+        if aboutTextView.text == "Информация отсутствует..."{
+            textView.text = ""
+        }
     }
     
     
@@ -109,7 +112,7 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
                 task.resume()
             }
             else{
-                let alert = UIAlertController(title: "Внимание", message: "Введите полную информацию!", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Внимание", message: "Дополните информацию!", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

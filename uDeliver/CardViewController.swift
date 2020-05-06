@@ -368,8 +368,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                                             self.customerView.alpha = 1.0
                                             self.sendButtonOutlet.alpha = 0.0
                                             self.isAccepted = 1
-                                            defaults.set(false, forKey: "isCurrentOrder")
-                                            defaults.removeObject(forKey: "MyOrder")
+                                            defaults.set(false, forKey: "isValidateTimer")
                                         }
                                     }
                                 }
@@ -723,7 +722,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             else{
                 order_id = defaults.string(forKey: "CurrentOrderID")!
             }
-            let worker_id = defaults.string(forKey: "CurrentWorkerId")!
+//            let worker_id = defaults.string(forKey: "CurrentWorkerId")!
             let token = defaults.string(forKey: "Token")
             let url = URL(string: "https://back.fix-up.org/maps/finish/")!
             var request = URLRequest(url: url)
@@ -735,10 +734,12 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             //Get response
             let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                 do{
+                    print(response)
                     if response != nil{
                         if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
                             let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: AnyObject]
                             let status = json["status"] as! String
+                            print(json)
                             DispatchQueue.main.async {
                                 if status == "ok"{
                                     defaults.set(false,forKey: "isCurrentOrder")
@@ -750,21 +751,27 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                             }
                         }
                         else{
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
+                        }
+                    }
+                    else{
+                        DispatchQueue.main.async {
                             let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                             self.present(alert, animated: true)
                         }
                     }
-                    else{
+                }
+                catch{
+                    DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                         self.present(alert, animated: true)
                     }
-                }
-                catch{
-                    let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                    self.present(alert, animated: true)
                 }
             })
             task.resume()
@@ -804,7 +811,9 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                                 let status = json["status"] as! String
                                 DispatchQueue.main.async {
                                     if status == "ok"{
-                                        self.navigationController?.popViewController(animated: true)
+                                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                        let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
+                                        self.present(viewController, animated: true)
                                         defaults.set(false, forKey: "isCurrentOrder")
                                         defaults.removeObject(forKey: "MyOrder")
                                     }

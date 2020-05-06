@@ -84,10 +84,10 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
                                         self.Lngs.append(i["a_long"] as! String)
                                         self.IDs.append(String(i["id"] as! Int))
                                         if i["is_canceled"] as! Bool == true{
-                                            self.Status.append("Done")
+                                            self.Status.append("Завершено")
                                         }
                                         else{
-                                            self.Status.append("Canceled")
+                                            self.Status.append("Отменено")
                                         }
                                     }
                                     self.mainTableView.reloadData()

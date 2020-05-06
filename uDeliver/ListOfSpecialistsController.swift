@@ -50,6 +50,8 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "isValidateTimer")
         
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(ListOfSpecialistsController.back(sender:)))
@@ -89,7 +91,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         
         if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard
-            if defaults.string(forKey: "MyOrder") != nil{
+            if defaults.bool(forKey: "isValidateTimer") != false{
                 let token = defaults.string(forKey: "Token")
                 let url = URL(string: "https://back.fix-up.org/maps/get/" + defaults.string(forKey: "MyOrder")!+"/")!
                 var request = URLRequest(url: url)

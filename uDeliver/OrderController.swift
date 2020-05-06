@@ -439,8 +439,6 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     
                     let postString = "comment=" + commentTextView.text! + "&price=" + priceTextField.text! + "&a_lat=" + lat + "&a_long=" + lng + "&a_name=" + address + "&image1=" + strBase64_1 + "&image2=" + strBase64_2 + "&image3=" + strBase64_3 + "&spec=" + String(specID+1)
                     
-                    print(specID+1)
-                    
                     request.httpBody = postString.data(using: .utf8)
                     //Get response
                     let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
@@ -448,23 +446,31 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                             if response != nil{
                                 if (try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]) != nil{
                                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String : AnyObject]
-                                    let status = json["status"] as! String
-                                    let id = json["id"] as! String
-                                    DispatchQueue.main.async {
-                                        if status == "ok"{
-                                            defaults.set(lat, forKey: "ListOfSpecLat")
-                                            defaults.set(lng, forKey: "ListOfSpecLng")
-                                            defaults.removeObject(forKey:"OrderLat")
-                                            defaults.removeObject(forKey:"OrderLng")
-                                            defaults.removeObject(forKey:"OrderAddress")
-                                            defaults.set(id, forKey: "MyOrder")
-                                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                            let viewController = storyboard.instantiateViewController(withIdentifier :"ListOfSpecialistsController")
-                                            self.navigationController?.pushViewController(viewController,
-                                            animated: true)
-                                            
-                                            defaults.set(true,forKey: "isCurrentOrder")
+                                    if (json["status"] as? String != nil){
+                                        let status = json["status"] as! String
+                                        let id = json["id"] as! String
+                                        DispatchQueue.main.async {
+                                            if status == "ok"{
+                                                defaults.set(lat, forKey: "ListOfSpecLat")
+                                                defaults.set(lng, forKey: "ListOfSpecLng")
+                                                defaults.set(id, forKey: "CurrentOrderID")
+                                                defaults.removeObject(forKey:"OrderLat")
+                                                defaults.removeObject(forKey:"OrderLng")
+                                                defaults.removeObject(forKey:"OrderAddress")
+                                                defaults.set(id, forKey: "MyOrder")
+                                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                                let viewController = storyboard.instantiateViewController(withIdentifier :"ListOfSpecialistsController")
+                                                self.navigationController?.pushViewController(viewController,
+                                                animated: true)
+                                                
+                                                defaults.set(true,forKey: "isCurrentOrder")
+                                            }
                                         }
+                                    }
+                                    else{
+                                        let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                        self.present(alert, animated: true)
                                     }
                                 }
                                 else{
