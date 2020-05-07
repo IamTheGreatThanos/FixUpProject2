@@ -9,12 +9,12 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var SpecTitle: UILabel!
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var counter = 0
     
     
@@ -47,9 +47,9 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
         }
         commentTextView.text = "Пожалуйста, напишите немного информации о заказе!"
         commentTextView.textColor = UIColor.lightGray
-        commentTextView.layer.borderWidth = 1.0
-        commentTextView.layer.borderColor = UIColor.lightGray.cgColor
-        commentTextView.layer.cornerRadius = 5.0
+//        commentTextView.layer.borderWidth = 1.0
+//        commentTextView.layer.borderColor = UIColor.lightGray.cgColor
+//        commentTextView.layer.cornerRadius = 5.0
         
         SpecTitle.text = defaults.string(forKey: "CurrentOrderSpecTitle")
         orderInfo.text = defaults.string(forKey: "CurrentOrderSpecDesc")
@@ -135,8 +135,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
+                self.topConstraint.constant += 120
+                self.bottomConstraint.constant -= 140
             })
             
             
@@ -239,8 +239,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
+                self.topConstraint.constant += 120
+                self.bottomConstraint.constant -= 140
             })
             
             self.switcher = 0
@@ -309,8 +309,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
+                self.topConstraint.constant += 120
+                self.bottomConstraint.constant -= 140
             })
             
             
@@ -379,8 +379,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
+                self.topConstraint.constant += 120
+                self.bottomConstraint.constant -= 140
             })
             
             
@@ -546,8 +546,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 150
-                self.bottomConstraint.constant -= 150
+                self.topConstraint.constant += 120
+                self.bottomConstraint.constant -= 140
             })
             
             
@@ -569,8 +569,8 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.6, animations: {
-                self.topConstraint.constant -= 150
-                self.bottomConstraint.constant += 150
+                self.topConstraint.constant -= 120
+                self.bottomConstraint.constant += 140
             })
             
             self.switcher = 1
@@ -588,12 +588,12 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                 })
                 
                 UIView.animate(withDuration: 0.2, animations: {
-                    self.topConstraint.constant += 150
-                    self.bottomConstraint.constant -= 150
+                    self.topConstraint.constant += 120
+                    self.bottomConstraint.constant -= 140
                 })
                 
                 if commentTextView.text!.count == 0{
-                    commentTextView.text = "Пожалуйста, напишите еще немного информации о заказе!"
+                    commentTextView.text = "Пожалуйста, напишите немного информации о заказе!"
                     commentTextView.textColor = UIColor.lightGray
                 }
                 
@@ -618,14 +618,14 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
             })
             
             UIView.animate(withDuration: 0.6, animations: {
-                self.topConstraint.constant -= 150
-                self.bottomConstraint.constant += 150
+                self.topConstraint.constant -= 120
+                self.bottomConstraint.constant += 140
             })
             
             self.switcher = 1
             
         }
-        if counter != 1{
+        if counter != 1 || commentTextView.text == "Пожалуйста, напишите немного информации о заказе!"{
             commentTextView.text = ""
             commentTextView.textColor = UIColor.black
             counter = 1
