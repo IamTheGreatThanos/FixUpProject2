@@ -10,6 +10,7 @@ class PhoneController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var logoIcon: UIImageView!
 
+    @IBOutlet weak var parentView: DesignOfViewWithCR!
     
     var switcher = 0
     
@@ -19,6 +20,9 @@ class PhoneController: UIViewController, UITextFieldDelegate {
         let defaults = UserDefaults.standard
         defaults.set(false, forKey: "isCourier")
         PhoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        parentView.layer.borderWidth = 0
+        NickNameTextField.borderStyle = .none
+        PhoneTextField.borderStyle = .none
         
         addDoneButtonOnKeyboard()
     }
@@ -130,6 +134,11 @@ class PhoneController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    @IBAction func closeBtnTapped(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
     
     @IBAction func RegistButtonTapped(_ sender: UIButton) {
         if Reachability.isConnectedToNetwork() == true {

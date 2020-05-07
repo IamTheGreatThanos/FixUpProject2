@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46D59273246295EF00FFA8FD /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D59271246295EF00FFA8FD /* SWRevealViewController.m */; };
 		88007552233877460061FEEB /* GreetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88007551233877460061FEEB /* GreetingController.swift */; };
 		8817ACB223D80C040079FECF /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817ACB123D80C040079FECF /* CardViewController.swift */; };
 		8818EE04235B86F300236D09 /* HistoryControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818EE03235B86F300236D09 /* HistoryControllerTableViewCell.swift */; };
@@ -54,7 +55,6 @@
 		88CF346223DF180600B74762 /* InsideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CF346123DF180600B74762 /* InsideCollectionViewCell.swift */; };
 		88D42AC22347A2B800A5BABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D42AC12347A2B800A5BABC /* ViewController.swift */; };
 		88D42AC42347AFBF00A5BABC /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D42AC32347AFBF00A5BABC /* SideBarTableViewController.swift */; };
-		88D42AC72347B11600A5BABC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D42AC52347B11600A5BABC /* SWRevealViewController.m */; };
 		88DD39C223DC747300E4B386 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DD39C123DC747300E4B386 /* ProfileController.swift */; };
 		88E089B1240500B40095DB13 /* NavigationControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E089B0240500B40095DB13 /* NavigationControllerProfile.swift */; };
 		88EBB366233C925900A71AED /* SlideBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EBB365233C925900A71AED /* SlideBarController.swift */; };
@@ -63,6 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46D59271246295EF00FFA8FD /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		46D59272246295EF00FFA8FD /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		88007551233877460061FEEB /* GreetingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingController.swift; sourceTree = "<group>"; };
 		8817ACB123D80C040079FECF /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		8818EE03235B86F300236D09 /* HistoryControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryControllerTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,8 +115,6 @@
 		88D42ABD2347A02700A5BABC /* uDeliver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uDeliver-Bridging-Header.h"; sourceTree = "<group>"; };
 		88D42AC12347A2B800A5BABC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88D42AC32347AFBF00A5BABC /* SideBarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
-		88D42AC52347B11600A5BABC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../../HARD WORK/uDeliver Project/Swift files/SideBar/SWRevealViewControllers/SWRevealViewController.m"; sourceTree = "<group>"; };
-		88D42AC62347B11600A5BABC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../../HARD WORK/uDeliver Project/Swift files/SideBar/SWRevealViewControllers/SWRevealViewController.h"; sourceTree = "<group>"; };
 		88DD39C123DC747300E4B386 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		88E089B0240500B40095DB13 /* NavigationControllerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerProfile.swift; sourceTree = "<group>"; };
 		88E597C72456FF0E0004D27A /* FIXUP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIXUP.entitlements; sourceTree = "<group>"; };
@@ -293,9 +293,9 @@
 		88D42ABC23479FDF00A5BABC /* SideBarControllers */ = {
 			isa = PBXGroup;
 			children = (
+				46D59272246295EF00FFA8FD /* SWRevealViewController.h */,
+				46D59271246295EF00FFA8FD /* SWRevealViewController.m */,
 				88D42AC12347A2B800A5BABC /* ViewController.swift */,
-				88D42AC62347B11600A5BABC /* SWRevealViewController.h */,
-				88D42AC52347B11600A5BABC /* SWRevealViewController.m */,
 				88D42ABD2347A02700A5BABC /* uDeliver-Bridging-Header.h */,
 				88D42AC32347AFBF00A5BABC /* SideBarTableViewController.swift */,
 			);
@@ -390,13 +390,13 @@
 				8848FB9B2447575C00D0ED8C /* PortfolioTableViewCell.swift in Sources */,
 				88007552233877460061FEEB /* GreetingController.swift in Sources */,
 				881B51B323D08439009C61B0 /* MainPageCustomer.swift in Sources */,
-				88D42AC72347B11600A5BABC /* SWRevealViewController.m in Sources */,
 				88CF345E23DF16C100B74762 /* MainTableViewCell.swift in Sources */,
 				8817ACB223D80C040079FECF /* CardViewController.swift in Sources */,
 				88CCA77223D1B99600D7DA23 /* ListOfSpecialistsController.swift in Sources */,
 				88CF345323DF064500B74762 /* EditProfileController.swift in Sources */,
 				885B536923D75798005AD393 /* DesignOfViewWithCR.swift in Sources */,
 				8846163023DC0F3200A44A13 /* OrderController.swift in Sources */,
+				46D59273246295EF00FFA8FD /* SWRevealViewController.m in Sources */,
 				88B1B5D9233A0D2800D95457 /* MenuController.swift in Sources */,
 				88E089B1240500B40095DB13 /* NavigationControllerProfile.swift in Sources */,
 				88A64C3823D5DE6B0029B6B1 /* DesignOfSpecialtyTableView.swift in Sources */,
