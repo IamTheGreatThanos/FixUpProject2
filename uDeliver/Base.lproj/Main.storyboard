@@ -152,7 +152,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RU2-9c-d2C" customClass="DesignOfViewWithCR" customModule="FIXUP">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+7 (ХХХ) ХХХ ХХ ХХ" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KMf-aA-Jzl">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+7 (" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KMf-aA-Jzl">
                                         <rect key="frame" x="16" y="321" width="378" height="50"/>
                                         <color key="backgroundColor" red="0.96856552360000003" green="0.96438080069999998" blue="0.98494774100000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>

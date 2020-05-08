@@ -4,15 +4,8 @@ import UIKit
 class PhoneController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var PhoneTextField: UITextField!
     @IBOutlet weak var NickNameTextField: UITextField!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var loginView: UIView!
-    @IBOutlet weak var logoIcon: UIImageView!
 
     @IBOutlet weak var parentView: DesignOfViewWithCR!
-    
-    var switcher = 0
     
     
     override func viewDidLoad() {
@@ -32,40 +25,11 @@ class PhoneController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if self.switcher == 1{
-        
-            UIView.animate(withDuration: 0.6, animations: {
-                self.logoIcon.alpha = 1.0
-            })
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 200
-                self.bottomConstraint.constant -= 200
-            })
-            
-            
-            self.switcher = 0
-        }
-        
-        
         self.view.endEditing(true)
         return false
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if self.switcher == 0 {
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                self.logoIcon.alpha = 0.0
-            })
-            
-            UIView.animate(withDuration: 0.6, animations: {
-                self.topConstraint.constant -= 200
-                self.bottomConstraint.constant += 200
-            })
-            
-            self.switcher = 1
-        }
         if textField == PhoneTextField{
             if self.PhoneTextField.text!.count < 6{
                 self.PhoneTextField.text = "+7 ("
@@ -121,16 +85,6 @@ class PhoneController: UIViewController, UITextFieldDelegate {
     
     @objc func doneButtonAction()
     {
-        if self.switcher == 1{
-            UIView.animate(withDuration: 0.6, animations: {
-                self.logoIcon.alpha = 1.0
-            })
-            UIView.animate(withDuration: 0.2, animations: {
-                self.topConstraint.constant += 200
-                self.bottomConstraint.constant -= 200
-            })
-            self.switcher = 0
-        }
         self.view.endEditing(true)
     }
     
