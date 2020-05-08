@@ -8,8 +8,6 @@ class ListOfSpecialistsControllerCell: UITableViewCell {
     @IBOutlet weak var dislikeLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var radiusLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
 

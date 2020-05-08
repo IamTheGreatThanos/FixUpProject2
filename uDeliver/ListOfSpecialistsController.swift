@@ -23,6 +23,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     
     
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,17 +32,13 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LOScell", for: indexPath) as! ListOfSpecialistsControllerCell
-        cell.timeLabel.alpha = 0.0
-        cell.radiusLabel.alpha = 0.0
         
         cell.nameLabel.text = Names[indexPath.row]
         cell.priceLabel.text = Prices[indexPath.row] + " ₸"
-        cell.radiusLabel.text = Distan[indexPath.row]
         cell.likeLabel.text = Likes[indexPath.row]
         cell.dislikeLabel.text = Dislikes[indexPath.row]
         cell.commentLabel.text = Comments[indexPath.row]
         cell.locationLabel.text = Locations[indexPath.row]
-        cell.timeLabel.text = Durat[indexPath.row]
         
         // Configure the cell’s contents.
         return cell
@@ -52,6 +49,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         super.viewDidLoad()
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "isValidateTimer")
+        activityIndicator.startAnimating()
         
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(ListOfSpecialistsController.back(sender:)))
@@ -131,6 +129,14 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                         }
                                     }
                                     self.mainTableView.reloadData()
+                                    if self.Names.count == 0{
+                                        self.activityIndicator.isHidden = false
+                                        self.activityIndicator.startAnimating()
+                                    }
+                                    else{
+                                        self.activityIndicator.isHidden = true
+                                        self.activityIndicator.stopAnimating()
+                                    }
                                 }
                             }
                             else{

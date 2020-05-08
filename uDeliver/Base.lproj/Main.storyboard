@@ -2688,6 +2688,14 @@
                                     <outlet property="delegate" destination="aef-zd-CUT" id="CfP-mT-0hO"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-I4-x3H">
+                                <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="vxe-yo-JTn"/>
+                                    <constraint firstAttribute="height" constant="100" id="yPX-w9-g6U"/>
+                                </constraints>
+                                <color key="color" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -2695,11 +2703,14 @@
                             <constraint firstItem="Yl6-53-jil" firstAttribute="bottom" secondItem="Hf5-pP-jC0" secondAttribute="bottom" id="GgH-nj-Zg9"/>
                             <constraint firstItem="Hf5-pP-jC0" firstAttribute="trailing" secondItem="Yl6-53-jil" secondAttribute="trailing" id="O1h-ia-6st"/>
                             <constraint firstItem="Hf5-pP-jC0" firstAttribute="top" secondItem="Yl6-53-jil" secondAttribute="top" id="giO-E7-HyR"/>
+                            <constraint firstItem="xp3-I4-x3H" firstAttribute="centerX" secondItem="VVf-Dh-kIR" secondAttribute="centerX" id="lXh-JE-mqa"/>
+                            <constraint firstItem="xp3-I4-x3H" firstAttribute="centerY" secondItem="VVf-Dh-kIR" secondAttribute="centerY" id="tgC-sR-Afw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yl6-53-jil"/>
                     </view>
                     <navigationItem key="navigationItem" id="ULl-Jv-feh"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="xp3-I4-x3H" id="EID-hU-ELa"/>
                         <outlet property="mainTableView" destination="Hf5-pP-jC0" id="1Vw-n2-ezD"/>
                     </connections>
                 </viewController>
@@ -3119,7 +3130,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ncd-gc-5ee">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
-                                <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cellOfSpecialty" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellOfSpecialty" rowHeight="150" id="mSY-e8-nWP" customClass="SpecialtyTableViewCell" customModule="FIXUP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
@@ -3175,7 +3186,7 @@
                                                 <constraint firstItem="EtV-eO-b5r" firstAttribute="leading" secondItem="ffH-ZO-57q" secondAttribute="leadingMargin" id="jpQ-OV-gxM"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="SpecialtyIcon" destination="OEu-at-MzL" id="Sdq-Al-p3x"/>
                                             <outlet property="SpecialtyInto" destination="DSm-L5-6ze" id="2A6-fC-OXM"/>
@@ -3191,14 +3202,14 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auU-pG-sSQ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <color key="barTintColor" red="0.99508255720000005" green="0.16335938647366668" blue="0.14926238358000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Выберите вашу специальность" id="Ke7-wD-Bft">
-                                        <barButtonItem key="leftBarButtonItem" image="back" id="Ab8-4i-NOh">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <navigationItem title="Выберите специальность" id="Ke7-wD-Bft">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="Ab8-4i-NOh">
+                                            <color key="tintColor" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="backButtonTapped:" destination="yf9-M7-SZb" id="hs8-1d-SE4"/>
                                             </connections>
@@ -3207,7 +3218,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ncd-gc-5ee" firstAttribute="trailing" secondItem="jIf-j3-m7A" secondAttribute="trailing" id="0Lt-i1-K14"/>
                             <constraint firstItem="ncd-gc-5ee" firstAttribute="bottom" secondItem="jIf-j3-m7A" secondAttribute="bottom" id="4RL-Zf-M55"/>
@@ -4353,12 +4364,12 @@
         <image name="back" width="24" height="24"/>
         <image name="back2" width="512" height="512"/>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="delete-icon" width="600" height="600"/>
         <image name="dislike" width="475" height="483"/>
         <image name="dislike-1" width="72" height="72"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="dislike-2" width="196" height="196"/>
-        <image name="edit" width="512" height="512"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="facebook-1" width="100" height="100"/>
         <image name="history-1" width="80" height="80"/>
         <image name="information-1" width="80" height="80"/>
