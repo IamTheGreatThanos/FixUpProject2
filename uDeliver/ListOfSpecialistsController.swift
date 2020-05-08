@@ -35,7 +35,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         cell.radiusLabel.alpha = 0.0
         
         cell.nameLabel.text = Names[indexPath.row]
-        cell.priceLabel.text = Prices[indexPath.row] + " тг"
+        cell.priceLabel.text = Prices[indexPath.row] + " ₸"
         cell.radiusLabel.text = Distan[indexPath.row]
         cell.likeLabel.text = Likes[indexPath.row]
         cell.dislikeLabel.text = Dislikes[indexPath.row]
@@ -56,7 +56,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(ListOfSpecialistsController.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
-        self.navigationItem.title = "Ожидание специалиста..."
+        self.navigationItem.title = "Отклики"
     }
     
     override func viewDidDisappear(_ animated: Bool) {

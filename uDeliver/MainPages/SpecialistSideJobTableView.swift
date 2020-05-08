@@ -43,7 +43,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         
         if indexPath.row < Names.count{
             cell.nameLabel.text = Names[indexPath.row]
-            cell.priceLabel.text = Prices[indexPath.row] + " тг"
+            cell.priceLabel.text = Prices[indexPath.row] + " ₸"
             cell.radiusLabel.text = Distan[indexPath.row]
             cell.commentLabel.text = Comments[indexPath.row]
             cell.locationLabel.text = Locations[indexPath.row]

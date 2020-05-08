@@ -106,7 +106,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             else{
                 sendButtonOutlet.setTitle("Принять", for: .normal)
                 customerView.alpha = 0.0
-                enterPriceTextField.placeholder = defaults.string(forKey: "CurrentPrice")! + " тг"
+                enterPriceTextField.placeholder = defaults.string(forKey: "CurrentPrice")! + " ₸"
                 enterTimeTextField.placeholder = "1 час"
             }
         }
@@ -124,7 +124,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         
         
         nameLabel.text = defaults.string(forKey: "CurrentName")!
-        priceLabel.text = defaults.string(forKey: "CurrentPrice")! + " тг"
+        priceLabel.text = defaults.string(forKey: "CurrentPrice")! + " ₸"
         commentLabel.text = defaults.string(forKey: "CurrentComment")!
         locationLabel.text = defaults.string(forKey: "CurrentLocation")!
         if defaults.string(forKey: "CurrentAvatar") != "Nil" && defaults.string(forKey: "CurrentAvatar") != nil{

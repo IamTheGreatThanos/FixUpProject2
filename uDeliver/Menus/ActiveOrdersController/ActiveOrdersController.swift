@@ -35,7 +35,7 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActiveOrdersCell", for: indexPath) as! ActiveOrdersTableViewCell
         
         cell.nameLabel.text = Names[indexPath.row]
-        cell.priceLabel.text = Prices[indexPath.row] + " тг"
+        cell.priceLabel.text = Prices[indexPath.row] + " ₸"
         cell.specialtyLabel.text = Specialty[indexPath.row]
         cell.radiusLabel.text = Distan[indexPath.row]
         cell.commentLabel.text = Comments[indexPath.row]
