@@ -168,7 +168,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         
         commentLabel.isEditable = false
         
-        enterCommentTextView.text = "Пожалуйста, напишите немного информации о заказе!"
+        enterCommentTextView.text = "Информация о заказе!"
         enterCommentTextView.textColor = UIColor.lightGray
         
     }
@@ -651,7 +651,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 })
                 
                 if enterCommentTextView.text!.count == 0{
-                    enterCommentTextView.text = "Пожалуйста, напишите немного информации о заказе!"
+                    enterCommentTextView.text = "Информация о заказе!"
                     enterCommentTextView.textColor = UIColor.lightGray
                 }
                 else{
