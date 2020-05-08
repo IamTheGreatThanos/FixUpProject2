@@ -432,13 +432,13 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="ViewBorderWidth">
-                                    <real key="value" value="1"/>
+                                    <real key="value" value="0.5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="ViewCornerRadius">
                                     <real key="value" value="5"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="ViewBorderColor">
-                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="value" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
