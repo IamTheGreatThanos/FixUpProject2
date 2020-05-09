@@ -24,13 +24,13 @@ class ViewController: UIViewController {
             self.navBarTitle = "FIXUP"
             self.SpecialtyMainContainer?.alpha = 0.0
             self.CustomerMainContainer?.alpha = 1.0
-            self.refreshButtonOutlet.width = 0.01
+            self.navigationItem.rightBarButtonItem = nil
         }
         else{
             self.navBarTitle = "Список заказов"
             self.SpecialtyMainContainer.alpha = 1.0
             self.CustomerMainContainer.alpha = 0.0
-            self.refreshButtonOutlet.width = 0
+            self.navigationItem.rightBarButtonItem = self.refreshButtonOutlet
         }
     }
     
@@ -69,8 +69,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
-        SpecialistMySpecialtyTableView().refresh()
-        SpecialistSideJobTableView().refresh()
+        NotificationCenter.default.post(name: Notification.Name("RefreshMS"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("RefreshSJ"), object: nil)
     }
     
     

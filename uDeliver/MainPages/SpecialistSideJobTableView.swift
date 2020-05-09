@@ -6,7 +6,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var refreshButtonOutlet: UIButton!
     
     var Names = [String]()
     var Prices = [String]()
@@ -32,6 +31,8 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     var lat = 0.0
     var long = 0.0
+    
+    var isFinish = 0
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,7 +64,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
             self.mainTableView.isHidden = false
         }
         
-        self.refreshButtonOutlet.isHidden = false
         
         // Configure the cell’s contents.
         return cell
@@ -81,7 +81,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Notification.Name("RefreshSJ"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,9 +190,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
                                     self.activityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
                                     
-                                    if self.Names.count == 0{
-                                        self.refreshButtonOutlet.isHidden = false
-                                    }
                                 }
                             }
                             else{
@@ -322,10 +319,8 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
                                     self.activityIndicator.isHidden = true
                                     self.activityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
+                                    self.isFinish = 0
                                     
-                                    if self.Names.count == 0{
-                                        self.refreshButtonOutlet.isHidden = false
-                                    }
                                 }
                             }
                             else{
@@ -394,12 +389,14 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
         animated: true)
                 
     }
-  
-    func refresh(){
-        self.mainTableView.isHidden = true
-        self.refreshButtonOutlet.isHidden = true
-        self.ActivityIndicator.isHidden = false
-        self.ActivityIndicator.startAnimating()
-        getOrders()
+    
+    @objc func refresh (notification: NSNotification){
+        if isFinish == 0{
+            isFinish = 1
+            self.mainTableView.isHidden = true
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            getOrders()
+        }
     }
 }

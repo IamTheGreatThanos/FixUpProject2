@@ -2258,7 +2258,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Main Page Title" id="npc-Gy-Bnh">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="menu" id="6Zg-W2-fln"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="AJD-26-yZL">
+                        <barButtonItem key="rightBarButtonItem" image="refresh" id="AJD-26-yZL">
                             <connections>
                                 <action selector="refreshButtonTapped:" destination="AqZ-VC-i4N" id="bsb-vB-jhM"/>
                             </connections>
@@ -4380,7 +4380,6 @@
         <image name="F2_2" width="1210" height="1210"/>
         <image name="Launch" width="750" height="1624"/>
         <image name="active-1" width="80" height="80"/>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="back" width="24" height="24"/>
         <image name="back2" width="512" height="512"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
@@ -4400,6 +4399,7 @@
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="plus" width="128" height="128"/>
         <image name="profile-ava" width="99" height="99"/>
+        <image name="refresh" width="26" height="26"/>
         <image name="spotlight" width="54" height="86"/>
         <image name="telegram-1" width="116" height="116"/>
         <image name="whatsapp-1" width="100" height="100"/>
