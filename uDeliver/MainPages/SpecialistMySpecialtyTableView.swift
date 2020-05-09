@@ -479,8 +479,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 
     }
     
-    
-    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+    func refresh(){
         self.mainTableView.isHidden = true
         self.refreshButtonOutlet.isHidden = true
         self.ActivityIndicator.isHidden = false

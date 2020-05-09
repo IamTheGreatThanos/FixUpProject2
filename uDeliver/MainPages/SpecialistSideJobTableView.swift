@@ -395,12 +395,11 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
                 
     }
   
-    
-    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+    func refresh(){
         self.mainTableView.isHidden = true
         self.refreshButtonOutlet.isHidden = true
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        self.ActivityIndicator.isHidden = false
+        self.ActivityIndicator.startAnimating()
         getOrders()
     }
 }
