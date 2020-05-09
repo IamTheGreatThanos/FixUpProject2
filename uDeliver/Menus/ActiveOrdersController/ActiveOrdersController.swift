@@ -121,8 +121,19 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                                         self.Lats.append(i["a_lat"] as! String)
                                         self.Lngs.append(i["a_long"] as! String)
                                         self.IDs.append(String(i["id"] as! Int))
-                                        self.Distan.append(i["distance"] as! String)
-                                        self.Durat.append(i["duration"] as! String)
+                                        if i["distance"] as? String != nil{
+                                            self.Distan.append(i["distance"] as! String)
+                                        }
+                                        else{
+                                            self.Distan.append("10 км")
+                                        }
+                                        if i["duration"] as? String != nil{
+                                            self.Durat.append(i["duration"] as! String)
+                                        }
+                                        else{
+                                            self.Durat.append("15 мин")
+                                        }
+                                        
                                         
                                         if self.role == "0"{
                                             self.phoneNumbers.append(worker["phone"] as! String)
