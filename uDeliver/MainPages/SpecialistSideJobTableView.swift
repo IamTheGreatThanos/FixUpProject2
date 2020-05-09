@@ -28,7 +28,6 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     var locationManager = CLLocationManager()
     let geoCoder = CLGeocoder()
     
-    
     var lat = 0.0
     var long = 0.0
     
@@ -71,7 +70,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+//        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         
         self.lat = locValue.latitude
         self.long = locValue.longitude
