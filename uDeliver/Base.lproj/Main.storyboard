@@ -1409,7 +1409,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Версия 1.0, Сборка 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxQ-zP-2Cc">
-                                <rect key="frame" x="82" y="732" width="250" height="30"/>
+                                <rect key="frame" x="82" y="468" width="250" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="YzW-DX-g9K"/>
                                     <constraint firstAttribute="height" constant="30" id="adh-or-z6I"/>
@@ -1433,23 +1433,23 @@
                                 </items>
                             </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F2_2" translatesAutoresizingMaskIntoConstraints="NO" id="F6F-Ru-htH">
-                                <rect key="frame" x="87" y="158" width="240" height="240"/>
+                                <rect key="frame" x="117" y="188" width="180" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="9Sf-Ky-PoW"/>
-                                    <constraint firstAttribute="height" constant="240" id="qSY-0t-6CK"/>
+                                    <constraint firstAttribute="width" constant="180" id="9Sf-Ky-PoW"/>
+                                    <constraint firstAttribute="height" constant="180" id="qSY-0t-6CK"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="F6F-Ru-htH" firstAttribute="top" secondItem="5wS-S6-7HS" secondAttribute="bottom" constant="70" id="0sP-em-8yb"/>
-                            <constraint firstItem="syM-VZ-93b" firstAttribute="bottom" secondItem="mxQ-zP-2Cc" secondAttribute="bottom" constant="100" id="3oq-Df-dHl"/>
+                            <constraint firstItem="F6F-Ru-htH" firstAttribute="top" secondItem="5wS-S6-7HS" secondAttribute="bottom" constant="100" id="0sP-em-8yb"/>
                             <constraint firstItem="mxQ-zP-2Cc" firstAttribute="centerX" secondItem="Cpn-g5-sq5" secondAttribute="centerX" id="KzA-zp-TrV"/>
                             <constraint firstItem="F6F-Ru-htH" firstAttribute="centerX" secondItem="Cpn-g5-sq5" secondAttribute="centerX" id="W6x-nn-cHg"/>
                             <constraint firstItem="syM-VZ-93b" firstAttribute="trailing" secondItem="jnW-Uz-Kca" secondAttribute="trailing" id="aXX-Bz-5RL"/>
                             <constraint firstItem="5wS-S6-7HS" firstAttribute="leading" secondItem="syM-VZ-93b" secondAttribute="leading" id="c96-kM-Jfm"/>
                             <constraint firstItem="5wS-S6-7HS" firstAttribute="top" secondItem="syM-VZ-93b" secondAttribute="top" id="ekm-bo-a3L"/>
                             <constraint firstItem="jnW-Uz-Kca" firstAttribute="top" secondItem="5wS-S6-7HS" secondAttribute="bottom" symbolic="YES" id="hNf-BX-Fvx"/>
+                            <constraint firstItem="mxQ-zP-2Cc" firstAttribute="top" secondItem="F6F-Ru-htH" secondAttribute="bottom" constant="100" id="hTe-6r-Dtz"/>
                             <constraint firstItem="syM-VZ-93b" firstAttribute="bottom" secondItem="jnW-Uz-Kca" secondAttribute="bottom" id="hhX-Sj-6s0"/>
                             <constraint firstItem="5wS-S6-7HS" firstAttribute="trailing" secondItem="syM-VZ-93b" secondAttribute="trailing" id="jD0-rN-GgC"/>
                             <constraint firstItem="jnW-Uz-Kca" firstAttribute="leading" secondItem="syM-VZ-93b" secondAttribute="leading" id="qGS-pG-x4R"/>
@@ -1494,11 +1494,12 @@
                             </textView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Asr-Ch-3hH">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="barTintColor" red="0.99508255720000005" green="0.16335938650000001" blue="0.14926238359999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="Emb-Ol-qbt">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="4Wa-aW-2qA">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <segue destination="uys-6B-QKv" kind="show" id="Szc-3y-2cQ"/>
                                             </connections>
@@ -1507,7 +1508,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.98313397170000005" green="0.24154257770000001" blue="0.24622285369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aXY-KF-rDe" firstAttribute="leading" secondItem="ASw-E2-lsF" secondAttribute="leading" constant="20" id="6ac-nX-W2O"/>
                             <constraint firstItem="aXY-KF-rDe" firstAttribute="top" secondItem="DrI-VJ-oca" secondAttribute="bottom" constant="20" id="CTO-Eu-3kM"/>
@@ -4422,7 +4423,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hcs-Yr-rRW"/>
+        <segue reference="Szc-3y-2cQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Add_Image" width="200" height="200"/>
