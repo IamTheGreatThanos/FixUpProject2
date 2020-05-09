@@ -4063,15 +4063,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BKE-hK-QC7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="BKE-hK-QC7" firstAttribute="top" secondItem="i76-tc-EWb" secondAttribute="top" id="4qy-gV-Gfj"/>
+                            <constraint firstAttribute="bottom" secondItem="BKE-hK-QC7" secondAttribute="bottom" id="GFa-nG-PVj"/>
                             <constraint firstItem="BKE-hK-QC7" firstAttribute="trailing" secondItem="i76-tc-EWb" secondAttribute="trailing" id="OsZ-2g-E1h"/>
+                            <constraint firstItem="BKE-hK-QC7" firstAttribute="top" secondItem="SH0-i9-8pz" secondAttribute="top" id="Z3b-Dp-sPM"/>
                             <constraint firstItem="BKE-hK-QC7" firstAttribute="leading" secondItem="i76-tc-EWb" secondAttribute="leading" id="p8U-jq-kQT"/>
-                            <constraint firstItem="BKE-hK-QC7" firstAttribute="bottom" secondItem="i76-tc-EWb" secondAttribute="bottom" id="vcB-Rh-RFt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i76-tc-EWb"/>
                     </view>

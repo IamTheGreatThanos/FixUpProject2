@@ -22,4 +22,11 @@ class WelcomeController: UIViewController {
             defaults.set("True", forKey: "isGreated")
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
+    }
 }
