@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var CustomerMainContainer: UIView!
     @IBOutlet weak var refreshButtonOutlet: UIBarButtonItem!
     
+    
     var navBarTitle = ""
     
     
@@ -68,10 +69,10 @@ class ViewController: UIViewController {
     }
     
     
+
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: Notification.Name("RefreshMS"), object: nil)
         NotificationCenter.default.post(name: Notification.Name("RefreshSJ"), object: nil)
     }
-    
     
 }
