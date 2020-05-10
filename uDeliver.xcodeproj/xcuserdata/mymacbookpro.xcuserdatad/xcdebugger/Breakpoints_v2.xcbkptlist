@@ -52,5 +52,113 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "uDeliver/ProfileControllers/AboutProfile.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "AboutProfile"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA - f14755d547687d58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FIXUP.AboutProfile.aboutInfo.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "FIXUP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymacbookpro/Documents/GitHub/FixUpProject2/uDeliver/ProfileControllers/AboutProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA - f954efad9ebb51b4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FIXUP.AboutProfile.aboutInfo.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "FIXUP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymacbookpro/Documents/GitHub/FixUpProject2/uDeliver/ProfileControllers/AboutProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA - d14d3ef483974661"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FIXUP.AboutProfile.aboutInfo.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "FIXUP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymacbookpro/Documents/GitHub/FixUpProject2/uDeliver/ProfileControllers/AboutProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA - 93ae62595f6da8a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FIXUP.AboutProfile.aboutInfo.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "FIXUP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymacbookpro/Documents/GitHub/FixUpProject2/uDeliver/ProfileControllers/AboutProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA - 1b3a9d55826251d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FIXUP.AboutProfile.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; FIXUP.AboutProfile"
+                  moduleName = "FIXUP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymacbookpro/Documents/GitHub/FixUpProject2/uDeliver/ProfileControllers/AboutProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "146">
+               </Location>
+               <Location
+                  uuid = "C999B277-8833-4CBB-A349-9C26B3889EBA - b99a6b68fbab1f67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FIXUP.AboutProfile.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;FIXUP.AboutProfile&gt;"
+                  moduleName = "FIXUP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mymacbookpro/Documents/GitHub/FixUpProject2/uDeliver/ProfileControllers/AboutProfile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "102">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
