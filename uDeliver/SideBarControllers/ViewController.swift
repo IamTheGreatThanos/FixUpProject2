@@ -8,6 +8,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var SpecialtyMainContainer: UIView!
     @IBOutlet weak var CustomerMainContainer: UIView!
+    @IBOutlet weak var refreshButtonOutlet: UIBarButtonItem!
+    
     
     var navBarTitle = ""
     
@@ -23,11 +25,13 @@ class ViewController: UIViewController {
             self.navBarTitle = "FIXUP"
             self.SpecialtyMainContainer?.alpha = 0.0
             self.CustomerMainContainer?.alpha = 1.0
+            self.navigationItem.rightBarButtonItem = nil
         }
         else{
             self.navBarTitle = "Список заказов"
             self.SpecialtyMainContainer.alpha = 1.0
             self.CustomerMainContainer.alpha = 0.0
+            self.navigationItem.rightBarButtonItem = self.refreshButtonOutlet
         }
     }
     
@@ -43,7 +47,6 @@ class ViewController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         nav?.topItem?.title = self.navBarTitle
         nav?.backgroundColor = UIColor.white
-        
         
     }
     
@@ -66,18 +69,10 @@ class ViewController: UIViewController {
     }
     
     
-    func changeMainView(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier :"HistoryController")
-        self.navigationController?.pushViewController(viewController,
-        animated: true)
-    }
-    
+
     @IBAction func refreshButtonTapped(_ sender: UIBarButtonItem) {
-        let firstViewController:
-            SpecialistMySpecialtyTableView = storyboard!.instantiateViewController(withIdentifier: "SpecialistMySpecialtyTableView") as! SpecialistMySpecialtyTableView;
-        firstViewController.getOrders()
+        NotificationCenter.default.post(name: Notification.Name("RefreshMS"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("RefreshSJ"), object: nil)
     }
-    
     
 }

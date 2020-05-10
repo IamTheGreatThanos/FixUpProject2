@@ -6,7 +6,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var refreshButtonOutlet: UIButton!
     
     var Names = [String]()
     var Prices = [String]()
@@ -35,6 +34,8 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     var lat = 0.0
     var long = 0.0
+    
+    var isFinish = 0
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,7 +68,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             self.mainTableView.isHidden = false
         }
         
-        self.refreshButtonOutlet.isHidden = false
         
         // Configure the cell’s contents.
         return cell
@@ -75,7 +75,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
+//        let location = CLLocation(latitude: locValue.latitude, longitude: locValue.longitude)
         
         self.lat = locValue.latitude
         self.long = locValue.longitude
@@ -85,6 +85,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: Notification.Name("RefreshMS"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -235,9 +236,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.ActivityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
                                     
-                                    if self.Names.count == 0{
-                                        self.refreshButtonOutlet.isHidden = false
-                                    }
                                 }
                             }
                             else{
@@ -374,9 +372,8 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
-                                    if self.Names.count == 0{
-                                        self.refreshButtonOutlet.isHidden = false
-                                    }
+                                    self.isFinish = 0
+
                                 }
                             }
                             else{
@@ -479,12 +476,13 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 
     }
     
-    
-    @IBAction func refreshButtonTapped(_ sender: UIButton) {
-        self.mainTableView.isHidden = true
-        self.refreshButtonOutlet.isHidden = true
-        self.ActivityIndicator.isHidden = false
-        self.ActivityIndicator.startAnimating()
-        getOrders()
+     @objc func refresh (notification: NSNotification){
+        if isFinish == 0 {
+            isFinish = 1
+            self.mainTableView.isHidden = true
+            self.ActivityIndicator.isHidden = false
+            self.ActivityIndicator.startAnimating()
+            getOrders()
+        }
     }
 }
