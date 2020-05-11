@@ -20,6 +20,7 @@ class SideBarTableViewController: UITableViewController {
         let defaults = UserDefaults.standard
         let value = defaults.bool(forKey: "isCourier")
         let isRegister = defaults.string(forKey: "isRegister")
+        self.automaticallyAdjustsScrollViewInsets = false
         
         if isRegister == "true"{
             if defaults.string(forKey: "MyName") != nil{

@@ -89,7 +89,7 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         
         if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard
-            if defaults.bool(forKey: "isValidateTimer") != false{
+            if defaults.bool(forKey: "isValidateTimer") != false && defaults.string(forKey: "MyOrder") != nil{
                 let token = defaults.string(forKey: "Token")
                 let url = URL(string: "https://back.fix-up.org/maps/get/" + defaults.string(forKey: "MyOrder")!+"/")!
                 var request = URLRequest(url: url)
