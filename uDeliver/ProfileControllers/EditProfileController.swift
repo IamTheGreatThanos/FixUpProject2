@@ -65,7 +65,7 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         if Reachability.isConnectedToNetwork() == true {
-            if nameTextField.text?.count != 0 && aboutTextView.text?.count != 0{
+            if nameTextField.text?.count != 0 && aboutTextView.text?.count != 0 {
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
                 let url = URL(string: "https://back.fix-up.org/users/me/")!
