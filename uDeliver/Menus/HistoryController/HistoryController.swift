@@ -5,7 +5,7 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var mainTableView: UITableView!
-    @IBOutlet weak var avatarImage: UIImageView!
+    //@IBOutlet weak var avatarImage: UIImageView!
     
     var Names = [String]()
     var Prices = [String]()
@@ -78,9 +78,6 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
                                         else{
                                             self.Specialty.append("Специалист")
                                         }
-                                        if defaults.url(forKey: "MyAvatar") != nil{
-                                            self.avatarImage.load(url: defaults.url(forKey: "MyAvatar")!)
-                                        }
                                         self.Prices.append(i["price"] as! String)
                                         self.Comments.append(i["comment"] as! String)
                                         self.Locations.append(i["a_name"] as! String)
@@ -98,6 +95,9 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                 }
+                               /* if defaults.url(forKey: "MyAvatar") != nil{
+                                                                           self.avatarImage.load(url: defaults.url(forKey: "MyAvatar")!)
+                                                                       } */
                             }
                             else{
                                 DispatchQueue.main.async {

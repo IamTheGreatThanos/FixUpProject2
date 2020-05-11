@@ -4062,38 +4062,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0P-zy-irA">
-                                <rect key="frame" x="40" y="15" width="334" height="221"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="О себе:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwy-ao-mtE">
                                 <rect key="frame" x="40" y="15" width="144" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-b0-bzl">
+                                <rect key="frame" x="20" y="44" width="374" height="207"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="iyU-VI-f4g" firstAttribute="bottom" secondItem="P9X-b0-bzl" secondAttribute="bottom" constant="5" id="7uB-CZ-1Xh"/>
                             <constraint firstItem="Xwy-ao-mtE" firstAttribute="leading" secondItem="iyU-VI-f4g" secondAttribute="leading" constant="40" id="E2g-TO-6B0"/>
-                            <constraint firstItem="A0P-zy-irA" firstAttribute="top" secondItem="Xwy-ao-mtE" secondAttribute="top" id="PmE-Sc-AgM"/>
-                            <constraint firstItem="A0P-zy-irA" firstAttribute="leading" secondItem="iyU-VI-f4g" secondAttribute="leading" constant="40" id="nfB-6W-HEh"/>
-                            <constraint firstItem="iyU-VI-f4g" firstAttribute="bottom" secondItem="A0P-zy-irA" secondAttribute="bottom" constant="20" id="rVE-9u-2tV"/>
-                            <constraint firstItem="iyU-VI-f4g" firstAttribute="trailing" secondItem="A0P-zy-irA" secondAttribute="trailing" constant="40" id="slN-Dl-CrH"/>
+                            <constraint firstItem="P9X-b0-bzl" firstAttribute="top" secondItem="iyU-VI-f4g" secondAttribute="top" constant="44" id="Gfp-91-sh5"/>
+                            <constraint firstItem="P9X-b0-bzl" firstAttribute="leading" secondItem="iyU-VI-f4g" secondAttribute="leading" constant="20" id="b9C-pG-uiE"/>
+                            <constraint firstItem="iyU-VI-f4g" firstAttribute="trailing" secondItem="P9X-b0-bzl" secondAttribute="trailing" constant="20" id="iLO-1q-Bda"/>
                             <constraint firstItem="Xwy-ao-mtE" firstAttribute="top" secondItem="iyU-VI-f4g" secondAttribute="top" constant="15" id="vYZ-rf-LA2"/>
                             <constraint firstItem="iyU-VI-f4g" firstAttribute="trailing" secondItem="Xwy-ao-mtE" secondAttribute="trailing" constant="230" id="ylk-5L-ftD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iyU-VI-f4g"/>
                     </view>
                     <connections>
-                        <outlet property="aboutInfo" destination="A0P-zy-irA" id="n9q-3E-svn"/>
+                        <outlet property="aboutInfo" destination="P9X-b0-bzl" id="M86-sO-CcB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0g4-x5-n72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1359" y="-1707"/>
+            <point key="canvasLocation" x="-1359.4202898550725" y="-1707.0652173913045"/>
         </scene>
         <!--Welcome Controller-->
         <scene sceneID="bpc-T0-xoz">
