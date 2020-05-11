@@ -22,7 +22,6 @@ class MainPageSpecialty: UIViewController{
             SideJobView.alpha = 0.0
         }
         else{
-            
             MySpecialtyView.alpha = 0.0
             SideJobView.alpha = 1.0
         }

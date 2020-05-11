@@ -4,9 +4,7 @@ import Foundation
 class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var mainTableView: UITableView!
-    //@IBOutlet weak var avatarImage: UIImageView!
-    
+    @IBOutlet weak var mainTableView: UITableView!    
     var Names = [String]()
     var Prices = [String]()
     var Specialty = [String]()
@@ -58,6 +56,7 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
             if defaults.string(forKey: "isRegister") == "true"{
                 let token = defaults.string(forKey: "Token")
                 let url = URL(string: "https://back.fix-up.org/maps/history/" + role)!
+                let urlForImage = URL(string: "https://back.fix-up.org/users/avatar/")!
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("Token " + token!, forHTTPHeaderField: "Authorization")
@@ -78,6 +77,7 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
                                         else{
                                             self.Specialty.append("Специалист")
                                         }
+                                        
                                         self.Prices.append(i["price"] as! String)
                                         self.Comments.append(i["comment"] as! String)
                                         self.Locations.append(i["a_name"] as! String)
@@ -95,9 +95,6 @@ class HistoryController: UIViewController, UITableViewDelegate, UITableViewDataS
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                 }
-                               /* if defaults.url(forKey: "MyAvatar") != nil{
-                                                                           self.avatarImage.load(url: defaults.url(forKey: "MyAvatar")!)
-                                                                       } */
                             }
                             else{
                                 DispatchQueue.main.async {
