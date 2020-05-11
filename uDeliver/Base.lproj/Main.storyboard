@@ -1179,7 +1179,7 @@
                                 <items>
                                     <navigationItem title="Поддержка" id="v06-et-Xzt">
                                         <barButtonItem key="leftBarButtonItem" image="back" landscapeImage="back2" id="S4b-DQ-TRw">
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelButton:" destination="uys-6B-QKv" id="ZDP-YI-blf"/>
                                             </connections>
