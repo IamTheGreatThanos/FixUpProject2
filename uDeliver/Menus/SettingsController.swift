@@ -56,20 +56,16 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
             UIApplication.shared.openURL(url)
         }
     }
-    
-    
-    
+
     
     // EMAIL
     
-    
-
         
         @IBAction func sendEmail(_ sender: UIButton) {
             // Modify following variables with your text / recipient
-            let recipientEmail = "test@email.com"
-            let subject = "Multi client email support"
-            let body = "This code supports sending email via multiple different email apps on iOS! :)"
+            let recipientEmail = "mailto:info@fix-up.org"
+            let subject = "Обращение в поддержку Fixup"
+            let body = "Здравствуйте. У меня возник(ли) вопрос(ы) по FixUp."
 
             // Show default mail composer
             if MFMailComposeViewController.canSendMail() {
