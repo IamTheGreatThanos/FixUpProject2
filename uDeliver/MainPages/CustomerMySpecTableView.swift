@@ -1,12 +1,9 @@
 import UIKit
 import Foundation
 
-class CustomerMySpecTableView: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CustomerMySpecTableView: UIViewController {
     
     var selectedR = 0
-    @IBOutlet weak var mainTableView: UITableView!
-    
-    var currentCellID: Int = 0
     
     var Specialty = ["Доставка", "Спецтехника", "Строительство", "Сервис и быт", "Красота",
     "Электроника", "IT и фриланис", "Образование", "Медицина", "Автосервис",
@@ -30,61 +27,172 @@ class CustomerMySpecTableView: UIViewController,UITableViewDelegate,UITableViewD
     "Гид, визовый консультант, тренер, кедди, спарринг-партнер и т.д.",
     "Промоутер, расклейщик объявлений, астролог, рекламщик и т.д."]
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Specialty.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CMScell", for: indexPath) as! CustomerMySpecTableViewCell
-        
-        cell.SpecialtyView.backgroundColor = UIColor.white
-        cell.SpecialtyName.textColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
-        cell.SpecialtyInto.textColor = UIColor.darkGray
-        cell.SpecialtyIcon.image = UIImage(named: "Card" + String(indexPath.row) + ".png")
-        
-        
-        let defaults = UserDefaults.standard
-        defaults.set(currentCellID, forKey: "OrderSpecialtyID")
-        
-        // Configure the cell’s contents.
-        cell.SpecialtyName.text = Specialty[indexPath.row]
-        cell.SpecialtyInto.text = Specialty_into[indexPath.row]
-        
-        
-        return cell
-    }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        mainTableView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.93, alpha: 1.0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath) as! CustomerMySpecTableViewCell
-        UIView.animate(withDuration: 0.5, animations: {
-            currentCell.SpecialtyView.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
-        })
-        UIView.animate(withDuration: 0.5, animations: {
-            currentCell.SpecialtyView.backgroundColor = UIColor.white
-        })
+    func selectedSpec(ID:Int){
         let defaults = UserDefaults.standard
-        defaults.set(Specialty[indexPath.row], forKey: "CurrentOrderSpecTitle")
-        defaults.set(Specialty_into[indexPath.row], forKey: "CurrentOrderSpecDesc")
+        defaults.set(Specialty[ID], forKey: "CurrentOrderSpecTitle")
+        defaults.set(Specialty_into[ID], forKey: "CurrentOrderSpecDesc")
         
-        self.selectedR = indexPath.row
+        self.selectedR = ID
         defaults.set(self.selectedR, forKey: "SpecialtyId")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"OrderController")
         self.navigationController?.pushViewController(viewController,
         animated: true)
-        
     }
+    
+    
+    @IBAction func button1Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button2Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button3Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button4Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button5Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button6Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button7Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button8Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button9Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button10Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button11Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button12Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button13Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button14Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button15Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
+    @IBAction func button16Tapped(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor.white
+        })
+    }
+    
 }
