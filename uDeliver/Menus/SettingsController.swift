@@ -1,12 +1,11 @@
 import UIKit
 import Foundation
+import MessageUI
 
-class SettingsController: UIViewController {
+class SettingsController: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    
     @IBAction func callButton(sender: UIButton) {
         let phoneNumber = "+77005050908"
           if let url = URL(string: "tel://" + phoneNumber),
@@ -14,33 +13,6 @@ class SettingsController: UIViewController {
           UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     }
-    
-   /* @IBAction func btnCall(_ sender:UIButton){
-        func makePhoneCall(phoneNumber: String){
-            let phoneNumber = "+7 708 999 99 99"
-            if let phoneURL = NSURL(string: ("tel://" + phoneNumber)){
-
-                    let alert = UIAlertController(title: ("Call " + phoneNumber + "?"), message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Call", style: .default, handler: { (action) in
-                        UIApplication.shared.open(phoneURL as URL, options: [:], completionHandler: nil)
-                    }))
-
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                
-            }
-        }
-    } */
-    
-    
-    
-    
-    
-   
-    
-    
-    
-
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -84,4 +56,67 @@ class SettingsController: UIViewController {
             UIApplication.shared.openURL(url)
         }
     }
+    
+    
+    
+    
+    // EMAIL
+    
+    
+
+        
+        @IBAction func sendEmail(_ sender: UIButton) {
+            // Modify following variables with your text / recipient
+            let recipientEmail = "test@email.com"
+            let subject = "Multi client email support"
+            let body = "This code supports sending email via multiple different email apps on iOS! :)"
+
+            // Show default mail composer
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients([recipientEmail])
+                mail.setSubject(subject)
+                mail.setMessageBody(body, isHTML: false)
+
+                present(mail, animated: true)
+
+            // Show third party email composer if default Mail app is not present
+            } else if let emailUrl = createEmailUrl(to: recipientEmail, subject: subject, body: body) {
+                UIApplication.shared.open(emailUrl)
+            }
+        }
+        @IBAction func EmailC(_ sender: UIButton) {
+        }
+        
+        private func createEmailUrl(to: String, subject: String, body: String) -> URL? {
+            let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+            let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+
+            let gmailUrl = URL(string: "googlegmail://co?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+            let outlookUrl = URL(string: "ms-outlook://compose?to=\(to)&subject=\(subjectEncoded)")
+            let yahooMail = URL(string: "ymail://mail/compose?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+            let sparkUrl = URL(string: "readdle-spark://compose?recipient=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+            let defaultUrl = URL(string: "mailto:\(to)?subject=\(subjectEncoded)&body=\(bodyEncoded)")
+
+            if let gmailUrl = gmailUrl, UIApplication.shared.canOpenURL(gmailUrl) {
+                return gmailUrl
+            } else if let outlookUrl = outlookUrl, UIApplication.shared.canOpenURL(outlookUrl) {
+                return outlookUrl
+            } else if let yahooMail = yahooMail, UIApplication.shared.canOpenURL(yahooMail) {
+                return yahooMail
+            } else if let sparkUrl = sparkUrl, UIApplication.shared.canOpenURL(sparkUrl) {
+                return sparkUrl
+            }
+
+            return defaultUrl
+        }
+
+        func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+            controller.dismiss(animated: true)
+        }
+    
+
+    
+    
 }

@@ -1145,7 +1145,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Поддержка" id="v06-et-Xzt">
-                                        <barButtonItem key="leftBarButtonItem" tag="-6" title="sasdasd " image="back" width="20" id="S4b-DQ-TRw">
+                                        <barButtonItem key="leftBarButtonItem" tag="-6" title="sasdasd " image="back" width="20" id="S4b-DQ-TRw" userLabel="sasdasd">
                                             <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2000"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1161,18 +1161,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+7 700 505 09 08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gD-Ml-1YW">
-                                <rect key="frame" x="110" y="144" width="200" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="JWv-Gc-iSt"/>
-                                    <constraint firstAttribute="width" constant="200" id="TgQ-zt-p23"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Позвоните нам по этому номеру" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8T-dW-ofS">
-                                <rect key="frame" x="110" y="174" width="200" height="45"/>
+                                <rect key="frame" x="110" y="169" width="200" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="1Nf-MS-k8h"/>
                                     <constraint firstAttribute="width" constant="200" id="UqO-Gn-Y6e"/>
@@ -1182,7 +1172,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Можете прислать сообщение на эту почту" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ca-vV-GyW">
-                                <rect key="frame" x="110" y="299" width="200" height="45"/>
+                                <rect key="frame" x="110" y="294" width="200" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="5vx-4h-26j"/>
                                     <constraint firstAttribute="width" constant="200" id="ygO-Es-8hW"/>
@@ -1242,7 +1232,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info@fix-up.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADU-zO-f83">
-                                <rect key="frame" x="110" y="269" width="200" height="25"/>
+                                <rect key="frame" x="110" y="264" width="200" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="m1G-2f-WHu"/>
                                     <constraint firstAttribute="width" constant="200" id="nNZ-Lk-sK3"/>
@@ -1294,7 +1284,7 @@
                                     <action selector="thirdSNButtonTapped:" destination="uys-6B-QKv" eventType="touchUpInside" id="9D0-jj-dB4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1v-OR-WeI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1v-OR-WeI" userLabel="CallButton2">
                                 <rect key="frame" x="35" y="145.66666666666666" width="50" height="47.333333333333343"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="d5T-sa-7LB"/>
@@ -1314,28 +1304,41 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="message" catalog="system"/>
+                                <connections>
+                                    <action selector="sendEmail:" destination="uys-6B-QKv" eventType="touchUpInside" id="ZAD-MY-gn7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGP-g3-SKA" userLabel="CallButton">
+                                <rect key="frame" x="110" y="137" width="141" height="34"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="+7 700 505 09 08">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="callButtonWithSender:" destination="uys-6B-QKv" eventType="touchUpInside" id="jya-Am-wIM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="P1v-OR-WeI" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" constant="35" id="09r-71-0tS"/>
-                            <constraint firstItem="B8T-dW-ofS" firstAttribute="top" secondItem="7gD-Ml-1YW" secondAttribute="bottom" constant="5" id="0mD-qy-3aV"/>
                             <constraint firstItem="0rB-s7-rq4" firstAttribute="centerX" secondItem="oEL-bU-PYd" secondAttribute="centerX" id="1hY-NB-4Zz"/>
                             <constraint firstItem="oEL-bU-PYd" firstAttribute="trailing" secondItem="0rB-s7-rq4" secondAttribute="trailing" constant="20" id="66g-mM-XqO"/>
                             <constraint firstItem="q1f-KH-JIZ" firstAttribute="top" secondItem="P1v-OR-WeI" secondAttribute="bottom" constant="75" id="6aO-KM-IxV"/>
                             <constraint firstItem="B8T-dW-ofS" firstAttribute="leading" secondItem="P1v-OR-WeI" secondAttribute="trailing" constant="25" id="6iw-uv-0qj"/>
+                            <constraint firstItem="oGP-g3-SKA" firstAttribute="top" secondItem="oEL-bU-PYd" secondAttribute="top" constant="137" id="8QH-AO-xJI"/>
                             <constraint firstItem="oEL-bU-PYd" firstAttribute="trailing" secondItem="Qea-TW-ZSJ" secondAttribute="trailing" constant="20" id="95c-Nh-ZPV"/>
                             <constraint firstItem="chv-hV-4mR" firstAttribute="centerY" secondItem="QFQ-FW-xSw" secondAttribute="centerY" id="ABw-vE-U3Q"/>
                             <constraint firstItem="Qea-TW-ZSJ" firstAttribute="top" secondItem="QFQ-FW-xSw" secondAttribute="bottom" constant="20" id="Ayd-M0-Ppd"/>
                             <constraint firstItem="QFQ-FW-xSw" firstAttribute="leading" secondItem="HGc-18-a7i" secondAttribute="trailing" constant="30" id="ChT-w8-fXC"/>
                             <constraint firstItem="ihe-qx-Phd" firstAttribute="centerX" secondItem="oEL-bU-PYd" secondAttribute="centerX" id="Cpa-l0-NXu"/>
                             <constraint firstItem="QFQ-FW-xSw" firstAttribute="centerX" secondItem="oEL-bU-PYd" secondAttribute="centerX" id="FIh-6E-3PJ"/>
+                            <constraint firstItem="B8T-dW-ofS" firstAttribute="bottom" secondItem="oGP-g3-SKA" secondAttribute="bottom" constant="43" id="HeM-ok-GDX"/>
                             <constraint firstItem="P1v-OR-WeI" firstAttribute="top" secondItem="LJM-Pz-7S8" secondAttribute="bottom" constant="100" id="KBx-lk-KrG"/>
                             <constraint firstItem="LJM-Pz-7S8" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" id="Kya-g9-MUj"/>
                             <constraint firstItem="Qea-TW-ZSJ" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" constant="20" id="MIK-H1-QVZ"/>
-                            <constraint firstItem="7gD-Ml-1YW" firstAttribute="top" secondItem="LJM-Pz-7S8" secondAttribute="bottom" constant="100" id="ODQ-lx-Ovj"/>
                             <constraint firstItem="oEL-bU-PYd" firstAttribute="bottom" secondItem="0rB-s7-rq4" secondAttribute="bottom" constant="20" id="PF7-7G-wch"/>
-                            <constraint firstItem="7gD-Ml-1YW" firstAttribute="leading" secondItem="P1v-OR-WeI" secondAttribute="trailing" constant="25" id="QIk-AB-Fkh"/>
                             <constraint firstItem="7Ca-vV-GyW" firstAttribute="leading" secondItem="q1f-KH-JIZ" secondAttribute="trailing" constant="25" id="RqI-tQ-1DT"/>
                             <constraint firstItem="chv-hV-4mR" firstAttribute="leading" secondItem="QFQ-FW-xSw" secondAttribute="trailing" constant="30" id="XaI-uz-Vq8"/>
                             <constraint firstItem="7Ca-vV-GyW" firstAttribute="top" secondItem="ADU-zO-f83" secondAttribute="bottom" constant="5" id="XwB-1l-H4F"/>
@@ -1345,6 +1348,7 @@
                             <constraint firstItem="ADU-zO-f83" firstAttribute="top" secondItem="B8T-dW-ofS" secondAttribute="bottom" constant="50" id="feR-JV-BUS"/>
                             <constraint firstItem="LJM-Pz-7S8" firstAttribute="trailing" secondItem="oEL-bU-PYd" secondAttribute="trailing" id="hkW-Ho-FWP"/>
                             <constraint firstItem="Qea-TW-ZSJ" firstAttribute="centerX" secondItem="oEL-bU-PYd" secondAttribute="centerX" id="rNj-sB-J2Y"/>
+                            <constraint firstItem="oGP-g3-SKA" firstAttribute="leading" secondItem="P1v-OR-WeI" secondAttribute="trailing" constant="25" id="uN9-r4-hxO"/>
                             <constraint firstItem="q1f-KH-JIZ" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" constant="35" id="vwP-qX-hEC"/>
                             <constraint firstItem="HGc-18-a7i" firstAttribute="centerY" secondItem="QFQ-FW-xSw" secondAttribute="centerY" id="yN6-l5-iq9"/>
                             <constraint firstItem="0rB-s7-rq4" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" constant="20" id="yUd-F9-wr3"/>
