@@ -63,7 +63,7 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
         
         @IBAction func sendEmail(_ sender: UIButton) {
             // Modify following variables with your text / recipient
-            let recipientEmail = "mailto:info@fix-up.org"
+            let recipientEmail = "info@fix-up.org"
             let subject = "Обращение в поддержку Fixup"
             let body = "Здравствуйте. У меня возник(ли) вопрос(ы) по FixUp."
 
