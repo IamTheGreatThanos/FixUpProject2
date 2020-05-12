@@ -16,6 +16,7 @@ import UIKit
         let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         layer.shadowPath = shadowPath.cgPath
         layer.shadowOpacity = 0.2
+        layer.animation(forKey: "Rabiya")
     }
     
 }
