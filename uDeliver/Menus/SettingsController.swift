@@ -6,12 +6,35 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBAction func callButton(sender: UIButton) {
+   /* @IBAction func callButton(sender: UIButton) {
         let phoneNumber = "+77005050908"
           if let url = URL(string: "tel://" + phoneNumber),
           UIApplication.shared.canOpenURL(url) {
           UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    }*/
+    
+    @IBAction func openWhatsApp(sender: UIButton){
+        let phoneNumber =  "+77005050908" // you need to change this number
+        let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
+        if UIApplication.shared.canOpenURL(appURL) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+            }
+            else {
+                UIApplication.shared.openURL(appURL)
+            }
+        } else {
+            let phoneNumber =  "+77005050908" // you need to change this number
+            let appURL = URL(string: "https://wa.me/\(phoneNumber)")!
+            if UIApplication.shared.canOpenURL(appURL) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(appURL)
+                }
+            }
+        }
     }
     
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {

@@ -1316,7 +1316,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="callButtonWithSender:" destination="uys-6B-QKv" eventType="touchUpInside" id="jya-Am-wIM"/>
+                                    <action selector="openWhatsAppWithSender:" destination="uys-6B-QKv" eventType="touchUpInside" id="1iu-Ix-gmg"/>
                                 </connections>
                             </button>
                         </subviews>
