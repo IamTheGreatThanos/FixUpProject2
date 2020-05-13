@@ -1273,13 +1273,13 @@
                                     <action selector="secondSNButtonTapped:" destination="uys-6B-QKv" eventType="touchUpInside" id="lFs-OE-VGt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chv-hV-4mR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chv-hV-4mR">
                                 <rect key="frame" x="257" y="546" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Z9e-31-jei"/>
                                     <constraint firstAttribute="height" constant="40" id="dbJ-1v-emQ"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="telegram-1"/>
+                                <state key="normal" image="globalization"/>
                                 <connections>
                                     <action selector="thirdSNButtonTapped:" destination="uys-6B-QKv" eventType="touchUpInside" id="9D0-jj-dB4"/>
                                 </connections>
@@ -1291,10 +1291,7 @@
                                     <constraint firstAttribute="width" constant="50" id="i8S-Jj-kuw"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="call-2"/>
-                                <connections>
-                                    <action selector="callButtonWithSender:" destination="uys-6B-QKv" eventType="touchUpInside" id="e2Z-Qv-943"/>
-                                </connections>
+                                <state key="normal" image="whatsapp-1"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-KH-JIZ">
                                 <rect key="frame" x="35" y="269" width="50" height="50"/>
@@ -1303,7 +1300,7 @@
                                     <constraint firstAttribute="height" constant="50" id="tIR-17-3OT"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="envelope"/>
+                                <state key="normal" image="message"/>
                                 <connections>
                                     <action selector="sendEmail:" destination="uys-6B-QKv" eventType="touchUpInside" id="ZAD-MY-gn7"/>
                                 </connections>
@@ -5143,12 +5140,11 @@
         <image name="active-1" width="80" height="80"/>
         <image name="back" width="24" height="24"/>
         <image name="back2" width="512" height="512"/>
-        <image name="call-2" width="512" height="512"/>
         <image name="delete-icon" width="600" height="600"/>
         <image name="dislike-1" width="72" height="72"/>
         <image name="dislike-2" width="196" height="196"/>
-        <image name="envelope" width="512" height="512"/>
         <image name="facebook-1" width="100" height="100"/>
+        <image name="globalization" width="512" height="512"/>
         <image name="history-1" width="80" height="80"/>
         <image name="information-1" width="80" height="80"/>
         <image name="instagram-1" width="100" height="100"/>
@@ -5156,6 +5152,7 @@
         <image name="like-2" width="196" height="196"/>
         <image name="location" width="48" height="72"/>
         <image name="menu" width="20" height="20"/>
+        <image name="message" width="512" height="512"/>
         <image name="plus" width="128" height="128"/>
         <image name="profile-ava" width="99" height="99"/>
         <image name="spotlight" width="54" height="86"/>
