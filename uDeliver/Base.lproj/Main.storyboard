@@ -603,14 +603,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRW-fb-lPN">
-                                <rect key="frame" x="132" y="265" width="150" height="28.666666666666686"/>
+                                <rect key="frame" x="132" y="264" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GB9-1h-6yW"/>
                                     <constraint firstAttribute="width" constant="150" id="QJL-P7-12f"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Заказчик" image="ellipsis.circle.fill" catalog="system" backgroundImage="ellipsis.circle.fill">
+                                <state key="normal" title="Заказчик">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -1601,10 +1601,9 @@
                                             <constraint firstAttribute="width" constant="50" id="LeN-RC-ULD"/>
                                             <constraint firstAttribute="height" constant="50" id="Zgl-ib-j20"/>
                                         </constraints>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="nlk-e5-0Ab" firstAttribute="centerY" secondItem="iw4-lL-in4" secondAttribute="centerY" id="YGe-Zc-myd"/>
                                     <constraint firstItem="nlk-e5-0Ab" firstAttribute="centerX" secondItem="iw4-lL-in4" secondAttribute="centerX" id="pai-ZZ-NID"/>
@@ -2478,7 +2477,7 @@
                                             <constraint firstAttribute="width" constant="100" id="oKm-kS-9Lb"/>
                                             <constraint firstAttribute="height" constant="100" id="pdN-cJ-uLm"/>
                                         </constraints>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3481,7 +3480,7 @@
                                     <constraint firstAttribute="width" constant="120" id="Teq-bv-kdP"/>
                                     <constraint firstAttribute="height" constant="120" id="xah-vB-bPb"/>
                                 </constraints>
-                                <color key="color" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4885,7 +4884,7 @@
                                             <constraint firstAttribute="width" constant="50" id="OPO-Da-Teg"/>
                                             <constraint firstAttribute="height" constant="50" id="xhq-zf-Nc6"/>
                                         </constraints>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.47705821700507611" green="0.47705821700507611" blue="0.47705821700507611" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5029,10 +5028,10 @@
                                             <constraint firstAttribute="height" constant="100" id="SGK-8H-vnW"/>
                                             <constraint firstAttribute="width" constant="100" id="pds-Tg-WAX"/>
                                         </constraints>
-                                        <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.38515228426395942" green="0.38515228426395942" blue="0.38515228426395942" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="hbS-xK-Xkx" firstAttribute="centerY" secondItem="Ugd-S4-538" secondAttribute="centerY" constant="-17" id="NMZ-uB-jw2"/>
                                     <constraint firstItem="hbS-xK-Xkx" firstAttribute="centerX" secondItem="Ugd-S4-538" secondAttribute="centerX" id="dv1-0v-pIL"/>
@@ -5148,7 +5147,6 @@
         <image name="delete-icon" width="600" height="600"/>
         <image name="dislike-1" width="72" height="72"/>
         <image name="dislike-2" width="196" height="196"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="envelope" width="512" height="512"/>
         <image name="facebook-1" width="100" height="100"/>
         <image name="history-1" width="80" height="80"/>
