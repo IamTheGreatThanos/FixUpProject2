@@ -165,6 +165,18 @@ class SideBarTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func openInstagram(sender: UIButton){
+            let instNickname =  "instagram"
+            let appURL = URL(string: "https://instagram.com/\(instNickname)")!
+            if UIApplication.shared.canOpenURL(appURL) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(appURL)
+                }
+            }
+    }
+    
     
       @IBAction func openWhatsApp(sender: UIButton){
           let phoneNumber =  "+77005050908" // you need to change this number

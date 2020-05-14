@@ -16,18 +16,8 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
     }*/
     
     @IBAction func openInstagram(sender: UIButton){
-        let instNickname =  "instagram" // you need to change this number
-        let appURL = URL(string: "https://instagram://user?screen_name=\(instNickname)")!
-        if UIApplication.shared.canOpenURL(appURL) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
-            }
-            else {
-                UIApplication.shared.openURL(appURL)
-            }
-        } else {
             let instNickname =  "instagram"
-            let appURL = URL(string: "https://instagram://user?screen_name=/\(instNickname)")!
+            let appURL = URL(string: "https://instagram.com/\(instNickname)")!
             if UIApplication.shared.canOpenURL(appURL) {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
@@ -35,7 +25,6 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
                     UIApplication.shared.openURL(appURL)
                 }
             }
-        }
     }
     
     @IBAction func openWhatsApp(sender: UIButton){

@@ -2112,6 +2112,9 @@
                                                         <constraint firstAttribute="width" constant="30" id="efk-6r-w8w"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="instagram-1"/>
+                                                    <connections>
+                                                        <action selector="openInstagramWithSender:" destination="HYe-nd-Ile" eventType="touchUpInside" id="XV8-R0-A18"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eek-US-8Yo">
                                                     <rect key="frame" x="20" y="22.666666666666671" width="30" height="30"/>
