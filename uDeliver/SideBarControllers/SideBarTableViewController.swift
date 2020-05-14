@@ -176,28 +176,46 @@ class SideBarTableViewController: UITableViewController {
                 }
             }
     }
-    
+    /*
+     @IBAction func openWhatsApp(sender: UIButton){
+         let phoneNumber =  "+77005050908" // you need to change this number
+         let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
+         if UIApplication.shared.canOpenURL(appURL) {
+             if #available(iOS 10.0, *) {
+                 UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+             }
+             else {
+                 UIApplication.shared.openURL(appURL)
+             }
+         } else {
+             let phoneNumber =  "+77005050908" // you need to change this number
+             let appURL = URL(string: "https://wa.me/\(phoneNumber)")!
+             if UIApplication.shared.canOpenURL(appURL) {
+                 if #available(iOS 10.0, *) {
+                     UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                 } else {
+                     UIApplication.shared.openURL(appURL)
+                 }
+             }
+         }
+     }
+     */
     
       @IBAction func openWhatsApp(sender: UIButton){
-          let phoneNumber =  "+77005050908" // you need to change this number
-          let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
-          if UIApplication.shared.canOpenURL(appURL) {
-              if #available(iOS 10.0, *) {
-                  UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
-              }
-              else {
-                  UIApplication.shared.openURL(appURL)
-              }
-          } else {
-              let phoneNumber =  "+77005050908" // you need to change this number
-              let appURL = URL(string: "https://wa.me/\(phoneNumber)")!
-              if UIApplication.shared.canOpenURL(appURL) {
-                  if #available(iOS 10.0, *) {
-                      UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
-                  } else {
-                      UIApplication.shared.openURL(appURL)
+              var fullMob = "+77005050908"
+              fullMob = fullMob.replacingOccurrences(of: " ", with: "")
+              fullMob = fullMob.replacingOccurrences(of: "+", with: "")
+              fullMob = fullMob.replacingOccurrences(of: "-", with: "")
+              let urlWhats = "whatsapp://send?phone=\(fullMob)"
+              
+              if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                  if let whatsappURL = NSURL(string: urlString) {
+                      if UIApplication.shared.canOpenURL(whatsappURL as URL) {
+                          UIApplication.shared.open(whatsappURL as URL, options: [:], completionHandler: { (Bool) in
+                          })
+                      }
                   }
               }
-          }
+          
       }
 }

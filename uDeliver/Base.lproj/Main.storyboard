@@ -4754,7 +4754,7 @@
                                 <color key="textColor" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Ваша информация" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-b0-bzl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Ваша информация" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P9X-b0-bzl">
                                 <rect key="frame" x="20" y="44" width="374" height="207"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" red="0.63348667510000001" green="0.63348667510000001" blue="0.63348667510000001" alpha="0.50358518839999999" colorSpace="custom" customColorSpace="sRGB"/>

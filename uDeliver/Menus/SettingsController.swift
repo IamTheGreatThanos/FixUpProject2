@@ -25,7 +25,8 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
                     UIApplication.shared.openURL(appURL)
                 }
             }
-    }
+        }
+    
     
     @IBAction func openWhatsApp(sender: UIButton){
         let phoneNumber =  "+77005050908" // you need to change this number
