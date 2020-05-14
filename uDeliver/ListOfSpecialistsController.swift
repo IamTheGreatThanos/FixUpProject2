@@ -71,21 +71,21 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     }
     
     @objc func checkList(){
-        Names = []
-        Prices = []
-        Specialty = []
-        Likes = []
-        Dislikes = []
-        Comments = []
-        Locations = []
-        Lats = []
-        Lngs = []
-        WorkersId = []
-        Avatars = []
-        phoneNumbers = []
-        Distan = []
-        Durat = []
-        mainTableView.reloadData()
+//        Names = []
+//        Prices = []
+//        Specialty = []
+//        Likes = []
+//        Dislikes = []
+//        Comments = []
+//        Locations = []
+//        Lats = []
+//        Lngs = []
+//        WorkersId = []
+//        Avatars = []
+//        phoneNumbers = []
+//        Distan = []
+//        Durat = []
+//        mainTableView.reloadData()
         
         if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard
@@ -106,26 +106,26 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                 DispatchQueue.main.async {
                                     for i in json{
                                         let sender = i["worker"] as! NSDictionary
-                                        self.Names.append(sender["nickname"] as! String)
-                                        self.Specialty.append("Customer")
-                                        self.Prices.append(String(i["price"] as! String))
-                                        self.Likes.append(String(sender["likes"] as! Int))
-                                        self.Dislikes.append(String(sender["dislikes"] as! Int))
-                                        self.Comments.append(i["comment"] as! String)
-                                        self.Locations.append(i["time"] as! String)
-                                        self.Lats.append(i["lat"] as! String)
-                                        self.Lngs.append(i["lng"] as! String)
-                                        self.WorkersId.append(String(sender["id"] as! Int))
-                                        self.phoneNumbers.append(sender["phone"] as! String)
-//                                        self.Distan.append(i["distance_text"] as! String)
-                                        self.Distan.append("1")
-//                                        self.Durat.append(i["duration_text"] as! String)
-                                        self.Durat.append("1")
-                                        if sender["avatar"] != nil{
-                                            self.Avatars.append(sender["avatar"] as! String)
-                                        }
-                                        else{
-                                            self.Avatars.append("Nil")
+                                        if self.phoneNumbers.contains(sender["phone"] as! String) == false{
+                                            self.phoneNumbers.append(sender["phone"] as! String)
+                                            self.Names.append(sender["nickname"] as! String)
+                                            self.Specialty.append("Customer")
+                                            self.Prices.append(String(i["price"] as! String))
+                                            self.Likes.append(String(sender["likes"] as! Int))
+                                            self.Dislikes.append(String(sender["dislikes"] as! Int))
+                                            self.Comments.append(i["comment"] as! String)
+                                            self.Locations.append(i["time"] as! String)
+                                            self.Lats.append(i["lat"] as! String)
+                                            self.Lngs.append(i["lng"] as! String)
+                                            self.WorkersId.append(String(sender["id"] as! Int))
+                                            self.Distan.append("1")
+                                            self.Durat.append("1")
+                                            if sender["avatar"] != nil{
+                                                self.Avatars.append(sender["avatar"] as! String)
+                                            }
+                                            else{
+                                                self.Avatars.append("Nil")
+                                            }
                                         }
                                     }
                                     self.mainTableView.reloadData()
