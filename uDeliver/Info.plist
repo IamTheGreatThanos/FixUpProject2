@@ -10,7 +10,10 @@
 		<string>ms-outlook</string>
 		<string>readdle-spark</string>
 		<string>ymail</string>
+		<string>instagram</string>
+		<string>fb</string>
 	</array>
+
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to access your photo</string>
 	<key>NSCameraUsageDescription</key>

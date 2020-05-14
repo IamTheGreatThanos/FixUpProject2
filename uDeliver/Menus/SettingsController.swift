@@ -1,6 +1,7 @@
 import UIKit
 import Foundation
 import MessageUI
+import WebKit
 
 class SettingsController: UIViewController, MFMailComposeViewControllerDelegate {
     override func viewDidLoad() {
@@ -13,6 +14,29 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
           UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     }*/
+    
+    @IBAction func openInstagram(sender: UIButton){
+        let instNickname =  "instagram" // you need to change this number
+        let appURL = URL(string: "https://instagram://user?screen_name=\(instNickname)")!
+        if UIApplication.shared.canOpenURL(appURL) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+            }
+            else {
+                UIApplication.shared.openURL(appURL)
+            }
+        } else {
+            let instNickname =  "instagram"
+            let appURL = URL(string: "https://instagram://user?screen_name=/\(instNickname)")!
+            if UIApplication.shared.canOpenURL(appURL) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(appURL)
+                }
+            }
+        }
+    }
     
     @IBAction func openWhatsApp(sender: UIButton){
         let phoneNumber =  "+77005050908" // you need to change this number
@@ -60,7 +84,7 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
         }
     }
     @IBAction func secondSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://ontimeapp.club") else {
+        guard let url = URL(string: "http://facebook.com/FixUpkz/") else {
             return
         }
         if #available(iOS 10.0, *) {

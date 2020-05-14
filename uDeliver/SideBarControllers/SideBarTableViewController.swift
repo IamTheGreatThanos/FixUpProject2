@@ -164,4 +164,28 @@ class SideBarTableViewController: UITableViewController {
             UIApplication.shared.openURL(url)
         }
     }
+    
+    
+      @IBAction func openWhatsApp(sender: UIButton){
+          let phoneNumber =  "+77005050908" // you need to change this number
+          let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
+          if UIApplication.shared.canOpenURL(appURL) {
+              if #available(iOS 10.0, *) {
+                  UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+              }
+              else {
+                  UIApplication.shared.openURL(appURL)
+              }
+          } else {
+              let phoneNumber =  "+77005050908" // you need to change this number
+              let appURL = URL(string: "https://wa.me/\(phoneNumber)")!
+              if UIApplication.shared.canOpenURL(appURL) {
+                  if #available(iOS 10.0, *) {
+                      UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                  } else {
+                      UIApplication.shared.openURL(appURL)
+                  }
+              }
+          }
+      }
 }
