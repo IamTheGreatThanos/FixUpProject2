@@ -61,7 +61,7 @@ class AboutProfile: UIViewController {
         }
         else{
             if defaults.string(forKey: "About") != nil{
-                aboutInfo.textColor = UIColor.black
+               aboutInfo.textColor = UIColor.black
                aboutInfo.text = defaults.string(forKey: "About")
            }
         }
