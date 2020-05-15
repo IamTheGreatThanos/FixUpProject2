@@ -509,8 +509,17 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
                     })
                     task.resume()
                 }
-                else{
-                    let alert = UIAlertController(title: "Простите", message: "Пожалуйста, введите правильную информацию!", preferredStyle: UIAlertController.Style.alert)
+                else if priceTextField.text!.count < 2 {
+                    let alert = UIAlertController(title: "Простите", message: "Пожалуйста, введите правильную цену!", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                else if commentTextView.text!.count < 10 && commentTextView.text != "Пожалуйста, напишите немного информации о заказе!" {
+                    let alert = UIAlertController(title: "Простите", message: "Пожалуйста, введите не менее 10 символов!", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }else {
+                    let alert = UIAlertController(title: "Простите", message: "Пожалуйста, введите геолокацию!", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
