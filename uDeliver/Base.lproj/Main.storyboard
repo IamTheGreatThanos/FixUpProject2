@@ -334,8 +334,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CpB-Wn-0o6">
+                                <rect key="frame" x="10" y="59" width="28" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="Backk">
+                                    <color key="titleColor" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="miF-sd-Ooq" eventType="touchUpInside" id="JkY-W3-rNI"/>
+                                    <action selector="backButtonTapped:" destination="CBp-UH-bU3" eventType="touchUpInside" id="hFA-iH-rUb"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSp-zB-8Th">
-                                <rect key="frame" x="369" y="54" width="35" height="35"/>
+                                <rect key="frame" x="369" y="79" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Evk-H7-Alg"/>
                                     <constraint firstAttribute="width" constant="35" id="htU-ul-w7T"/>
@@ -642,19 +655,6 @@
                                     <constraint firstItem="AAU-Ax-i1T" firstAttribute="top" secondItem="4V2-1H-eOE" secondAttribute="top" id="ude-XE-gHf"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CpB-Wn-0o6">
-                                <rect key="frame" x="10" y="59" width="28" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Backk">
-                                    <color key="titleColor" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="miF-sd-Ooq" eventType="touchUpInside" id="JkY-W3-rNI"/>
-                                    <action selector="backButtonTapped:" destination="CBp-UH-bU3" eventType="touchUpInside" id="hFA-iH-rUb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -684,7 +684,7 @@
                             <constraint firstItem="sV1-It-v52" firstAttribute="top" secondItem="xPA-em-HBk" secondAttribute="bottom" constant="10" id="Ua2-Iz-Ha1"/>
                             <constraint firstItem="L6q-Sc-fiT" firstAttribute="top" secondItem="g3M-VZ-OIj" secondAttribute="bottom" constant="8" symbolic="YES" id="UvX-PE-is4"/>
                             <constraint firstItem="zXh-uA-hre" firstAttribute="bottom" secondItem="UhR-r9-pPJ" secondAttribute="bottom" id="VIn-sq-jSf"/>
-                            <constraint firstItem="kSp-zB-8Th" firstAttribute="top" secondItem="UhR-r9-pPJ" secondAttribute="top" constant="10" id="WPH-zN-THk"/>
+                            <constraint firstItem="kSp-zB-8Th" firstAttribute="top" secondItem="UhR-r9-pPJ" secondAttribute="top" constant="35" id="WPH-zN-THk"/>
                             <constraint firstItem="xPA-em-HBk" firstAttribute="centerX" secondItem="UhR-r9-pPJ" secondAttribute="centerX" id="Xpo-uZ-mGF"/>
                             <constraint firstItem="uhJ-nZ-ovq" firstAttribute="leading" secondItem="UhR-r9-pPJ" secondAttribute="leading" id="Yf1-4c-WvJ"/>
                             <constraint firstItem="3aC-h6-LdA" firstAttribute="centerX" secondItem="UhR-r9-pPJ" secondAttribute="centerX" id="ZCV-7n-JlF"/>
