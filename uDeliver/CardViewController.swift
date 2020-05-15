@@ -250,6 +250,12 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                                     self.present(alert, animated: true, completion: nil)
                                     self.timer.invalidate()
                                 }
+                                else if status == "no accepted"{
+                                    let alert = UIAlertController(title: "Извините", message: "Ваш заказ отменен!", preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                    self.timer.invalidate()
+                                }
                             }
                         }
                         else{

@@ -4817,7 +4817,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BbN-90-Uz3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="277"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainTableViewCell" rowHeight="200" id="oMw-9r-NTO" customClass="MainTableViewCell" customModule="FIXUP" customModuleProvider="target">
@@ -4891,10 +4891,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VzX-NS-0L8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="277"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ZE8-1K-uuS">
-                                        <rect key="frame" x="182" y="103" width="50" height="50"/>
+                                        <rect key="frame" x="182" y="113.66666666666669" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="OPO-Da-Teg"/>
                                             <constraint firstAttribute="height" constant="50" id="xhq-zf-Nc6"/>

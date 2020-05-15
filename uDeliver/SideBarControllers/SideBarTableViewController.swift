@@ -38,8 +38,9 @@ class SideBarTableViewController: UITableViewController {
             if defaults.string(forKey: "MyDislike") != nil{
                 dislikeLabel.text = defaults.string(forKey: "MyDislike")
             }
-            if defaults.url(forKey: "MyAvatar") != nil{
-                avaImage.load(url: defaults.url(forKey: "MyAvatar")!)
+            if defaults.data(forKey: "AvaImage") != nil{
+                let image = UIImage(data: defaults.data(forKey: "AvaImage")!)
+                avaImage.image = image
             }
         }
         
