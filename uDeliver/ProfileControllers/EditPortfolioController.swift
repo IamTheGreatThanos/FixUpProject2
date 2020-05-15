@@ -10,6 +10,7 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     var PortfolioImages = [UIImage]()
+    var PortfolioImagesURLs = [String]()
     var ImageIDs = [Int]()
     let imagePicker = UIImagePickerController()
     
@@ -40,6 +41,7 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
     
     func getImages(){
         PortfolioImages = [UIImage]()
+        PortfolioImagesURLs = [String]()
         ImageIDs = [Int]()
         self.mainTableView.reloadData()
         self.activityIndicator.startAnimating()
@@ -59,11 +61,15 @@ class EditPortfolioController: UIViewController, UITableViewDelegate, UITableVie
                     if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
                         let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
                         DispatchQueue.main.async {
+                            print(json)
                             for i in json{
                                 self.ImageIDs.append(i["id"] as! Int)
-                                let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                                let image_base64 = i["image_base64"] as! String
+                                let base64_str = String(image_base64[2..<image_base64.count-1])
+                                let dataDecoded:NSData = NSData(base64Encoded: base64_str, options: NSData.Base64DecodingOptions(rawValue: 0))!
                                 let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                                 self.PortfolioImages.append(decodedimage)
+                                self.PortfolioImagesURLs.append(i["image"] as! String)
                             }
                             print("OK <Portfolio controller>")
                             self.mainTableView.reloadData()

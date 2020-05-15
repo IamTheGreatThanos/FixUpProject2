@@ -9,6 +9,7 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet weak var mainTableView: UITableView!
     var PortfolioImages = [UIImage]()
+    var PortfolioImagesURLs = [String]()
     
     
     override func viewDidLoad() {
@@ -27,6 +28,7 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func getPortfolioImages(){
         PortfolioImages = [UIImage]()
+        PortfolioImagesURLs = [String]()
         let defaults = UserDefaults.standard
         let asUserInfo = defaults.bool(forKey: "asUserInfo")
         
@@ -47,9 +49,12 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
                             let profileImgs = json["profile"] as! [NSDictionary]
                             DispatchQueue.main.async {
                                 for i in profileImgs{
-                                    let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                                    let image_base64 = i["image_base64"] as! String
+                                    let base64_str = String(image_base64[2..<image_base64.count-1])
+                                    let dataDecoded:NSData = NSData(base64Encoded: base64_str, options: NSData.Base64DecodingOptions(rawValue: 0))!
                                     let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                                     self.PortfolioImages.append(decodedimage)
+                                    self.PortfolioImagesURLs.append(i["image"] as! String)
                                 }
                                 print("OK <Portfolio controller>")
                                 self.mainTableView.reloadData()
@@ -96,9 +101,12 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
                             let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
                             DispatchQueue.main.async {
                                 for i in json{
-                                    let dataDecoded:NSData = NSData(base64Encoded: i["image_base64"] as! String, options: NSData.Base64DecodingOptions(rawValue: 0))!
+                                    let image_base64 = i["image_base64"] as! String
+                                    let base64_str = String(image_base64[2..<image_base64.count-1])
+                                    let dataDecoded:NSData = NSData(base64Encoded: base64_str, options: NSData.Base64DecodingOptions(rawValue: 0))!
                                     let decodedimage:UIImage = UIImage(data: dataDecoded as Data)!
                                     self.PortfolioImages.append(decodedimage)
+                                    self.PortfolioImagesURLs.append(i["image"] as! String)
                                     
                                 }
                                 print("OK <Portfolio controller>")
@@ -161,9 +169,9 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InsideCollectionViewCell", for: indexPath) as! InsideCollectionViewCell
         
-        cell.imageView.image =  self.PortfolioImages[indexPath.row]
+        cell.imageView.image = self.PortfolioImages[indexPath.row]
         
-        if indexPath.row + 1 >= PortfolioImages.count{
+        if indexPath.row + 1 >= 3{
             activityIndicator.stopAnimating()
             activityIndicator.alpha = 0.0
             alphaView.alpha = 0.0
@@ -176,7 +184,8 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.addImageViewWithImage(image: self.PortfolioImages[indexPath.row])
+        let loadUrl = URL(string: "https://back.fix-up.org/" + self.PortfolioImagesURLs[indexPath.row])!
+        self.addImageViewWithImage(image: loadUrl)
     }
     
     @objc func removeImage() {
@@ -185,13 +194,13 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
         imageView.removeFromSuperview()
     }
     
-    func addImageViewWithImage(image: UIImage) {
+    func addImageViewWithImage(image: URL) {
         let window = UIApplication.shared.keyWindow!
 
         let imageView = UIImageView(frame: window.frame)
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = UIColor.black
-        imageView.image = image
+        imageView.load(url: image)
         imageView.isUserInteractionEnabled = true
         imageView.tag = 100
         
