@@ -51,6 +51,20 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
         thirdView.alpha = 0.0
         
         imagePicker.delegate = self
+        
+        if Reachability.isConnectedToNetwork() == true {
+            getProfileInfo()
+        }
+        else{
+            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+//        if let filePath = Bundle.main.path(forResource: "imageName", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
+//            imageView.contentMode = .scaleAspectFit
+//            imageView.image = image
+//        }
     }
     
     
@@ -255,19 +269,6 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if Reachability.isConnectedToNetwork() == true {
-            getProfileInfo()
-        }
-        else{
-            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-//        if let filePath = Bundle.main.path(forResource: "imageName", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
-//            imageView.contentMode = .scaleAspectFit
-//            imageView.image = image
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
