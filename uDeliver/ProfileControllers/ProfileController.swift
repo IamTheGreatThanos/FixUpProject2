@@ -394,12 +394,14 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
     }
     
     
-    @IBAction func EditButtonTapped(_ sender: UIButton) {
+    
+    @IBAction func editButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"EditProfileController")
         self.navigationController?.pushViewController(viewController,
         animated: true)
     }
+
     
     @IBAction func changeAvatarButtonTapped(_ sender: UIButton) {
         imagePicker.allowsEditing = true
