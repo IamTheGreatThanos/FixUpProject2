@@ -171,11 +171,9 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.imageView.image = self.PortfolioImages[indexPath.row]
         
-        if indexPath.row + 1 >= 3{
-            activityIndicator.stopAnimating()
-            activityIndicator.alpha = 0.0
-            alphaView.alpha = 0.0
-        }
+        activityIndicator.stopAnimating()
+        activityIndicator.alpha = 0.0
+        alphaView.alpha = 0.0
         
 //        let screenSize: CGRect = UIScreen.main.bounds
 //        cell.imageView.frame = CGRect(x: 0, y: 0, width: screenSize.width * 0.33, height: screenSize.width * 0.33)
