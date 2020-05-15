@@ -53,7 +53,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button1Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -63,7 +63,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button2Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -73,7 +73,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button3Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -83,7 +83,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button4Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -93,7 +93,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button5Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -103,7 +103,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button6Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -113,7 +113,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button7Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -123,7 +123,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button8Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -133,7 +133,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button9Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -143,7 +143,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button10Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -153,7 +153,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button11Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -163,7 +163,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button12Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -173,7 +173,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button13Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -183,7 +183,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button14Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -193,7 +193,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button15Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
@@ -203,7 +203,7 @@ class CustomerMySpecTableView: UIViewController {
     
     @IBAction func button16Tapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 0.8)
         })
         UIView.animate(withDuration: 0.5, animations: {
             sender.backgroundColor = .none
