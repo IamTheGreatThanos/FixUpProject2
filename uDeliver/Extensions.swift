@@ -60,6 +60,22 @@ extension UIImageView {
             }
         }
     }
+    
+    func loadAva(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.contentMode = .scaleAspectFit
+                        self?.image = image
+                        let imageData = image.jpegData(compressionQuality: 1.0)
+                        let defaults = UserDefaults.standard
+                        defaults.set(imageData, forKey: "AvaImage")
+                    }
+                }
+            }
+        }
+    }
 }
 
 

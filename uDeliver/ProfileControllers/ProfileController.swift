@@ -61,6 +61,15 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
             self.present(alert, animated: true, completion: nil)
         }
         
+        let asUserInfo = defaults.bool(forKey: "asUserInfo")
+        
+        if asUserInfo == false{
+            if defaults.data(forKey: "AvaImage") != nil{
+                let image = UIImage(data: defaults.data(forKey: "AvaImage")!)
+                avaImage.image = image
+            }
+        }
+        
 //        if let filePath = Bundle.main.path(forResource: "imageName", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
 //            imageView.contentMode = .scaleAspectFit
 //            imageView.image = image
@@ -180,7 +189,7 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
                                 
                                 let url = json["avatar"] as! String
                                 let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
-                                self.avaImage.load(url: loadUrl)
+                                self.avaImage.loadAva(url: loadUrl)
                                 self.avaUrl = loadUrl
                                 defaults.set(loadUrl, forKey: "MyAvatar")
                                 defaults.set(json["nickname"] as! String, forKey: "MyName")
