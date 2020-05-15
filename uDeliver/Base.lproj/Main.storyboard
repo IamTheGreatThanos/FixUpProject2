@@ -656,19 +656,6 @@
 
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CpB-Wn-0o6">
-                                <rect key="frame" x="10" y="59" width="28" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Backk">
-                                    <color key="titleColor" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="miF-sd-Ooq" eventType="touchUpInside" id="JkY-W3-rNI"/>
-                                    <action selector="backButtonTapped:" destination="CBp-UH-bU3" eventType="touchUpInside" id="hFA-iH-rUb"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" id="Bvh-r7-Z1c">
                                 <rect key="frame" x="355" y="56" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -680,12 +667,6 @@
                                 <connections>
                                     <action selector="EditButtonTapped:" destination="CBp-UH-bU3" eventType="touchUpInside" id="GL8-hA-5Tu"/>
                                     <action selector="backButtonTapped:" destination="miF-sd-Ooq" eventType="touchUpInside" id="Cor-TJ-Np0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAU-Ax-i1T">
-                                <rect key="frame" x="0.0" y="28" width="414" height="611"/>
-                                <connections>
-                                    <action selector="closeViewButtonTapped:" destination="CBp-UH-bU3" eventType="touchUpInside" id="FmN-eM-She"/>
                                 </connections>
                             </button>
 
