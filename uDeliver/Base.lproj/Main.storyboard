@@ -348,7 +348,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSp-zB-8Th">
-                                <rect key="frame" x="369" y="79" width="35" height="35"/>
+                                <rect key="frame" x="369" y="54" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Evk-H7-Alg"/>
                                     <constraint firstAttribute="width" constant="35" id="htU-ul-w7T"/>
@@ -684,7 +684,7 @@
                             <constraint firstItem="sV1-It-v52" firstAttribute="top" secondItem="xPA-em-HBk" secondAttribute="bottom" constant="10" id="Ua2-Iz-Ha1"/>
                             <constraint firstItem="L6q-Sc-fiT" firstAttribute="top" secondItem="g3M-VZ-OIj" secondAttribute="bottom" constant="8" symbolic="YES" id="UvX-PE-is4"/>
                             <constraint firstItem="zXh-uA-hre" firstAttribute="bottom" secondItem="UhR-r9-pPJ" secondAttribute="bottom" id="VIn-sq-jSf"/>
-                            <constraint firstItem="kSp-zB-8Th" firstAttribute="top" secondItem="UhR-r9-pPJ" secondAttribute="top" constant="35" id="WPH-zN-THk"/>
+                            <constraint firstItem="kSp-zB-8Th" firstAttribute="top" secondItem="UhR-r9-pPJ" secondAttribute="top" constant="10" id="WPH-zN-THk"/>
                             <constraint firstItem="xPA-em-HBk" firstAttribute="centerX" secondItem="UhR-r9-pPJ" secondAttribute="centerX" id="Xpo-uZ-mGF"/>
                             <constraint firstItem="uhJ-nZ-ovq" firstAttribute="leading" secondItem="UhR-r9-pPJ" secondAttribute="leading" id="Yf1-4c-WvJ"/>
                             <constraint firstItem="3aC-h6-LdA" firstAttribute="centerX" secondItem="UhR-r9-pPJ" secondAttribute="centerX" id="ZCV-7n-JlF"/>
@@ -2091,19 +2091,8 @@
                                                         <action selector="openWhatsAppWithSender:" destination="HYe-nd-Ile" eventType="touchUpInside" id="StE-3O-xtM"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1E9-Ht-rrr">
-                                                    <rect key="frame" x="120" y="22.666666666666671" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="2lw-Dr-EFc"/>
-                                                        <constraint firstAttribute="width" constant="30" id="S4M-tj-kRf"/>
-                                                    </constraints>
-                                                    <state key="normal" backgroundImage="telegram-1"/>
-                                                    <connections>
-                                                        <action selector="thirdSNButtonTapped:" destination="HYe-nd-Ile" eventType="touchUpInside" id="PtB-1u-lkl"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QO-y5-aS2">
-                                                    <rect key="frame" x="170" y="22.666666666666671" width="30" height="30"/>
+                                                    <rect key="frame" x="120" y="22.666666666666664" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="CTe-LB-WIx"/>
                                                         <constraint firstAttribute="width" constant="30" id="efk-6r-w8w"/>
@@ -2123,14 +2112,12 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1E9-Ht-rrr" firstAttribute="leading" secondItem="TZ4-x2-QSF" secondAttribute="trailing" constant="20" id="0uy-HA-En6"/>
-                                                <constraint firstItem="0QO-y5-aS2" firstAttribute="leading" secondItem="1E9-Ht-rrr" secondAttribute="trailing" constant="20" id="1UG-Xs-yaf"/>
                                                 <constraint firstItem="0QO-y5-aS2" firstAttribute="centerY" secondItem="zfW-sQ-uKQ" secondAttribute="centerY" id="1pK-4P-lTo"/>
-                                                <constraint firstItem="1E9-Ht-rrr" firstAttribute="centerY" secondItem="zfW-sQ-uKQ" secondAttribute="centerY" id="JEE-03-cme"/>
                                                 <constraint firstItem="eek-US-8Yo" firstAttribute="centerY" secondItem="zfW-sQ-uKQ" secondAttribute="centerY" id="Kio-9i-7MN"/>
                                                 <constraint firstItem="TZ4-x2-QSF" firstAttribute="leading" secondItem="eek-US-8Yo" secondAttribute="trailing" constant="20" id="PVO-nz-XY6"/>
                                                 <constraint firstItem="TZ4-x2-QSF" firstAttribute="centerY" secondItem="zfW-sQ-uKQ" secondAttribute="centerY" id="XHl-s2-OfB"/>
                                                 <constraint firstItem="eek-US-8Yo" firstAttribute="leading" secondItem="zfW-sQ-uKQ" secondAttribute="leading" constant="20" id="fBT-mn-y9A"/>
+                                                <constraint firstItem="0QO-y5-aS2" firstAttribute="trailing" secondItem="TZ4-x2-QSF" secondAttribute="trailing" constant="50" id="yeI-NS-7dl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3578,21 +3565,21 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Card0" translatesAutoresizingMaskIntoConstraints="NO" id="U0q-nj-TWv">
-                                                <rect key="frame" x="10" y="117" width="47" height="47"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="cour" translatesAutoresizingMaskIntoConstraints="NO" id="U0q-nj-TWv">
+                                                <rect key="frame" x="10" y="117" width="46" height="46"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="47" id="tOV-8e-avn"/>
-                                                    <constraint firstAttribute="width" constant="47" id="zbX-ph-OkT"/>
+                                                    <constraint firstAttribute="width" constant="46" id="zbX-ph-OkT"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доставка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8K-5b-X2Q">
-                                                <rect key="frame" x="66.999999999999986" y="90" width="132.66666666666663" height="17"/>
+                                                <rect key="frame" x="65.999999999999986" y="90" width="133.66666666666663" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Курьер, такси, трезвый водитель, грузчик, перевозка, переезд, и т.д." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOf-yV-5wF">
-                                                <rect key="frame" x="66.999999999999986" y="117" width="132.66666666666663" height="63"/>
+                                                <rect key="frame" x="65.999999999999986" y="117" width="133.66666666666663" height="63"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="63" id="BCk-vK-ZZr"/>
                                                 </constraints>
@@ -5133,7 +5120,6 @@
         <image name="BackgroundMenu" width="260" height="186"/>
         <image name="Backk" width="18.666666030883789" height="18.666666030883789"/>
         <image name="Burger" width="20" height="20"/>
-        <image name="Card0" width="140" height="138"/>
         <image name="Card1" width="152" height="132"/>
         <image name="Card11" width="132" height="140"/>
         <image name="Card14" width="137" height="120"/>
@@ -5154,6 +5140,7 @@
         <image name="back" width="24" height="24"/>
         <image name="back2" width="512" height="512"/>
         <image name="communications 1" width="324" height="324"/>
+        <image name="cour" width="34.666667938232422" height="34.666667938232422"/>
         <image name="cow2 1" width="160" height="128"/>
         <image name="culture 1-1" width="132" height="180"/>
         <image name="delete-icon" width="600" height="600"/>
@@ -5170,7 +5157,6 @@
         <image name="profile-ava" width="99" height="99"/>
         <image name="reload" width="20" height="20"/>
         <image name="spotlight" width="54" height="86"/>
-        <image name="telegram-1" width="116" height="116"/>
         <image name="tenge 1" width="148" height="108"/>
         <image name="user 1" width="328" height="328"/>
         <image name="whatsapp-1" width="100" height="100"/>
