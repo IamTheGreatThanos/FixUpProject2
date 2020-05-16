@@ -22,6 +22,8 @@ class EditProfileController: UIViewController, UITextFieldDelegate, UITextViewDe
         aboutTextView.layer.borderWidth = 1.0
         aboutTextView.layer.borderColor = UIColor.lightGray.cgColor
         aboutTextView.layer.cornerRadius = 5.0
+//        aboutTextView.tintColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1);
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

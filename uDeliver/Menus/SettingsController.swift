@@ -16,7 +16,7 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
     }*/
     
     @IBAction func openInstagram(sender: UIButton){
-            let instNickname =  "instagram"
+            let instNickname =  "fixup.app"
             let appURL = URL(string: "https://instagram.com/\(instNickname)")!
             if UIApplication.shared.canOpenURL(appURL) {
                 if #available(iOS 10.0, *) {
@@ -59,7 +59,7 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
     }
     
     @IBAction func firstSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://ontimeapp.club") else {
+        guard let url = URL(string: "http://fix-up.org") else {
             return
         }
         if #available(iOS 10.0, *) {
@@ -69,7 +69,7 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
         }
     }
     @IBAction func secondSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://facebook.com/FixUpkz/") else {
+        guard let url = URL(string: "https://www.facebook.com/FixUp.org/") else {
             return
         }
         if #available(iOS 10.0, *) {
@@ -79,7 +79,7 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
         }
     }
     @IBAction func thirdSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "http://ontimeapp.club") else {
+        guard let url = URL(string: "http://fix-up.org") else {
             return
         }
         if #available(iOS 10.0, *) {
@@ -89,6 +89,29 @@ class SettingsController: UIViewController, MFMailComposeViewControllerDelegate 
         }
     }
 
+    @IBAction func policeBtnTapped(_ sender: Any) {
+        guard let url = URL(string: "http://fix-up.org/polit") else {
+            return
+        }
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
+    
+    @IBAction func offerBtnTapped(_ sender: Any) {
+        guard let url = URL(string: "http://fix-up.org/offer") else {
+                   return
+               }
+               if #available(iOS 10.0, *) {
+                   UIApplication.shared.open(url, options: [:], completionHandler: nil)
+               } else {
+                   UIApplication.shared.openURL(url)
+               }
+    }
+    
     
     // EMAIL
     

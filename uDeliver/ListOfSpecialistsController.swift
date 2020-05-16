@@ -25,6 +25,8 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var loaderView: UIView!
+    @IBOutlet weak var loadText: UILabel!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Names.count
@@ -53,7 +55,10 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Отмена", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(ListOfSpecialistsController.back(sender:)))
+        let closeButton = UIBarButtonItem(image: UIImage(named: "new_order"), style: UIBarButtonItem.Style.bordered, target: self, action: #selector(ListOfSpecialistsController.closeView(sender:)))
+        
         self.navigationItem.leftBarButtonItem = newBackButton
+        self.navigationItem.rightBarButtonItem = closeButton
         self.navigationItem.title = "Отклики"
     }
     
@@ -64,10 +69,16 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         
         timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(checkList), userInfo: nil, repeats: true)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @objc func checkList(){
@@ -131,10 +142,14 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                     self.mainTableView.reloadData()
                                     if self.Names.count == 0{
                                         self.activityIndicator.isHidden = false
+                                        self.loaderView.isHidden = false
+                                        self.loadText.isHidden = false
                                         self.activityIndicator.startAnimating()
                                     }
                                     else{
                                         self.activityIndicator.isHidden = true
+                                        self.loaderView.isHidden = true
+                                        self.loadText.isHidden = true
                                         self.activityIndicator.stopAnimating()
                                     }
                                 }
@@ -243,6 +258,12 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
         
         self.present(alert, animated: true)
     }
+    
+    
+    @objc func closeView(sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

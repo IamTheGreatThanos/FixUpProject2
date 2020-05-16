@@ -78,7 +78,10 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                                 DispatchQueue.main.async {
                                     for i in json{
                                         let sender = i["sender"] as! NSDictionary
-                                        let worker = i["worker"] as! NSDictionary
+                                        var worker = NSDictionary()
+                                        if i["worker"] as? NSDictionary != nil {
+                                            worker = i["worker"] as! NSDictionary
+                                        }
                                         
                                         let orderImgs = i["order_img"] as! [NSDictionary]
                                         var arr = [String]()
@@ -111,10 +114,18 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                                             self.Names.append(sender["nickname"] as! String)
                                         }
                                         else{
-                                            self.Names.append(worker["nickname"] as! String)
+                                            if worker.count != 0 {
+                                                self.Names.append(worker["nickname"] as! String)
+                                            } else {
+                                                self.Names.append("Не выбран")
+                                            }
                                         }
                                         self.CustomersID.append(String(sender["id"] as! Int))
-                                        self.SpecialistsID.append(String(worker["id"] as! Int))
+                                        if worker.count == 0 {
+                                            self.SpecialistsID.append("0")
+                                        } else {
+                                            self.SpecialistsID.append(String(worker["id"] as! Int))
+                                        }
                                         self.Prices.append(i["price"] as! String)
                                         self.Comments.append(i["comment"] as! String)
                                         self.Locations.append(i["a_name"] as! String)
@@ -135,14 +146,20 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                                         }
                                         
                                         
-                                        if self.role == "0"{
-                                            self.phoneNumbers.append(worker["phone"] as! String)
-                                            if worker["avatar"] != nil{
-                                                self.Avatars.append(worker["avatar"] as! String)
+                                        if self.role == "0" {
+                                            if worker.count != 0 {
+                                                self.phoneNumbers.append(worker["phone"] as! String)
+                                                if worker["avatar"] != nil{
+                                                    self.Avatars.append(worker["avatar"] as! String)
+                                                }
+                                                else{
+                                                    self.Avatars.append("Nil")
+                                                }
+                                            } else {
+                                                self.phoneNumbers.append("")
+                                                self.Avatars.append("")
                                             }
-                                            else{
-                                                self.Avatars.append("Nil")
-                                            }
+                                            
                                             self.Specialty.append("Специалист")
                                         }
                                         else{
@@ -214,38 +231,55 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let defaults = UserDefaults.standard
-        defaults.set(String(indexPath.row), forKey: "CurrentID")
-        defaults.set(self.Names[indexPath.row], forKey: "CurrentName")
-        defaults.set(self.Prices[indexPath.row], forKey: "CurrentPrice")
-        defaults.set(self.Specialty[indexPath.row], forKey: "CurrentSpecialty")
-        defaults.set(self.Distan[indexPath.row], forKey: "CurrentRadius")
-        defaults.set(self.Comments[indexPath.row], forKey: "CurrentComment")
-        defaults.set(self.Locations[indexPath.row], forKey: "CurrentLocation")
-        defaults.set(self.Lats[indexPath.row], forKey: "CurrentLat")
-        defaults.set(self.Lngs[indexPath.row], forKey: "CurrentLng")
-        defaults.set(self.IDs[indexPath.row], forKey: "CurrentOrderID")
-        defaults.set(self.Avatars[indexPath.row], forKey: "CurrentAvatar")
-        defaults.set(self.phoneNumbers[indexPath.row], forKey: "CurrentPhoneNumber")
         
-        defaults.set(self.orderImages[indexPath.row][0], forKey: "orderImg1")
-        defaults.set(self.orderImages[indexPath.row][1], forKey: "orderImg2")
-        defaults.set(self.orderImages[indexPath.row][2], forKey: "orderImg3")
-        
-        defaults.set(false, forKey: "isCustomerView")
-        defaults.set(true, forKey: "isActiveOrders")
-        
-        let value = defaults.bool(forKey: "isCourier")
-        if value == true{
-            defaults.set(self.CustomersID[indexPath.row], forKey: "userInfoID")
+        if self.phoneNumbers[indexPath.row] == "" {
+            
+            defaults.set(self.IDs[indexPath.row], forKey: "MyOrder")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier :"ListOfSpecialistsController")
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+            
+        } else {
+            
+            
+
+            defaults.set(String(indexPath.row), forKey: "CurrentID")
+            defaults.set(self.Names[indexPath.row], forKey: "CurrentName")
+            defaults.set(self.Prices[indexPath.row], forKey: "CurrentPrice")
+            defaults.set(self.Specialty[indexPath.row], forKey: "CurrentSpecialty")
+            defaults.set(self.Distan[indexPath.row], forKey: "CurrentRadius")
+            defaults.set(self.Comments[indexPath.row], forKey: "CurrentComment")
+            defaults.set(self.Locations[indexPath.row], forKey: "CurrentLocation")
+            defaults.set(self.Lats[indexPath.row], forKey: "CurrentLat")
+            defaults.set(self.Lngs[indexPath.row], forKey: "CurrentLng")
+            defaults.set(self.IDs[indexPath.row], forKey: "CurrentOrderID")
+            defaults.set(self.Avatars[indexPath.row], forKey: "CurrentAvatar")
+            defaults.set(self.phoneNumbers[indexPath.row], forKey: "CurrentPhoneNumber")
+            
+            defaults.set(self.orderImages[indexPath.row][0], forKey: "orderImg1")
+            defaults.set(self.orderImages[indexPath.row][1], forKey: "orderImg2")
+            defaults.set(self.orderImages[indexPath.row][2], forKey: "orderImg3")
+            
+            defaults.set(false, forKey: "isCustomerView")
+            defaults.set(true, forKey: "isActiveOrders")
+            
+            let value = defaults.bool(forKey: "isCourier")
+            if value == true{
+                defaults.set(self.CustomersID[indexPath.row], forKey: "userInfoID")
+            }
+            else{
+                defaults.set(self.SpecialistsID[indexPath.row], forKey: "userInfoID")
+            }
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier :"MapViewController")
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
         }
-        else{
-            defaults.set(self.SpecialistsID[indexPath.row], forKey: "userInfoID")
-        }
         
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier :"MapViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
                 
     }
     

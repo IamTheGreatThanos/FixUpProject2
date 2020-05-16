@@ -156,7 +156,7 @@ class SideBarTableViewController: UITableViewController {
         }
     }
     @IBAction func thirdSNButtonTapped(_ sender: UIButton) {
-        guard let url = URL(string: "https://fix-up.org") else {
+        guard let url = URL(string: "https://www.facebook.com/FixUp.org/") else {
             return
         }
         if #available(iOS 10.0, *) {
@@ -167,7 +167,7 @@ class SideBarTableViewController: UITableViewController {
     }
     
     @IBAction func openInstagram(sender: UIButton){
-            let instNickname =  "instagram"
+            let instNickname =  "fixup.app"
             let appURL = URL(string: "https://instagram.com/\(instNickname)")!
             if UIApplication.shared.canOpenURL(appURL) {
                 if #available(iOS 10.0, *) {

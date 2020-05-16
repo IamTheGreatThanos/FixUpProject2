@@ -391,6 +391,14 @@ class OrderController: UIViewController, UITextFieldDelegate, UITextViewDelegate
     
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 0.1, animations: {
+            sender.backgroundColor = UIColor(red: 0.1171, green: 0.5568, blue: 0.305, alpha: 1)
+        })
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.backgroundColor = UIColor(red: 0.1529, green: 0.6823, blue: 0.3725, alpha: 1)
+        })
+        
         if Reachability.isConnectedToNetwork() == true {
             let defaults = UserDefaults.standard
             let value = defaults.bool(forKey: "isCourier")

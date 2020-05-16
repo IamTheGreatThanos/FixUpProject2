@@ -697,7 +697,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     @IBAction func phoneButtonTapped(_ sender: UIButton) {
         let defaults = UserDefaults.standard
         let phoneNumber = defaults.string(forKey: "CurrentPhoneNumber")
-        guard let number = URL(string: "tel://" + phoneNumber!) else { return }
+        guard let number = URL(string: "tel://+" + phoneNumber!) else { return }
         UIApplication.shared.open(number)
     }
     
