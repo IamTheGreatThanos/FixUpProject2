@@ -113,7 +113,6 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                         if response != nil{
                             if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
                                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                                print(json)
                                 DispatchQueue.main.async {
                                     for i in json{
                                         let sender = i["worker"] as! NSDictionary
