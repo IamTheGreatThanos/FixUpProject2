@@ -261,7 +261,9 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     
     
     @objc func closeView(sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"SWRevealViewController")
+        self.present(viewController, animated: true)
     }
     
     
