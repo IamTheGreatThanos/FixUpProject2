@@ -26,7 +26,8 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var loaderView: UIView!
-    @IBOutlet weak var loadText: UILabel!
+    @IBOutlet weak var loaderText: UILabel!
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Names.count
@@ -142,13 +143,13 @@ class ListOfSpecialistsController: UIViewController, UITableViewDataSource,UITab
                                     if self.Names.count == 0{
                                         self.activityIndicator.isHidden = false
                                         self.loaderView.isHidden = false
-                                        self.loadText.isHidden = false
+                                        self.loaderText.isHidden = false
                                         self.activityIndicator.startAnimating()
                                     }
                                     else{
                                         self.activityIndicator.isHidden = true
                                         self.loaderView.isHidden = true
-                                        self.loadText.isHidden = true
+                                        self.loaderText.isHidden = true
                                         self.activityIndicator.stopAnimating()
                                     }
                                 }

@@ -2573,33 +2573,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="190" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hf5-pP-jC0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="Yg5-ND-GH5">
-                                    <rect key="frame" x="0.0" y="246" width="414" height="716"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-I4-x3H">
-                                            <rect key="frame" x="157" y="290" width="100" height="136"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="vxe-yo-JTn"/>
-                                                <constraint firstAttribute="height" constant="100" id="yPX-w9-g6U"/>
-                                            </constraints>
-                                            <color key="color" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </activityIndicatorView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поиск специалиста..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QGc-m7-lsR">
-                                            <rect key="frame" x="0.0" y="416" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <constraints>
-                                        <constraint firstItem="xp3-I4-x3H" firstAttribute="centerY" secondItem="Yg5-ND-GH5" secondAttribute="centerY" id="Crn-oV-vJq"/>
-                                        <constraint firstItem="QGc-m7-lsR" firstAttribute="top" secondItem="xp3-I4-x3H" secondAttribute="bottom" constant="-10" id="FXK-Td-wgs"/>
-                                        <constraint firstItem="xp3-I4-x3H" firstAttribute="centerX" secondItem="Yg5-ND-GH5" secondAttribute="centerX" id="Z7D-iV-5Vl"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LOScell" rowHeight="190" id="kdJ-qc-kIM" customClass="ListOfSpecialistsControllerCell" customModule="FIXUP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="190"/>
@@ -2738,21 +2711,54 @@
                                     <outlet property="delegate" destination="aef-zd-CUT" id="CfP-mT-0hO"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyq-j1-yzE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-I4-x3H">
+                                        <rect key="frame" x="157" y="318" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="vxe-yo-JTn"/>
+                                            <constraint firstAttribute="height" constant="100" id="yPX-w9-g6U"/>
+                                        </constraints>
+                                        <color key="color" red="0.94509803920000002" green="0.36862745099999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поиск специалиста..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JS9-CF-6Jj">
+                                        <rect key="frame" x="107" y="428" width="200" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="Ntf-Ye-crQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.95459789039999998" green="0.36336326600000002" blue="0.37531483170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="JS9-CF-6Jj" firstAttribute="centerX" secondItem="kyq-j1-yzE" secondAttribute="centerX" id="0TB-IA-hKu"/>
+                                    <constraint firstItem="xp3-I4-x3H" firstAttribute="centerY" secondItem="kyq-j1-yzE" secondAttribute="centerY" id="XRF-TH-Hph"/>
+                                    <constraint firstItem="JS9-CF-6Jj" firstAttribute="top" secondItem="xp3-I4-x3H" secondAttribute="bottom" constant="10" id="YC1-vW-oVe"/>
+                                    <constraint firstItem="xp3-I4-x3H" firstAttribute="centerX" secondItem="kyq-j1-yzE" secondAttribute="centerX" id="kee-cV-M45"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="kyq-j1-yzE" firstAttribute="leading" secondItem="gyO-vO-xbb" secondAttribute="leading" id="49G-TW-xLr"/>
                             <constraint firstItem="Hf5-pP-jC0" firstAttribute="leading" secondItem="gyO-vO-xbb" secondAttribute="leading" id="Ges-hF-L0v"/>
                             <constraint firstItem="gyO-vO-xbb" firstAttribute="bottom" secondItem="Hf5-pP-jC0" secondAttribute="bottom" id="GgH-nj-Zg9"/>
                             <constraint firstItem="Hf5-pP-jC0" firstAttribute="trailing" secondItem="gyO-vO-xbb" secondAttribute="trailing" id="O1h-ia-6st"/>
+                            <constraint firstItem="kyq-j1-yzE" firstAttribute="top" secondItem="gyO-vO-xbb" secondAttribute="top" id="Vpw-zQ-0V4"/>
+                            <constraint firstItem="gyO-vO-xbb" firstAttribute="trailing" secondItem="kyq-j1-yzE" secondAttribute="trailing" id="emK-xH-4vj"/>
                             <constraint firstItem="Hf5-pP-jC0" firstAttribute="top" secondItem="gyO-vO-xbb" secondAttribute="top" id="giO-E7-HyR"/>
+                            <constraint firstItem="gyO-vO-xbb" firstAttribute="bottom" secondItem="kyq-j1-yzE" secondAttribute="bottom" id="tE7-ok-yUf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gyO-vO-xbb"/>
                     </view>
                     <navigationItem key="navigationItem" id="ULl-Jv-feh"/>
                     <connections>
                         <outlet property="activityIndicator" destination="xp3-I4-x3H" id="EID-hU-ELa"/>
-                        <outlet property="loadText" destination="QGc-m7-lsR" id="CyZ-Wn-Dmi"/>
-                        <outlet property="loaderView" destination="Yg5-ND-GH5" id="qti-6Y-vPH"/>
+                        <outlet property="loaderText" destination="JS9-CF-6Jj" id="tQG-Zg-c5r"/>
+                        <outlet property="loaderView" destination="kyq-j1-yzE" id="nCx-B5-Prh"/>
                         <outlet property="mainTableView" destination="Hf5-pP-jC0" id="1Vw-n2-ezD"/>
                     </connections>
                 </viewController>
