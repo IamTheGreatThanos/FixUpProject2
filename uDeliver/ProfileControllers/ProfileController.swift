@@ -52,24 +52,6 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
         
         imagePicker.delegate = self
         
-        if Reachability.isConnectedToNetwork() == true {
-            getProfileInfo()
-        }
-        else{
-            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        let asUserInfo = defaults.bool(forKey: "asUserInfo")
-        
-        if asUserInfo == false{
-            if defaults.data(forKey: "AvaImage") != nil{
-                let image = UIImage(data: defaults.data(forKey: "AvaImage")!)
-                avaImage.image = image
-            }
-        }
-        
 //        if let filePath = Bundle.main.path(forResource: "imageName", ofType: "jpg"), let image = UIImage(contentsOfFile: filePath) {
 //            imageView.contentMode = .scaleAspectFit
 //            imageView.image = image
@@ -282,7 +264,26 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let defaults = UserDefaults.standard
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        if Reachability.isConnectedToNetwork() == true {
+            getProfileInfo()
+        }
+        else{
+            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        let asUserInfo = defaults.bool(forKey: "asUserInfo")
+        
+        if asUserInfo == false{
+            if defaults.data(forKey: "AvaImage") != nil{
+                let image = UIImage(data: defaults.data(forKey: "AvaImage")!)
+                avaImage.image = image
+            }
+        }
     }
     
     @IBAction func segmentControl(_ sender: UISegmentedControl) {
