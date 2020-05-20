@@ -183,7 +183,7 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let loadUrl = URL(string: "https://back.fix-up.org/" + self.PortfolioImagesURLs[indexPath.row])!
-        self.addImageViewWithImage(image: loadUrl)
+        self.addImageViewWithImage(image: loadUrl, img: self.PortfolioImages[indexPath.row])
     }
     
     @objc func removeImage() {
@@ -192,12 +192,13 @@ class PortfolioController: UIViewController, UITableViewDelegate, UITableViewDat
         imageView.removeFromSuperview()
     }
     
-    func addImageViewWithImage(image: URL) {
+    func addImageViewWithImage(image: URL, img: UIImage) {
         let window = UIApplication.shared.keyWindow!
 
         let imageView = UIImageView(frame: window.frame)
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = UIColor.black
+        imageView.image = img
         imageView.load(url: image)
         imageView.isUserInteractionEnabled = true
         imageView.tag = 100
