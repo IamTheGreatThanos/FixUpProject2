@@ -705,14 +705,10 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     @IBAction func whatsappButtonTapped(_ sender: UIButton) {
         let defaults = UserDefaults.standard
         var phoneNumber = defaults.string(forKey: "CurrentPhoneNumber")
-        if phoneNumber?.prefix(2) == "+7"{
-            UIApplication.shared.openURL(URL(string:"https://api.whatsapp.com/send?phone=" + phoneNumber!)!)
-        }
-        else{
-            let len = (phoneNumber!.count as Int) - 1
-            phoneNumber = "+7" + (phoneNumber?.suffix(len))!
-            UIApplication.shared.openURL(URL(string:"https://api.whatsapp.com/send?phone=" + phoneNumber!)!)
-        }
+        let len = (phoneNumber!.count as Int) - 1
+        phoneNumber = "7" + (phoneNumber?.suffix(len))!
+        let url = URL(string:"https://api.whatsapp.com/send?phone=" + phoneNumber!)!
+        UIApplication.shared.openURL(url)
         
     }
     
