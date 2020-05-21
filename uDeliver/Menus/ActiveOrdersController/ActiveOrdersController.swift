@@ -27,7 +27,6 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return (Names.count)
     }
         
@@ -276,7 +275,7 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
             let viewController = storyboard.instantiateViewController(withIdentifier :"MapViewController")
             self.navigationController?.pushViewController(viewController, animated: true)
             
-        }       
+        }
     }
     
     
