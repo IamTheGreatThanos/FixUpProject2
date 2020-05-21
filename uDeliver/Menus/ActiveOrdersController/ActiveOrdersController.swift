@@ -74,7 +74,6 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
                         if response != nil{
                             if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil{
                                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
-                                print(json)
                                 DispatchQueue.main.async {
                                     for i in json{
                                         let sender = i["sender"] as! NSDictionary
@@ -277,10 +276,7 @@ class ActiveOrdersController: UIViewController, UITableViewDataSource, UITableVi
             let viewController = storyboard.instantiateViewController(withIdentifier :"MapViewController")
             self.navigationController?.pushViewController(viewController, animated: true)
             
-        }
-        
-        
-                
+        }       
     }
     
     

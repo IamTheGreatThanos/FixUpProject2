@@ -169,11 +169,14 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
                                     defaults.set("Заказчик", forKey: "MySpec")
                                 }
                                 
-                                let url = json["avatar"] as! String
-                                let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
-                                self.avaImage.loadAva(url: loadUrl)
-                                self.avaUrl = loadUrl
-                                defaults.set(loadUrl, forKey: "MyAvatar")
+                                if json["avatar"] as? String != nil{
+                                    let url = json["avatar"] as! String
+                                    let loadUrl = URL(string: "https://back.fix-up.org/" + url)!
+                                    self.avaImage.loadAva(url: loadUrl)
+                                    self.avaUrl = loadUrl
+                                    defaults.set(loadUrl, forKey: "MyAvatar")
+                                }
+                                
                                 defaults.set(json["nickname"] as! String, forKey: "MyName")
                                 if ((json["about"] as? String) != nil){
                                     defaults.set(json["about"] as! String, forKey: "About")
