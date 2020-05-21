@@ -165,7 +165,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                 task.resume()
             }
             
-            
             if (value == true){
                 let defaults = UserDefaults.standard
                 let token = defaults.string(forKey: "Token")
