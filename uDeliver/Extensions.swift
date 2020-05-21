@@ -103,7 +103,6 @@ extension UIImage {
         return result
     }
     
-    
 }
 
 

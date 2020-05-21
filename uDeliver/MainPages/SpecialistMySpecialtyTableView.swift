@@ -22,6 +22,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
     var Avatars = [String]()
     var orderImages = [[String]]()
     var phoneNumbers = [String]()
+    var Avas = [UIImage]()
     
     var Last_IDs = [String]()
     
@@ -52,6 +53,9 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
             cell.commentLabel.text = Comments[indexPath.row]
             cell.locationLabel.text = Locations[indexPath.row]
             cell.timeLabel.text = Durat[indexPath.row]
+            if indexPath.row < Avas.count {
+                cell.avaIcon.image = Avas[indexPath.row]
+            }
             
             if Last_IDs.contains(IDs[indexPath.row]) == false && Last_IDs.count != 0{
                 cell.designableView.backgroundColor = UIColor(red: 1, green: 0.9373, blue: 0.698, alpha: 1.0)
@@ -106,6 +110,7 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
         CustomersID = []
         orderImages = [[String]]()
         phoneNumbers = []
+        Avas = []
         
         self.ActivityIndicator.isHidden = false
         self.ActivityIndicator.startAnimating()
@@ -222,6 +227,20 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                         self.Distan.append(i["distance_text"] as! String)
                                         self.Durat.append(i["duration_text"] as! String)
                                         self.phoneNumbers.append(sender["phone"] as! String)
+                                        let urlAva = sender["avatar"] as! String
+                                        let loadUrlAva = URL(string: "https://back.fix-up.org/" + urlAva)!
+                                        
+                                        if let data = try? Data(contentsOf: loadUrlAva) {
+                                            if let image = UIImage(data: data) {
+                                                self.Avas.append(image)
+                                            }
+                                            else{
+                                                self.Avas.append(UIImage(named: "profile-ava.png")!)
+                                            }
+                                        }
+                                        else{
+                                            self.Avas.append(UIImage(named: "profile-ava.png")!)
+                                        }
                                         
                                         if sender["avatar"] != nil{
                                             self.Avatars.append(sender["avatar"] as! String)
@@ -234,7 +253,8 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
-                                    
+                                    print(self.Avas.count)
+                                    print(self.Names.count)
                                 }
                             }
                             else{

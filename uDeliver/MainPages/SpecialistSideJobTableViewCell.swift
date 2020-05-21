@@ -8,7 +8,7 @@ class SpecialistSideJobTableViewCell: UITableViewCell {
     @IBOutlet weak var radiusLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    
+    @IBOutlet weak var avaIcon: UIImageView!
     
     @IBOutlet weak var designableView: DesignOfViewWithCR!
     
