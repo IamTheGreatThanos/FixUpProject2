@@ -241,8 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				88E597C72456FF0E0004D27A /* FIXUP.entitlements */,
-				885A616123FEC49A00F63770 /* Assets.xcassets */,
 				88CCA76F23D1A58200D7DA23 /* MainPages */,
+				885A616123FEC49A00F63770 /* Assets.xcassets */,
 				8819A1832347B82A00F3A316 /* Menus */,
 				88D42ABC23479FDF00A5BABC /* SideBarControllers */,
 				88CF345A23DF144F00B74762 /* ProfileControllers */,

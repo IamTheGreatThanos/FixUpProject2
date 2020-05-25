@@ -58,6 +58,8 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         addDoneButtonOnKeyboard()
+        enterCommentTextView.isScrollEnabled = false
+//        enterCommentTextView.sizeToFit()
         enterPriceTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         ViewShowImg.alpha = 0.0
         
@@ -245,13 +247,26 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                             let status = json["status"] as! String
                             DispatchQueue.main.async {
                                 if status == "accept"{
-                                    let alert = UIAlertController(title: "Успешно", message: "Ваш заказ принят! Пожалуйста, пройдите в Меню - Мои заказы!", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Успешно", message: "Ваш отклик принят!", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                    
+                                    
+                                    self.customerView.alpha = 1.0
+                                    self.finishButtonOutlet.alpha = 0.0
+                                    self.sendButtonOutlet.alpha = 0.0
+                                    self.sendInformationView.alpha = 0.0
+                                    self.image1.alpha = 0.0
+                                    self.image2.alpha = 0.0
+                                    self.image3.alpha = 0.0
+                                    self.showImg1.alpha = 0.0
+                                    self.showImg2.alpha = 0.0
+                                    self.showImg3.alpha = 0.0
+                                    
                                     self.present(alert, animated: true, completion: nil)
                                     self.timer.invalidate()
                                 }
                                 else if status == "no accepted"{
-                                    let alert = UIAlertController(title: "Извините", message: "Ваш заказ отменен!", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Извините", message: "Ваш отклик отменен!", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                     self.timer.invalidate()
@@ -700,7 +715,10 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             self.switcher = 1
             
         }
-        enterCommentTextView.text = ""
+        if enterCommentTextView.text == "Информация о заказе!"
+        {
+            enterCommentTextView.text = ""
+        }
         enterCommentTextView.textColor = UIColor.black
     }
     
