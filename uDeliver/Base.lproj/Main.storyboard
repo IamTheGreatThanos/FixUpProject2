@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KUh-zW-uME">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KUh-zW-uME">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -1241,16 +1241,6 @@
                                     <action selector="offerBtnTapped:" destination="uys-6B-QKv" eventType="touchUpInside" id="6hj-n5-h4a"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info@fix-up.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADU-zO-f83">
-                                <rect key="frame" x="110" y="264" width="200" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="m1G-2f-WHu"/>
-                                    <constraint firstAttribute="width" constant="200" id="nNZ-Lk-sK3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы в социальных сетях:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-qx-Phd">
                                 <rect key="frame" x="82" y="496" width="250" height="25"/>
                                 <constraints>
@@ -1329,6 +1319,17 @@
                                     <action selector="openWhatsAppWithSender:" destination="uys-6B-QKv" eventType="touchUpInside" id="1iu-Ix-gmg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6a-Lx-rco" userLabel="CallButton">
+                                <rect key="frame" x="110" y="264" width="121" height="34"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="info@fix-up.org">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendEmail:" destination="uys-6B-QKv" eventType="touchUpInside" id="H7l-mz-LpQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1349,13 +1350,13 @@
                             <constraint firstItem="LJM-Pz-7S8" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" id="Kya-g9-MUj"/>
                             <constraint firstItem="Qea-TW-ZSJ" firstAttribute="leading" secondItem="oEL-bU-PYd" secondAttribute="leading" constant="20" id="MIK-H1-QVZ"/>
                             <constraint firstItem="oEL-bU-PYd" firstAttribute="bottom" secondItem="0rB-s7-rq4" secondAttribute="bottom" constant="20" id="PF7-7G-wch"/>
+                            <constraint firstItem="R6a-Lx-rco" firstAttribute="top" secondItem="B8T-dW-ofS" secondAttribute="bottom" constant="50" id="QuF-j4-m5e"/>
                             <constraint firstItem="7Ca-vV-GyW" firstAttribute="leading" secondItem="q1f-KH-JIZ" secondAttribute="trailing" constant="25" id="RqI-tQ-1DT"/>
                             <constraint firstItem="chv-hV-4mR" firstAttribute="leading" secondItem="QFQ-FW-xSw" secondAttribute="trailing" constant="30" id="XaI-uz-Vq8"/>
-                            <constraint firstItem="7Ca-vV-GyW" firstAttribute="top" secondItem="ADU-zO-f83" secondAttribute="bottom" constant="5" id="XwB-1l-H4F"/>
+                            <constraint firstItem="7Ca-vV-GyW" firstAttribute="top" secondItem="R6a-Lx-rco" secondAttribute="bottom" constant="-4" id="aYz-fF-8Ba"/>
                             <constraint firstItem="LJM-Pz-7S8" firstAttribute="top" secondItem="oEL-bU-PYd" secondAttribute="top" id="cgP-V8-haz"/>
-                            <constraint firstItem="ADU-zO-f83" firstAttribute="leading" secondItem="q1f-KH-JIZ" secondAttribute="trailing" constant="25" id="e22-7z-Vlr"/>
+                            <constraint firstItem="R6a-Lx-rco" firstAttribute="leading" secondItem="q1f-KH-JIZ" secondAttribute="trailing" constant="25" id="doA-ec-yrV"/>
                             <constraint firstItem="HGc-18-a7i" firstAttribute="top" secondItem="ihe-qx-Phd" secondAttribute="bottom" constant="25" id="ePQ-rS-r6u"/>
-                            <constraint firstItem="ADU-zO-f83" firstAttribute="top" secondItem="B8T-dW-ofS" secondAttribute="bottom" constant="50" id="feR-JV-BUS"/>
                             <constraint firstItem="LJM-Pz-7S8" firstAttribute="trailing" secondItem="oEL-bU-PYd" secondAttribute="trailing" id="hkW-Ho-FWP"/>
                             <constraint firstItem="Qea-TW-ZSJ" firstAttribute="centerX" secondItem="oEL-bU-PYd" secondAttribute="centerX" id="rNj-sB-J2Y"/>
                             <constraint firstItem="oGP-g3-SKA" firstAttribute="leading" secondItem="P1v-OR-WeI" secondAttribute="trailing" constant="25" id="uN9-r4-hxO"/>
