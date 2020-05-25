@@ -134,6 +134,7 @@ class SpecialistSideJobTableView: UIViewController, UITableViewDataSource, UITab
                 let task = URLSession.shared.dataTask(with: request, completionHandler:{(data, response, error) in
                     do{
                         if response != nil{
+                            print(response, data!)
                             if (try JSONSerialization.jsonObject(with: data!, options: []) as? [NSDictionary]) != nil {
                                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [NSDictionary]
                                 DispatchQueue.main.async {
