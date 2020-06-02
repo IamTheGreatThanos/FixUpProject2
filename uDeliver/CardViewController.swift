@@ -61,6 +61,8 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         enterCommentTextView.isScrollEnabled = false
 //        enterCommentTextView.sizeToFit()
         enterPriceTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        enterCommentTextView.delegate = self
+        
         ViewShowImg.alpha = 0.0
         
         let defaults = UserDefaults.standard
@@ -109,7 +111,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 sendButtonOutlet.setTitle("Принять", for: .normal)
                 customerView.alpha = 0.0
                 enterPriceTextField.placeholder = defaults.string(forKey: "CurrentPrice")! + " ₸"
-                enterTimeTextField.placeholder = "1 час"
+                enterTimeTextField.placeholder = "Время для работы"
             }
         }
         
@@ -197,7 +199,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        if textField == enterPriceTextField{
+        if textField == enterPriceTextField {
             if enterPriceTextField.text?.count == 7{
                 enterPriceTextField.text = String(enterPriceTextField.text!.prefix(6))
             }
@@ -298,6 +300,13 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func adjustUITextViewHeight(arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -667,6 +676,9 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             })
             
             self.switcher = 1
+            // TODO
+            
+            
         }
     }
     
@@ -923,5 +935,16 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         UIView.animate(withDuration: 0.3, animations: {
             self.ViewShowImg.alpha = 0.0
         })
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let fixedWidth = textView.frame.size.width
+        
+        if (textView.frame.size.height <= 145) {
+            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+            textView.frame.size = CGSize(width: fixedWidth, height: newSize.height)
+        } else {
+            textView.isScrollEnabled = true
+        }
     }
 }
