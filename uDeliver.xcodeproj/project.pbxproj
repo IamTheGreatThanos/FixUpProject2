@@ -241,8 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				88E597C72456FF0E0004D27A /* FIXUP.entitlements */,
-				885A616123FEC49A00F63770 /* Assets.xcassets */,
 				88CCA76F23D1A58200D7DA23 /* MainPages */,
+				885A616123FEC49A00F63770 /* Assets.xcassets */,
 				8819A1832347B82A00F3A316 /* Menus */,
 				88D42ABC23479FDF00A5BABC /* SideBarControllers */,
 				88CF345A23DF144F00B74762 /* ProfileControllers */,
@@ -573,14 +573,14 @@
 				CODE_SIGN_ENTITLEMENTS = uDeliver/FIXUP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25F2R883U6;
+				DEVELOPMENT_TEAM = 282SWZZ9X5;
 				INFOPLIST_FILE = uDeliver/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.XCode.FIXUP;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.baraholkaexpress.BaraholkaExpress;
 				PRODUCT_NAME = FIXUP;
 				SWIFT_OBJC_BRIDGING_HEADER = "uDeliver/SideBarControllers/uDeliver-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -597,14 +597,14 @@
 				CODE_SIGN_ENTITLEMENTS = uDeliver/FIXUP.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25F2R883U6;
+				DEVELOPMENT_TEAM = 282SWZZ9X5;
 				INFOPLIST_FILE = uDeliver/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.XCode.FIXUP;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.baraholkaexpress.BaraholkaExpress;
 				PRODUCT_NAME = FIXUP;
 				SWIFT_OBJC_BRIDGING_HEADER = "uDeliver/SideBarControllers/uDeliver-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

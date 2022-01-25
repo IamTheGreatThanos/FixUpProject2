@@ -38,7 +38,8 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate,  UIN
         closeViewButtonOutlet.alpha = 0.0
         seeingImage.alpha = 0.0
         activityForAva.alpha = 0.0
-        
+        specialtyNameOutlet.borderWidth = 1.0
+        specialtyNameOutlet.borderColor = .lightGray
         let defaults = UserDefaults.standard
         let isRegisterAsSpecialist = defaults.bool(forKey: "isRegisterAsSpecialist")
         if isRegisterAsSpecialist == false{

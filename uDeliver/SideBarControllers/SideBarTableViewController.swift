@@ -14,9 +14,16 @@ class SideBarTableViewController: UITableViewController {
     var isRegister = ""
     @IBOutlet weak var dislikeLabel: UILabel!
     
+    @IBOutlet var tableViewTemp: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewTemp.contentInset = UIEdgeInsets(top: -1, left: 0, bottom: 0, right: 0)
+        tableView.insetsLayoutMarginsFromSafeArea = true
+        tableViewTemp.insetsLayoutMarginsFromSafeArea = true
+        
+        
+        
         let defaults = UserDefaults.standard
         let value = defaults.bool(forKey: "isCourier")
         let isRegister = defaults.string(forKey: "isRegister")
@@ -219,4 +226,7 @@ class SideBarTableViewController: UITableViewController {
               }
           
       }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 0
+    }
 }

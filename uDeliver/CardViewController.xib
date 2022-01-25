@@ -390,7 +390,7 @@
                         <constraint firstItem="KNp-IV-j2b" firstAttribute="top" secondItem="bcY-u8-8en" secondAttribute="bottom" constant="10" id="y8W-Xf-JQn"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-Gr-Sn7">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-Gr-Sn7">
                     <rect key="frame" x="20" y="472" width="335" height="105"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Время работы?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wyj-Gn-kne">
@@ -417,13 +417,9 @@
                                 <outlet property="pasteDelegate" destination="-1" id="KA6-HV-vv2"/>
                             </connections>
                         </textField>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="yRu-ui-bPb">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="yRu-ui-bPb">
                             <rect key="frame" x="20" y="55" width="295" height="40"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="D1o-3g-OZx"/>
-                                <constraint firstAttribute="height" constant="40" id="KXj-kI-4dq"/>
-                            </constraints>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                             <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -58,7 +58,11 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         addDoneButtonOnKeyboard()
+        enterCommentTextView.isScrollEnabled = false
+//        enterCommentTextView.sizeToFit()
         enterPriceTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        enterCommentTextView.delegate = self
+        
         ViewShowImg.alpha = 0.0
         
         let defaults = UserDefaults.standard
@@ -107,7 +111,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                 sendButtonOutlet.setTitle("Принять", for: .normal)
                 customerView.alpha = 0.0
                 enterPriceTextField.placeholder = defaults.string(forKey: "CurrentPrice")! + " ₸"
-                enterTimeTextField.placeholder = "1 час"
+                enterTimeTextField.placeholder = "Время для работы"
             }
         }
         
@@ -195,7 +199,7 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        if textField == enterPriceTextField{
+        if textField == enterPriceTextField {
             if enterPriceTextField.text?.count == 7{
                 enterPriceTextField.text = String(enterPriceTextField.text!.prefix(6))
             }
@@ -245,13 +249,26 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                             let status = json["status"] as! String
                             DispatchQueue.main.async {
                                 if status == "accept"{
-                                    let alert = UIAlertController(title: "Успешно", message: "Ваш заказ принят! Пожалуйста, пройдите в Меню - Мои заказы!", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Успешно", message: "Ваш отклик принят!", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                                    
+                                    
+                                    self.customerView.alpha = 1.0
+                                    self.finishButtonOutlet.alpha = 0.0
+                                    self.sendButtonOutlet.alpha = 0.0
+                                    self.sendInformationView.alpha = 0.0
+                                    self.image1.alpha = 0.0
+                                    self.image2.alpha = 0.0
+                                    self.image3.alpha = 0.0
+                                    self.showImg1.alpha = 0.0
+                                    self.showImg2.alpha = 0.0
+                                    self.showImg3.alpha = 0.0
+                                    
                                     self.present(alert, animated: true, completion: nil)
                                     self.timer.invalidate()
                                 }
                                 else if status == "no accepted"{
-                                    let alert = UIAlertController(title: "Извините", message: "Ваш заказ отменен!", preferredStyle: UIAlertController.Style.alert)
+                                    let alert = UIAlertController(title: "Извините", message: "Ваш отклик отменен!", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                     self.timer.invalidate()
@@ -283,6 +300,13 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func adjustUITextViewHeight(arg : UITextView)
+    {
+        arg.translatesAutoresizingMaskIntoConstraints = true
+        arg.sizeToFit()
+        arg.isScrollEnabled = false
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -562,21 +586,29 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
                                         }
                                     }
                                     else{
+
+                                        DispatchQueue.main.async {
+                                            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
+                                            alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
+                                            self.present(alert, animated: true)
+                                        }
+                                    }
+                                }
+                                else{
+
+                                    DispatchQueue.main.async {
                                         let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                                         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                                         self.present(alert, animated: true)
                                     }
                                 }
-                                else{
+                            }
+                            catch{
+                                DispatchQueue.main.async {
                                     let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
                                     alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
                                     self.present(alert, animated: true)
                                 }
-                            }
-                            catch{
-                                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с сервером…", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
-                                self.present(alert, animated: true)
                             }
                         })
                         task.resume()
@@ -585,9 +617,12 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             }
         }
         else{
-            let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Извините", message: "Ошибка соединения с интернетом...", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -641,6 +676,9 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             })
             
             self.switcher = 1
+            // TODO
+            
+            
         }
     }
     
@@ -689,7 +727,10 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
             self.switcher = 1
             
         }
-        enterCommentTextView.text = ""
+        if enterCommentTextView.text == "Информация о заказе!"
+        {
+            enterCommentTextView.text = ""
+        }
         enterCommentTextView.textColor = UIColor.black
     }
     
@@ -894,5 +935,16 @@ class CardViewController: UIViewController,UITextFieldDelegate, UITextViewDelega
         UIView.animate(withDuration: 0.3, animations: {
             self.ViewShowImg.alpha = 0.0
         })
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let fixedWidth = textView.frame.size.width
+        
+        if (textView.frame.size.height <= 145) {
+            let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+            textView.frame.size = CGSize(width: fixedWidth, height: newSize.height)
+        } else {
+            textView.isScrollEnabled = true
+        }
     }
 }

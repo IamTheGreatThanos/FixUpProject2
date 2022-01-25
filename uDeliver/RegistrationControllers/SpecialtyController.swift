@@ -9,14 +9,14 @@ class SpecialtyController: UIViewController, UITableViewDataSource,UITableViewDe
     
     
     let Specialty = ["Доставка", "Спецтехника", "Строительство", "Сервис и быт", "Красота",
-    "Электроника", "IT и фриланис", "Образование", "Медицина", "Автосервис",
+    "Электроника", "IT и фриланс", "Образование", "Медицина", "Автосервис",
     "Культура и искусство", "Юриспруденция", "Финансы", "Сельское хозяйство",
     "Туризм и спорт", "Другие"]
     
-    let Specialty_into = ["Курьер, такси, трезвый водитель, грузчик, перевозка, переезд, канцелярия, почтальон и т.д",
-    "Эвакуатор, экскаватор, трактор,квадроцикл, кран, бетономешалкаи т.д.",
-    "Строитель, электрик, сантехник, моляр, плотник, кровельщик, каменщик, сварщик, дизайнер и т.д.",
-    "Уборщица, дворник, няня, повар, сиделка, швея, обувщик, специалистпо химчистке и т.д.",
+    let Specialty_into = ["Курьер, такси, трезвый водитель, грузчик, перевозка, переезд, канцелярия и т.д",
+    "Эвакуатор, экскаватор, трактор,квадроцикл, кран, бетономешалка и т.д.",
+    "Строитель, электрик, сантехник, маляр, плотник, кровельщик, каменщик, сварщик, дизайнер и т.д.",
+    "Уборщица, дворник, няня, повар, сиделка, швея, обувщик, специалист по химчистке и т.д.",
     "Парикмахер, визажист, мастер по маникюру, косметолог, эстетист, мастер татуажа и т.д.",
     "Специалисты по ремонту бытовойтехники, электронных и видео приборов и т.д.",
     "Программист, дизайнер, копирайтер, маркетолог, SMM-специалист, веб-мастер, переводчик и т.д.",
@@ -49,7 +49,7 @@ class SpecialtyController: UIViewController, UITableViewDataSource,UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // Fetch a cell of the appropriate type.
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellOfSpecialty", for: indexPath) as! SpecialtyTableViewCell
-        
+        cell.specialistView.cornerRadius = 10
         cell.SpecialtyView.backgroundColor = UIColor.white
         cell.SpecialtyName.textColor = UIColor(red: 0.9843, green: 0.2431, blue: 0.2471, alpha: 1.0)
         cell.SpecialtyIcon.image = UIImage(named: "Card" + String(indexPath.row) + ".png")
