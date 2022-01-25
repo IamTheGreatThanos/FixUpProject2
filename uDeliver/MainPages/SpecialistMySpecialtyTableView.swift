@@ -253,8 +253,6 @@ class SpecialistMySpecialtyTableView: UIViewController, UITableViewDataSource, U
                                     self.ActivityIndicator.isHidden = true
                                     self.ActivityIndicator.stopAnimating()
                                     self.mainTableView.isHidden = false
-                                    print(self.Avas.count)
-                                    print(self.Names.count)
                                 }
                             }
                             else{

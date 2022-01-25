@@ -17,8 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Thread.sleep(forTimeInterval: 5.0)
         
-//        UIApplication.shared.statusBarStyle = .lightContent
-        
         return true
     }
 
